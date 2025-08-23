@@ -1,4 +1,4 @@
 pandas
 plotly
-sleeperpy
+sleeper-py
 requests
