@@ -1,10 +1,14 @@
-<div style="display: flex; align-items: center; gap: 20px;">
-  <img src="https://i.imgur.com/nIoVD6y.png" alt="Falcon FF Logo" width="150" height="150" style="background-color: white; border-radius: 50%; padding: 10px;"/>
-  <div>
-    <h1>Falcon FF</h1>
-    <h3>Visuals and Stats for our football cosplay club</h3>
-  </div>
-</div>
+<table>
+  <tr>
+    <td width="170">
+      <img src="https://i.imgur.com/nIoVD6y.png" alt="Falcon FF Logo" width="150" height="150" style="border-radius: 50%;"/>
+    </td>
+    <td>
+      <h1>Falcon FF</h1>
+      <h3>Visuals and Stats for our football cosplay club</h3>
+    </td>
+  </tr>
+</table>
 
 ---
 
