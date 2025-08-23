@@ -1,6 +1,6 @@
-<table border="0" style="border-collapse: collapse;">
+<table style="border: none; border-collapse: collapse;">
   <tr>
-    <td width="170" style="border: none; padding-right: 20px;">
+    <td style="border: none; padding-right: 20px; vertical-align: middle;">
       <img src="https://i.imgur.com/nIoVD6y.png" alt="Falcon FF Logo" width="150" height="150" style="border-radius: 50%;"/>
     </td>
     <td style="border: none; vertical-align: middle;">
