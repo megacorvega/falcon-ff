@@ -1,0 +1,443 @@
+{
+    "power_rankings": [
+        {
+            "Rank": 1,
+            "Team": "pinballfabs",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
+            "Power Score": 1.0
+        },
+        {
+            "Rank": 2,
+            "Team": "Muk_King",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/70ab560538c2e94f0624132484fd10be",
+            "Power Score": 0.5857242000229249
+        },
+        {
+            "Rank": 3,
+            "Team": "PTP1020",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
+            "Power Score": 0.5719902270893459
+        },
+        {
+            "Rank": 4,
+            "Team": "acroz24",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/f0edbf4278f53f9425db175073df6584",
+            "Power Score": 0.5522906511571462
+        },
+        {
+            "Rank": 5,
+            "Team": "Hophoobly",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/e7af4deab0289b4f5505646424895246",
+            "Power Score": 0.46133356403870734
+        },
+        {
+            "Rank": 6,
+            "Team": "abroom23",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/dd5bde6e07dc6659d2b72b23ffdf192d",
+            "Power Score": 0.20453017173237623
+        },
+        {
+            "Rank": 7,
+            "Team": "khaug22",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
+            "Power Score": 0.1665942391958656
+        },
+        {
+            "Rank": 8,
+            "Team": "ScoobusDrewbus",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b0d376bfe3e6350fe8e793a14be372a0",
+            "Power Score": 0.16515346136007172
+        },
+        {
+            "Rank": 9,
+            "Team": "smurro",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/82aec8e811b839b8ec25d7b458afd57b",
+            "Power Score": 0.1462922307237958
+        },
+        {
+            "Rank": 10,
+            "Team": "WhileyMisfits",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/4f4090e5e9c3941414db40a871e3e909",
+            "Power Score": 0.1004683206948899
+        },
+        {
+            "Rank": 11,
+            "Team": "EthanSvend8",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/e7af4deab0289b4f5505646424895246",
+            "Power Score": 0.05608612906432663
+        },
+        {
+            "Rank": 12,
+            "Team": "GBBOdraftpro",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b319fdf8b7b5b0359d3c78622ba4d70c",
+            "Power Score": 0.0
+        }
+    ],
+    "fdvoa": [
+        {
+            "Team": "pinballfabs",
+            "F-DVOA (%)": 20.79521584064392,
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6"
+        },
+        {
+            "Team": "Muk_King",
+            "F-DVOA (%)": 7.832656969032958,
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/70ab560538c2e94f0624132484fd10be"
+        },
+        {
+            "Team": "PTP1020",
+            "F-DVOA (%)": 7.402925295827619,
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6"
+        },
+        {
+            "Team": "acroz24",
+            "F-DVOA (%)": 6.786531789904652,
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/f0edbf4278f53f9425db175073df6584"
+        },
+        {
+            "Team": "Hophoobly",
+            "F-DVOA (%)": 3.9405132760830526,
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/e7af4deab0289b4f5505646424895246"
+        },
+        {
+            "Team": "abroom23",
+            "F-DVOA (%)": -4.0947837202281745,
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/dd5bde6e07dc6659d2b72b23ffdf192d"
+        },
+        {
+            "Team": "khaug22",
+            "F-DVOA (%)": -5.281787061676535,
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6"
+        },
+        {
+            "Team": "ScoobusDrewbus",
+            "F-DVOA (%)": -5.32686854487788,
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b0d376bfe3e6350fe8e793a14be372a0"
+        },
+        {
+            "Team": "smurro",
+            "F-DVOA (%)": -5.917030491405503,
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/82aec8e811b839b8ec25d7b458afd57b"
+        },
+        {
+            "Team": "WhileyMisfits",
+            "F-DVOA (%)": -7.350846156018225,
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/4f4090e5e9c3941414db40a871e3e909"
+        },
+        {
+            "Team": "EthanSvend8",
+            "F-DVOA (%)": -8.739550907524665,
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/e7af4deab0289b4f5505646424895246"
+        },
+        {
+            "Team": "GBBOdraftpro",
+            "F-DVOA (%)": -10.494468162931174,
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b319fdf8b7b5b0359d3c78622ba4d70c"
+        }
+    ],
+    "rosters": [
+        {
+            "Team": "PTP1020",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
+            "QB": "Anthony Richardson (0.00)",
+            "RB1": "Tony Pollard (0.00)",
+            "RB2": "Isiah Pacheco (0.00)",
+            "WR1": "Calvin Ridley (0.00)",
+            "WR2": "Brandon Aiyuk (0.00)",
+            "TE1": "Tyler Higbee (0.00)",
+            "FLEX1": "Tony Pollard (0.00)",
+            "FLEX2": "Isiah Pacheco (0.00)",
+            "K": "Wil Lutz (0.00)",
+            "DEF": "Buffalo Bills (0.00)",
+            "Total": 0.0
+        },
+        {
+            "Team": "pinballfabs",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
+            "QB": "Jalen Hurts (0.00)",
+            "RB1": "J.K. Dobbins (0.00)",
+            "RB2": "Khalil Herbert (0.00)",
+            "WR1": "Tyreek Hill (0.00)",
+            "WR2": "DeVonta Smith (0.00)",
+            "TE1": "Darren Waller (0.00)",
+            "FLEX1": "J.K. Dobbins (0.00)",
+            "FLEX2": "Khalil Herbert (0.00)",
+            "K": "Harrison Butker (0.00)",
+            "DEF": "Dallas Cowboys (0.00)",
+            "Total": 0.0
+        },
+        {
+            "Team": "smurro",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/82aec8e811b839b8ec25d7b458afd57b",
+            "QB": "Trevor Lawrence (0.00)",
+            "RB1": "Najee Harris (0.00)",
+            "RB2": "Zach Charbonnet (0.00)",
+            "WR1": "Justin Jefferson (0.00)",
+            "WR2": "Tee Higgins (0.00)",
+            "TE1": "T.J. Hockenson (0.00)",
+            "FLEX1": "Najee Harris (0.00)",
+            "FLEX2": "Zach Charbonnet (0.00)",
+            "K": "Daniel Carlson (0.00)",
+            "DEF": "Baltimore Ravens (0.00)",
+            "Total": 0.0
+        },
+        {
+            "Team": "abroom23",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/dd5bde6e07dc6659d2b72b23ffdf192d",
+            "QB": "Geno Smith (0.00)",
+            "RB1": "Austin Ekeler (0.00)",
+            "RB2": "Dameon Pierce (0.00)",
+            "WR1": "Amon-Ra St. Brown (0.00)",
+            "WR2": "DK Metcalf (0.00)",
+            "TE1": "Pat Freiermuth (0.00)",
+            "FLEX1": "Austin Ekeler (0.00)",
+            "FLEX2": "Dameon Pierce (0.00)",
+            "K": "Younghoe Koo (0.00)",
+            "DEF": "Philadelphia Eagles (0.00)",
+            "Total": 0.0
+        },
+        {
+            "Team": "khaug22",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
+            "QB": "Justin Herbert (0.00)",
+            "RB1": "Bijan Robinson (0.00)",
+            "RB2": "Josh Jacobs (0.00)",
+            "WR1": "Chris Olave (0.00)",
+            "WR2": "Amari Cooper (0.00)",
+            "TE1": "Kyle Pitts (0.00)",
+            "FLEX1": "Bijan Robinson (0.00)",
+            "FLEX2": "Josh Jacobs (0.00)",
+            "K": "Justin Tucker (0.00)",
+            "DEF": "San Francisco 49ers (0.00)",
+            "Total": 0.0
+        },
+        {
+            "Team": "Muk_King",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/70ab560538c2e94f0624132484fd10be",
+            "QB": "Justin Fields (0.00)",
+            "RB1": "Travis Etienne (0.00)",
+            "RB2": "Jahmyr Gibbs (0.00)",
+            "WR1": "Ja'Marr Chase (0.00)",
+            "WR2": "DJ Moore (0.00)",
+            "TE1": "Dallas Goedert (0.00)",
+            "FLEX1": "Travis Etienne (0.00)",
+            "FLEX2": "Jahmyr Gibbs (0.00)",
+            "K": "Brandon McManus (0.00)",
+            "DEF": "New York Jets (0.00)",
+            "Total": 0.0
+        },
+        {
+            "Team": "ScoobusDrewbus",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b0d376bfe3e6350fe8e793a14be372a0",
+            "QB": "Tua Tagovailoa (0.00)",
+            "RB1": "Nick Chubb (0.00)",
+            "RB2": "Aaron Jones (0.00)",
+            "WR1": "CeeDee Lamb (0.00)",
+            "WR2": "Tyler Lockett (0.00)",
+            "TE1": "Dalton Schultz (0.00)",
+            "FLEX1": "Nick Chubb (0.00)",
+            "FLEX2": "Aaron Jones (0.00)",
+            "K": "Graham Gano (0.00)",
+            "DEF": "New England Patriots (0.00)",
+            "Total": 0.0
+        },
+        {
+            "Team": "WhileyMisfits",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/4f4090e5e9c3941414db40a871e3e909",
+            "QB": "Kirk Cousins (0.00)",
+            "RB1": "Rhamondre Stevenson (0.00)",
+            "RB2": "Antonio Gibson (0.00)",
+            "WR1": "Stefon Diggs (0.00)",
+            "WR2": "Davante Adams (0.00)",
+            "TE1": "David Njoku (0.00)",
+            "FLEX1": "Rhamondre Stevenson (0.00)",
+            "FLEX2": "Antonio Gibson (0.00)",
+            "K": "Evan McPherson (0.00)",
+            "DEF": "Seattle Seahawks (0.00)",
+            "Total": 0.0
+        },
+        {
+            "Team": "EthanSvend8",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/e7af4deab0289b4f5505646424895246",
+            "QB": "Joe Burrow (0.00)",
+            "RB1": "Kenneth Walker (0.00)",
+            "RB2": "David Montgomery (0.00)",
+            "WR1": "Garrett Wilson (0.00)",
+            "WR2": "Tyler Boyd (0.00)",
+            "TE1": "Luke Musgrave (0.00)",
+            "FLEX1": "Kenneth Walker (0.00)",
+            "FLEX2": "David Montgomery (0.00)",
+            "K": "Jason Myers (0.00)",
+            "DEF": "Washington Commanders (0.00)",
+            "Total": 0.0
+        },
+        {
+            "Team": "acroz24",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/f0edbf4278f53f9425db175073df6584",
+            "QB": "Lamar Jackson (0.00)",
+            "RB1": "Christian McCaffrey (0.00)",
+            "RB2": "Joe Mixon (0.00)",
+            "WR1": "Jaylen Waddle (0.00)",
+            "WR2": "DeAndre Hopkins (0.00)",
+            "TE1": "Evan Engram (0.00)",
+            "FLEX1": "Christian McCaffrey (0.00)",
+            "FLEX2": "Joe Mixon (0.00)",
+            "K": "Tyler Bass (0.00)",
+            "DEF": "Miami Dolphins (0.00)",
+            "Total": 0.0
+        },
+        {
+            "Team": "GBBOdraftpro",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b319fdf8b7b5b0359d3c78622ba4d70c",
+            "QB": "Patrick Mahomes (0.00)",
+            "RB1": "Saquon Barkley (0.00)",
+            "RB2": "Miles Sanders (0.00)",
+            "WR1": "Deebo Samuel (0.00)",
+            "WR2": "Jaxon Smith-Njigba (0.00)",
+            "TE1": "George Kittle (0.00)",
+            "FLEX1": "Saquon Barkley (0.00)",
+            "FLEX2": "Miles Sanders (0.00)",
+            "K": "Jake Elliott (0.00)",
+            "DEF": "New Orleans Saints (0.00)",
+            "Total": 0.0
+        },
+        {
+            "Team": "Hophoobly",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/e7af4deab0289b4f5505646424895246",
+            "QB": "Josh Allen (0.00)",
+            "RB1": "Derrick Henry (0.00)",
+            "RB2": "Cam Akers (0.00)",
+            "WR1": "A.J. Brown (0.00)",
+            "WR2": "Jahan Dotson (0.00)",
+            "TE1": "Isaiah Likely (0.00)",
+            "FLEX1": "Derrick Henry (0.00)",
+            "FLEX2": "Cam Akers (0.00)",
+            "K": "Jason Sanders (0.00)",
+            "DEF": "Denver Broncos (0.00)",
+            "Total": 0.0
+        }
+    ],
+    "positional_chart": [
+        {
+            "Team": "pinballfabs",
+            "QB": 22.342352941176472,
+            "RB": 42.23529411764706,
+            "WR": 59.63529411764706,
+            "TE": 10.81764705882353,
+            "K": 8.647058823529411,
+            "DEF": 9.647058823529411,
+            "Total": 153.32470588235296
+        },
+        {
+            "Team": "acroz24",
+            "QB": 21.003529411764703,
+            "RB": 56.31176470588236,
+            "WR": 32.99999999999999,
+            "TE": 13.576470588235294,
+            "K": 6.529411764705882,
+            "DEF": 9.470588235294118,
+            "Total": 139.89176470588234
+        },
+        {
+            "Team": "Muk_King",
+            "QB": 18.950588235294116,
+            "RB": 47.788235294117634,
+            "WR": 42.64235294117647,
+            "TE": 12.211764705882354,
+            "K": 8.176470588235293,
+            "DEF": 8.058823529411764,
+            "Total": 137.82823529411763
+        },
+        {
+            "Team": "PTP1020",
+            "QB": 21.816470588235294,
+            "RB": 37.464705882352945,
+            "WR": 47.21764705882353,
+            "TE": 10.46470588235294,
+            "K": 8.529411764705882,
+            "DEF": 11.0,
+            "Total": 136.4929411764706
+        },
+        {
+            "Team": "Hophoobly",
+            "QB": 23.321176470588238,
+            "RB": 44.627058823529424,
+            "WR": 32.40588235294117,
+            "TE": 15.176470588235293,
+            "K": 5.647058823529412,
+            "DEF": 9.529411764705882,
+            "Total": 130.70705882352942
+        },
+        {
+            "Team": "ScoobusDrewbus",
+            "QB": 18.549411764705876,
+            "RB": 25.276470588235295,
+            "WR": 59.64117647058826,
+            "TE": 7.447058823529412,
+            "K": 6.823529411764706,
+            "DEF": 8.058823529411764,
+            "Total": 125.79647058823534
+        },
+        {
+            "Team": "abroom23",
+            "QB": 14.528235294117648,
+            "RB": 29.864705882352943,
+            "WR": 48.95176470588236,
+            "TE": 12.9,
+            "K": 9.117647058823529,
+            "DEF": 7.764705882352941,
+            "Total": 123.12705882352942
+        },
+        {
+            "Team": "smurro",
+            "QB": 17.757647058823533,
+            "RB": 23.294117647058826,
+            "WR": 47.61764705882353,
+            "TE": 13.752941176470591,
+            "K": 8.882352941176471,
+            "DEF": 9.705882352941176,
+            "Total": 121.01058823529412
+        },
+        {
+            "Team": "WhileyMisfits",
+            "QB": 19.582352941176474,
+            "RB": 22.452941176470592,
+            "WR": 56.33294117647057,
+            "TE": 6.582352941176471,
+            "K": 8.294117647058824,
+            "DEF": 7.764705882352941,
+            "Total": 121.00941176470587
+        },
+        {
+            "Team": "EthanSvend8",
+            "QB": 16.11411764705882,
+            "RB": 28.594117647058827,
+            "WR": 44.20588235294118,
+            "TE": 13.87058823529412,
+            "K": 8.823529411764707,
+            "DEF": 6.411764705882353,
+            "Total": 118.02
+        },
+        {
+            "Team": "khaug22",
+            "QB": 18.397647058823523,
+            "RB": 36.2,
+            "WR": 38.36823529411764,
+            "TE": 7.715294117647058,
+            "K": 9.117647058823529,
+            "DEF": 8.0,
+            "Total": 117.79882352941175
+        },
+        {
+            "Team": "GBBOdraftpro",
+            "QB": 18.784705882352938,
+            "RB": 20.32941176470588,
+            "WR": 39.9,
+            "TE": 16.082352941176474,
+            "K": 9.529411764705882,
+            "DEF": 8.176470588235293,
+            "Total": 112.80235294117647
+        }
+    ],
+    "projection_week": 1
+}
