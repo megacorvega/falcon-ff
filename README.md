@@ -29,7 +29,7 @@ This project is a fantasy football dashboard that provides in-depth analytics an
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/megacorvega/falcon-ff
+    git clone [https://github.com/megacorvega/falcon-ff](https://github.com/megacorvega/falcon-ff)
     cd falcon-ff
     ```
 
