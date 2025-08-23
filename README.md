@@ -1,11 +1,11 @@
-<table>
+<table border="0" style="border-collapse: collapse;">
   <tr>
-    <td width="170">
+    <td width="170" style="border: none; padding-right: 20px;">
       <img src="https://i.imgur.com/nIoVD6y.png" alt="Falcon FF Logo" width="150" height="150" style="border-radius: 50%;"/>
     </td>
-    <td>
+    <td style="border: none; vertical-align: middle;">
       <h1>Falcon FF</h1>
-      <h3>Visuals and Stats for our Sleeper league</h3>
+      <h3>Visuals and Stats for our football cosplay club</h3>
     </td>
   </tr>
 </table>
