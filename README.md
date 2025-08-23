@@ -5,7 +5,7 @@
     </td>
     <td>
       <h1>Falcon FF</h1>
-      <h3>Visuals and Stats for our football cosplay club</h3>
+      <h3>Visuals and Stats for our Sleeper league</h3>
     </td>
   </tr>
 </table>
