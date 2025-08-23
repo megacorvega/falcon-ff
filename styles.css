@@ -1,0 +1,28 @@
+body {
+    font-family: 'Cascadia Code', monospace;
+} 
+
+.tab-button.active, .nested-tab-button.active-tab {
+    border-bottom: 2px solid #2563EB;
+    color: #2563EB;
+    background-color: #F3F4F6;
+}
+
+.tab-button, .nested-tab-button {
+    transition: all 0.2s ease-in-out;
+}
+
+.loader {
+    border: 4px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 4px solid #3498db;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

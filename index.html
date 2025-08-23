@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleeper Fantasy Football Stats</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cascadia+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto p-4 md:p-8 max-w-6xl">
+        <header class="flex items-center mb-8">
+            <img id="league-logo" src="" alt="League Logo" class="w-24 h-24 bg-transparent rounded-full mr-6">
+            <div class="text-left">
+                <h1 class="text-4xl font-bold text-gray-900">Falcon FF</h1>
+                <p class="text-lg text-gray-600 mt-2">Visuals and Stats for our Sleeper League</p>
+            </div>
+            <div class="ml-auto">
+                <label for="season-select" class="sr-only">Select Season</label>
+                <select id="season-select" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                    <!-- Year options will be populated by JS -->
+                </select>
+            </div>
+        </header>
+        <main class="bg-white rounded-lg shadow-md p-4 md:p-6">
+            <div class="border-b border-gray-200">
+                <ul class="flex flex-wrap -mb-px">
+                    <li class="mr-2"><button class="tab-button inline-block py-4 px-4 text-sm font-medium text-center rounded-t-lg active" data-tab="power-rankings">Power Rankings</button></li>
+                    <li class="mr-2"><button class="tab-button inline-block py-4 px-4 text-sm font-medium text-center rounded-t-lg" data-tab="fdvoa">F-DVOA Ratings</button></li>
+                    <li class="mr-2"><button class="tab-button inline-block py-4 px-4 text-sm font-medium text-center rounded-t-lg" data-tab="weekly-analysis">Weekly Analysis</button></li>
+                </ul>
+            </div>
+            <div class="pt-6">
+                <div id="power-rankings-panel" class="tab-panel"><div class="loader"></div></div>
+                <div id="fdvoa-panel" class="tab-panel hidden"><div class="loader"></div></div>
+                <div id="weekly-analysis-panel" class="tab-panel hidden">
+                    <div class="flex border-b border-gray-200 mb-4">
+                        <button class="nested-tab-button py-2 px-4 text-sm font-medium text-center text-blue-600 bg-gray-100 rounded-t-lg active-tab" data-view="projections">Current Week Projections</button>
+                        <button class="nested-tab-button py-2 px-4 text-sm font-medium text-center text-gray-500 hover:text-gray-700" data-view="averages">Season Averages</button>
+                    </div>
+                    <div id="projections-view" class="nested-tab-panel"><div class="loader"></div></div>
+                    <div id="averages-view" class="nested-tab-panel hidden"><div class="loader"></div></div>
+                </div>
+            </div>
+        </main>
+        <footer class="text-center mt-8 text-gray-500"><p id="last-updated">Last updated: Loading...</p></footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
