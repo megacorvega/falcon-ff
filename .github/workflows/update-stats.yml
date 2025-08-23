@@ -9,6 +9,9 @@ on:
 jobs:
   update-and-deploy:
     runs-on: ubuntu-latest
+    # Add this permissions block
+    permissions:
+      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
