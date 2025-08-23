@@ -1,14 +1,5 @@
-<table style="border: none; border-collapse: collapse;">
-  <tr>
-    <td style="border: none; padding-right: 20px; vertical-align: middle;">
-      <img src="https://i.imgur.com/nIoVD6y.png" alt="Falcon FF Logo" width="150" height="150" style="border-radius: 50%;"/>
-    </td>
-    <td style="border: none; vertical-align: middle;">
-      <h1>Falcon FF</h1>
-      <h3>Visuals and Stats for our football cosplay club</h3>
-    </td>
-  </tr>
-</table>
+# Falcon FF
+## Visuals and Stats for our Sleeper League
 
 ---
 
