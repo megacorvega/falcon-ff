@@ -129,8 +129,13 @@ def get_rosters_and_projections(league_id, roster_map, week, season, roster_posi
             for player_id in team_matchup['starters']:
                 player_info = all_players.get(player_id)
                 if not player_info: continue
+                
                 proj_data = projection_map.get(player_id)
-                projection = proj_data['stats'].get('pts_ppr', 0.0) if proj_data and proj_data.get('stats') else 0.0
+                projection = 0.0
+                if proj_data and proj_data.get('stats'):
+                    stats = proj_data['stats']
+                    projection = stats.get('pts_ppr') or stats.get('pts_half_ppr') or stats.get('pts_std') or 0.0
+                
                 projection = projection if projection is not None else 0.0
                 total_projection += projection
                 starters_info.append({"info": player_info, "projection": projection})
