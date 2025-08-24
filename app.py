@@ -39,48 +39,48 @@ def generate_data_file_for_year(year, league_id):
     """Generates a single JSON data file for a specific year."""
     print(f"--- Generating data for {year} ---")
     
-    # Fetches standings, roster map, current week, and season type
     standings_df, roster_map, current_week, season_type = data_fetcher.get_league_data(league_id, year)
     
     if standings_df.empty:
         print(f"No data found for {year}. Skipping file generation.")
         return
 
-    # Calculate F-DVOA ratings
     fdvoa_df = data_fetcher.calculate_fdvoa(league_id, roster_map, current_week)
     
-    # Merge avatars with F-DVOA data for display
     avatar_df = standings_df[['Team', 'Avatar']].copy()
     fdvoa_df_with_avatars = pd.merge(fdvoa_df, avatar_df, on="Team", how="left") if not fdvoa_df.empty else avatar_df.assign(**{'F-DVOA (%)': 0})
 
-    # Calculate power rankings
     power_rankings_df = data_fetcher.calculate_power_rankings(standings_df, fdvoa_df, current_week)
     
-    projection_week = current_week
+    rosters_df = data_fetcher.get_analysis_data(league_id, roster_map, current_week, year, season_type)
     
-    # Get either projections (current year) or average scores (past years)
-    rosters_df = data_fetcher.get_rosters_and_projections(league_id, roster_map, projection_week, year, season_type)
-    
-    # Consolidate all data for the year into a dictionary
+    is_current = year == str(datetime.now().year)
+    analysis_type = "scores" if is_current and current_week > 1 else "projections" if is_current else "averages"
+
+    # Fetch weekly scores for past seasons for the box plot.
+    weekly_scores_data = {}
+    if not is_current:
+        raw_weekly_scores = data_fetcher.get_weekly_scores_for_season(league_id, roster_map)
+        # Map roster IDs to team names for the frontend
+        weekly_scores_data = {roster_map[rid]['display_name']: scores for rid, scores in raw_weekly_scores.items() if rid in roster_map}
+
     year_data = {
         "power_rankings": power_rankings_df.to_dict(orient='records'),
         "fdvoa": fdvoa_df_with_avatars.to_dict(orient='records'),
         "rosters": rosters_df.to_dict(orient='records'),
-        "projection_week": projection_week,
-        "is_current_season": year == str(datetime.now().year) # Add flag for frontend
+        "projection_week": current_week,
+        "analysis_type": analysis_type,
+        "weekly_scores": weekly_scores_data # Add the new data
     }
 
-    # Save the consolidated data to a year-specific JSON file
     with open(f"data_{year}.json", "w") as f:
         json.dump(year_data, f, indent=4)
     
     print(f"--- Finished generating data_{year}.json ---")
 
 if __name__ == "__main__":
-    # Find the league history to generate files for multiple seasons
     league_ids = find_league_history(LEAGUE_ID)
     
-    # Generate a configuration file for the frontend
     config = {
         "years": sorted(list(league_ids.keys()), reverse=True),
         "logoUrl": LEAGUE_LOGO_URL,
@@ -90,6 +90,5 @@ if __name__ == "__main__":
         json.dump(config, f)
     print("config.json has been generated.")
 
-    # Generate data files for each year found in the league history
     for year, league_id in league_ids.items():
         generate_data_file_for_year(year, league_id)

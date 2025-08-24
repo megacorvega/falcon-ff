@@ -49,9 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>`;
     }
     
-    /**
-     * Calculates a background color for a cell based on its value within a range.
-     */
     function getColorForValue(value, min, max) {
         if (min === max) return 'hsl(0, 0%, 100%)';
         const percentage = (value - min) / (max - min);
@@ -60,42 +57,51 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * **FIX**: Renamed and enhanced to generate the entire Analysis panel, including sub-tabs and containers.
-     * @returns {string} - The HTML string for the entire analysis panel structure.
+     * Conditionally generates the Analysis panel HTML based on available data.
      */
-    function createAnalysisPanelHTML() {
+    function createAnalysisPanelHTML(analysisType) {
+        const varianceTab = analysisType === 'averages' ? `<li class="mr-2"><button class="nested-tab-button" data-view="variance">Variance</button></li>` : '';
+        const varianceContainer = analysisType === 'averages' ? `<div id="analysis-variance-container" class="nested-tab-panel hidden"><div id="plotly-boxplot"></div></div>` : '';
+
         return `
             <div class="border-b border-gray-200">
                 <ul class="flex flex-wrap -mb-px">
                     <li class="mr-2"><button class="nested-tab-button active-tab" data-view="table">Table</button></li>
                     <li class="mr-2"><button class="nested-tab-button" data-view="chart">Chart</button></li>
+                    ${varianceTab}
                 </ul>
             </div>
             <div class="pt-4">
                 <div id="analysis-table-container" class="nested-tab-panel"></div>
                 <div id="analysis-chart-container" class="nested-tab-panel hidden"><div id="plotly-chart"></div></div>
+                ${varianceContainer}
             </div>
         `;
     }
 
-    /**
-     * Creates the HTML table for the Analysis tab's table view.
-     */
-    function createAnalysisTable(data, week, isCurrentSeason, year) {
+    function createAnalysisTable(data, week, year, analysisType) {
         if (!data || data.length === 0) return "<p>Analysis data not available.</p>";
         
-        // **FIX**: Title now changes based on the season.
-        const title = isCurrentSeason ? `Week ${week} Positional Projections` : `${year} Season Averages`;
-        const subtitle = isCurrentSeason 
-            ? 'Projected points by position group. The color scale highlights strengths (green) and weaknesses (red) for each position relative to the league.'
-            : 'Season-long average points per week by position group. The color scale highlights strengths (green) and weaknesses (red).';
+        let title = '';
+        let subtitle = '';
+
+        if (analysisType === 'averages') {
+            title = `${year} Season Averages`;
+            subtitle = 'Season-long average points per week by position group.';
+        } else if (analysisType === 'scores') {
+            title = `Week ${week - 1} Positional Scores`;
+            subtitle = 'Actual points scored by position group for the last completed week.';
+        } else {
+            title = `Week ${week} Positional Projections`;
+            subtitle = 'Projected points by position group.';
+        }
 
         const positions = ['QB', 'RB', 'WR', 'TE', 'K', 'DEF'];
         const displayCols = ['Team', ...positions, 'Total'];
 
         const minMax = {};
         positions.forEach(pos => {
-            const values = data.map(row => row[pos]);
+            const values = data.map(row => row[pos] || 0);
             minMax[pos] = { min: Math.min(...values), max: Math.max(...values) };
         });
 
@@ -127,38 +133,55 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>`;
     }
 
-    /**
-     * **FIX**: New function to render the Plotly stacked bar chart.
-     */
-    function renderPlotlyChart(data, week, isCurrentSeason, year) {
+    function renderPlotlyChart(data, week, year, analysisType) {
         const chartDiv = document.getElementById('plotly-chart');
         if (!chartDiv || !data || data.length === 0) return;
 
-        const positions = ['QB', 'RB', 'WR', 'TE', 'K', 'DEF'];
+        let chartTitle = '';
+        let traces;
+        let layout;
         const teams = data.map(d => d.Team);
 
-        const traces = positions.map(pos => ({
-            x: teams,
-            y: data.map(d => d[pos]),
-            name: pos,
-            type: 'bar',
-        }));
-
-        const layout = {
-            barmode: 'stack',
-            title: isCurrentSeason ? `Week ${week} Projections` : `${year} Season Averages`,
-            xaxis: { title: 'Team', automargin: true },
-            yaxis: { title: 'Points' },
-            legend: { orientation: 'h', y: -0.3 },
-            margin: { t: 40, b: 100, l: 50, r: 20 }
-        };
+        if (analysisType === 'averages') {
+            chartTitle = `${year} Season Average Total Score`;
+            traces = [{ x: teams, y: data.map(d => d.Total), type: 'bar', marker: { color: '#2563EB' } }];
+            layout = { title: chartTitle, xaxis: { title: 'Team', automargin: true }, yaxis: { title: 'Average Points Per Week' }, margin: { t: 40, b: 100, l: 50, r: 20 } };
+        } else {
+            chartTitle = (analysisType === 'scores') ? `Week ${week - 1} Scores` : `Week ${week} Projections`;
+            const positions = ['QB', 'RB', 'WR', 'TE', 'K', 'DEF'];
+            traces = positions.map(pos => ({ x: teams, y: data.map(d => d[pos]), name: pos, type: 'bar' }));
+            layout = { barmode: 'stack', title: chartTitle, xaxis: { title: 'Team', automargin: true }, yaxis: { title: 'Points' }, legend: { orientation: 'h', y: -0.3 }, margin: { t: 40, b: 100, l: 50, r: 20 } };
+        }
         
         Plotly.newPlot(chartDiv, traces, layout, {responsive: true});
     }
 
     /**
-     * Updates the content of all tabs based on the selected season.
+     * New function to render the box and whisker plot for past seasons.
      */
+    function renderBoxPlot(weeklyScores, year) {
+        const chartDiv = document.getElementById('plotly-boxplot');
+        if (!chartDiv || !weeklyScores || Object.keys(weeklyScores).length === 0) return;
+
+        const traces = Object.keys(weeklyScores).map(teamName => ({
+            y: weeklyScores[teamName],
+            name: teamName,
+            type: 'box',
+            boxpoints: 'all',
+            jitter: 0.3,
+            pointpos: -1.8
+        }));
+
+        const layout = {
+            title: `${year} Weekly Score Distribution`,
+            yaxis: { title: 'Points Scored' },
+            xaxis: { automargin: true },
+            margin: { t: 40, b: 100, l: 50, r: 20 }
+        };
+
+        Plotly.newPlot(chartDiv, traces, layout, {responsive: true});
+    }
+
     function updateView() {
         const selectedYear = seasonSelect.value;
         const data = allData[selectedYear];
@@ -179,23 +202,22 @@ document.addEventListener('DOMContentLoaded', () => {
         if (fdvoaPanel) fdvoaPanel.innerHTML = createFdvoaTable(data.fdvoa);
         
         if (analysisPanel) {
-            // **FIX**: Populate the analysis panel with the new sub-tab structure.
-            analysisPanel.innerHTML = createAnalysisPanelHTML();
+            analysisPanel.innerHTML = createAnalysisPanelHTML(data.analysis_type);
             
-            // **FIX**: Populate the table container within the new structure.
             const tableContainer = document.getElementById('analysis-table-container');
             if (tableContainer) {
-                tableContainer.innerHTML = createAnalysisTable(data.rosters, data.projection_week, data.is_current_season, selectedYear);
+                tableContainer.innerHTML = createAnalysisTable(data.rosters, data.projection_week, selectedYear, data.analysis_type);
             }
             
-            // **FIX**: Render the chart into its container.
-            renderPlotlyChart(data.rosters, data.projection_week, data.is_current_season, selectedYear);
+            renderPlotlyChart(data.rosters, data.projection_week, selectedYear, data.analysis_type);
+            
+            // Render the new box plot if the data exists (for past seasons).
+            if (data.analysis_type === 'averages') {
+                renderBoxPlot(data.weekly_scores, selectedYear);
+            }
         }
     }
 
-    /**
-     * Fetches and caches the data for all available seasons.
-     */
     async function loadAllData(config) {
         for (const year of config.years) {
             try {
@@ -209,7 +231,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateView(); 
     }
 
-    // Initial fetch of the configuration file
     fetch('config.json')
         .then(res => res.json())
         .then(config => {
@@ -223,7 +244,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (mainContent) mainContent.innerHTML = "<p class='text-red-500 text-center'>Could not load league configuration.</p>";
         });
 
-    // Event Listeners
     seasonSelect.addEventListener('change', updateView);
     
     tabButtons.forEach(button => {
@@ -237,7 +257,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // **FIX**: Event delegation for nested tabs in the Analysis panel.
     if (mainContent) {
         mainContent.addEventListener('click', (e) => {
             if (e.target.matches('.nested-tab-button')) {
