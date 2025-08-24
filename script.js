@@ -129,16 +129,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const errorMsg = "<p class='text-red-500 text-center'>Data could not be loaded for this season.</p>";
             document.getElementById('power-rankings-panel').innerHTML = errorMsg;
             document.getElementById('fdvoa-panel').innerHTML = errorMsg;
-            // **FIX**: Use the new standardized ID 'analysis-panel'
-            document.getElementById('analysis-panel').innerHTML = errorMsg;
+            // **FIX**: Reverted to original ID to match the HTML file.
+            document.getElementById('weekly-analysis-panel').innerHTML = errorMsg;
             return;
         }
 
         // Populate each tab with the correct data
         document.getElementById('power-rankings-panel').innerHTML = createPowerRankingsTable(data.power_rankings);
         document.getElementById('fdvoa-panel').innerHTML = createFdvoaTable(data.fdvoa);
-        // **FIX**: Use the new standardized ID 'analysis-panel'
-        document.getElementById('analysis-panel').innerHTML = createProjectionsTable(data.rosters, data.projection_week);
+        // **FIX**: Reverted to original ID to match the HTML file.
+        document.getElementById('weekly-analysis-panel').innerHTML = createProjectionsTable(data.rosters, data.projection_week);
     }
 
     /**
@@ -184,7 +184,8 @@ document.addEventListener('DOMContentLoaded', () => {
             button.classList.add('active');
             const activeTab = button.dataset.tab;
             document.querySelectorAll('.tab-panel').forEach(panel => {
-                panel.classList.toggle('hidden', !panel.id.startsWith(activeTab));
+                // **FIX**: Changed from 'startsWith' to an exact ID match for robustness.
+                panel.classList.toggle('hidden', panel.id !== `${activeTab}-panel`);
             });
         });
     });
