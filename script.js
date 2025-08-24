@@ -138,20 +138,33 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!chartDiv || !data || data.length === 0) return;
 
         let chartTitle = '';
-        let traces;
-        let layout;
         const teams = data.map(d => d.Team);
+        const positions = ['QB', 'RB', 'WR', 'TE', 'K', 'DEF'];
+        
+        // **FIX**: All chart types are now stacked bars showing positional breakdown.
+        const traces = positions.map(pos => ({
+            x: teams,
+            y: data.map(d => d[pos]),
+            name: pos,
+            type: 'bar'
+        }));
 
         if (analysisType === 'averages') {
-            chartTitle = `${year} Season Average Total Score`;
-            traces = [{ x: teams, y: data.map(d => d.Total), type: 'bar', marker: { color: '#2563EB' } }];
-            layout = { title: chartTitle, xaxis: { title: 'Team', automargin: true }, yaxis: { title: 'Average Points Per Week' }, margin: { t: 40, b: 100, l: 50, r: 20 } };
+            chartTitle = `${year} Season Average Positional Scores`;
+        } else if (analysisType === 'scores') {
+            chartTitle = `Week ${week - 1} Positional Scores`;
         } else {
-            chartTitle = (analysisType === 'scores') ? `Week ${week - 1} Scores` : `Week ${week} Projections`;
-            const positions = ['QB', 'RB', 'WR', 'TE', 'K', 'DEF'];
-            traces = positions.map(pos => ({ x: teams, y: data.map(d => d[pos]), name: pos, type: 'bar' }));
-            layout = { barmode: 'stack', title: chartTitle, xaxis: { title: 'Team', automargin: true }, yaxis: { title: 'Points' }, legend: { orientation: 'h', y: -0.3 }, margin: { t: 40, b: 100, l: 50, r: 20 } };
+            chartTitle = `Week ${week} Projections`;
         }
+        
+        const layout = {
+            barmode: 'stack',
+            title: chartTitle,
+            xaxis: { title: 'Team', automargin: true },
+            yaxis: { title: 'Points' },
+            legend: { orientation: 'h', y: -0.3 },
+            margin: { t: 40, b: 100, l: 50, r: 20 }
+        };
         
         Plotly.newPlot(chartDiv, traces, layout, {responsive: true});
     }
@@ -163,9 +176,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const chartDiv = document.getElementById('plotly-boxplot');
         if (!chartDiv || !weeklyScores || Object.keys(weeklyScores).length === 0) return;
 
-        const traces = Object.keys(weeklyScores).map(teamName => ({
-            y: weeklyScores[teamName],
-            name: teamName,
+        // **FIX**: Calculate median for each team and sort by it.
+        const getMedian = arr => {
+            const mid = Math.floor(arr.length / 2);
+            const nums = [...arr].sort((a, b) => a - b);
+            return arr.length % 2 !== 0 ? nums[mid] : (nums[mid - 1] + nums[mid]) / 2;
+        };
+
+        const sortedTeams = Object.keys(weeklyScores)
+            .map(teamName => ({
+                name: teamName,
+                median: getMedian(weeklyScores[teamName])
+            }))
+            .sort((a, b) => b.median - a.median);
+
+        const traces = sortedTeams.map(({ name }) => ({
+            y: weeklyScores[name],
+            name: name,
             type: 'box',
             boxpoints: 'all',
             jitter: 0.3,
