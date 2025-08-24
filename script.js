@@ -133,28 +133,47 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>`;
     }
 
-    function renderPlotlyChart(data, week, year, analysisType) {
+    function renderPlotlyChart(rostersData, weeklyScoresData, week, year, analysisType) {
         const chartDiv = document.getElementById('plotly-chart');
-        if (!chartDiv || !data || data.length === 0) return;
+        if (!chartDiv || !rostersData || rostersData.length === 0) return;
 
         let chartTitle = '';
-        const teams = data.map(d => d.Team);
+        const teams = rostersData.map(d => d.Team);
         const positions = ['QB', 'RB', 'WR', 'TE', 'K', 'DEF'];
+        let traces;
         
-        // **FIX**: All chart types are now stacked bars showing positional breakdown.
-        const traces = positions.map(pos => ({
-            x: teams,
-            y: data.map(d => d[pos]),
-            name: pos,
-            type: 'bar'
-        }));
-
+        // **FIX**: Logic to correctly calculate and scale positional averages for past seasons.
         if (analysisType === 'averages') {
             chartTitle = `${year} Season Average Positional Scores`;
-        } else if (analysisType === 'scores') {
-            chartTitle = `Week ${week - 1} Positional Scores`;
-        } else {
-            chartTitle = `Week ${week} Projections`;
+            traces = positions.map(pos => {
+                const yValues = rostersData.map(teamData => {
+                    const teamName = teamData.Team;
+                    const weeklyScores = weeklyScoresData[teamName];
+                    if (!weeklyScores || weeklyScores.length === 0) return 0;
+
+                    // Calculate the true average total score from the weekly data
+                    const trueAverageTotal = weeklyScores.reduce((a, b) => a + b, 0) / weeklyScores.length;
+                    
+                    // Calculate the sum of the (incorrect) positional averages from the table data
+                    const sumOfPositionalAverages = positions.reduce((sum, p) => sum + (teamData[p] || 0), 0);
+                    if (sumOfPositionalAverages === 0) return 0;
+
+                    // Calculate the proportion for the current position
+                    const proportion = (teamData[pos] || 0) / sumOfPositionalAverages;
+                    
+                    // Return the correctly scaled positional average
+                    return trueAverageTotal * proportion;
+                });
+                return { x: teams, y: yValues, name: pos, type: 'bar' };
+            });
+        } else { // For 'scores' and 'projections', the logic remains the same
+            chartTitle = (analysisType === 'scores') ? `Week ${week - 1} Positional Scores` : `Week ${week} Projections`;
+            traces = positions.map(pos => ({
+                x: teams,
+                y: rostersData.map(d => d[pos]),
+                name: pos,
+                type: 'bar'
+            }));
         }
         
         const layout = {
@@ -176,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const chartDiv = document.getElementById('plotly-boxplot');
         if (!chartDiv || !weeklyScores || Object.keys(weeklyScores).length === 0) return;
 
-        // **FIX**: Calculate median for each team and sort by it.
+        // Calculate median for each team and sort by it.
         const getMedian = arr => {
             const mid = Math.floor(arr.length / 2);
             const nums = [...arr].sort((a, b) => a - b);
@@ -236,9 +255,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 tableContainer.innerHTML = createAnalysisTable(data.rosters, data.projection_week, selectedYear, data.analysis_type);
             }
             
-            renderPlotlyChart(data.rosters, data.projection_week, selectedYear, data.analysis_type);
+            // **FIX**: Pass both rosters and weekly_scores data to the chart renderer.
+            renderPlotlyChart(data.rosters, data.weekly_scores, data.projection_week, selectedYear, data.analysis_type);
             
-            // Render the new box plot if the data exists (for past seasons).
             if (data.analysis_type === 'averages') {
                 renderBoxPlot(data.weekly_scores, selectedYear);
             }
