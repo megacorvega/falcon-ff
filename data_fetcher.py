@@ -112,7 +112,9 @@ def get_rosters_and_projections(league_id, roster_map, week, season, roster_posi
         season_type = "pre" if season == str(datetime.now().year) and week == 1 else "regular"
         proj_url = f"https://api.sleeper.app/v1/projections/nfl/{season_type}/{season}/{week}"
         proj_response = requests.get(proj_url)
-        projection_map = proj_response.json() if proj_response.status_code == 200 else {}
+        projections = proj_response.json() if proj_response.status_code == 200 else []
+        projection_map = {p['player_id']: p for p in projections}
+        
         matchups = Leagues.get_matchups(league_id, week)
         teams_data = []
 
