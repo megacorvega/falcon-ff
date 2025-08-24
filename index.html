@@ -35,7 +35,8 @@
                 <ul class="flex flex-wrap -mb-px">
                     <li class="mr-2"><button class="tab-button inline-block py-4 px-4 text-sm font-medium text-center rounded-t-lg active" data-tab="power-rankings">Power Rankings</button></li>
                     <li class="mr-2"><button class="tab-button inline-block py-4 px-4 text-sm font-medium text-center rounded-t-lg" data-tab="fdvoa">F-DVOA Ratings</button></li>
-                    <li class="mr-2"><button class="tab-button inline-block py-4 px-4 text-sm font-medium text-center rounded-t-lg" data-tab="weekly-analysis">Weekly Projections</button></li>
+                    <!-- **FIX**: Renamed tab to "Analysis" -->
+                    <li class="mr-2"><button class="tab-button inline-block py-4 px-4 text-sm font-medium text-center rounded-t-lg" data-tab="weekly-analysis">Analysis</button></li>
                 </ul>
             </div>
             
@@ -43,7 +44,6 @@
             <div class="pt-6">
                 <div id="power-rankings-panel" class="tab-panel"><div class="loader"></div></div>
                 <div id="fdvoa-panel" class="tab-panel hidden"><div class="loader"></div></div>
-                <!-- The weekly analysis panel now directly shows projections without nested tabs -->
                 <div id="weekly-analysis-panel" class="tab-panel hidden"><div class="loader"></div></div>
             </div>
         </main>
