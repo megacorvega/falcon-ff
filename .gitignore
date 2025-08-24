@@ -1,2 +1,12 @@
+# Ignore all JSON files by default
 *.json
+
+# But DO NOT ignore these specific files
+!config.json
+!data_2023.json
+!data_2024.json
+!data_2025.json
+
+# Ignore Python cache files
 *.pyc
+__pycache__/
