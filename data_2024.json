@@ -135,128 +135,139 @@
             "Avatar": "https://sleepercdn.com/avatars/thumbs/b0d376bfe3e6350fe8e793a14be372a0"
         }
     ],
-    "rosters": [],
-    "positional_chart": [
+    "rosters": [
         {
-            "Team": "Hophoobly",
-            "QB": 21.711764705882356,
-            "RB": 40.2470588235294,
-            "WR": 58.47058823529411,
-            "TE": 15.858823529411763,
+            "Team": "PTP1020",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
+            "QB": 0.0,
+            "RB": 0.0,
+            "WR": 0.0,
+            "TE": 0.0,
             "K": 0.0,
-            "DEF": 10.117647058823529,
-            "Total": 146.40588235294115
-        },
-        {
-            "Team": "EthanSvend8",
-            "QB": 22.48941176470588,
-            "RB": 37.188235294117646,
-            "WR": 67.92941176470588,
-            "TE": 8.970588235294118,
-            "K": 0.0,
-            "DEF": 7.176470588235294,
-            "Total": 143.75411764705882
-        },
-        {
-            "Team": "khaug22",
-            "QB": 20.61176470588235,
-            "RB": 50.92941176470588,
-            "WR": 46.73529411764707,
-            "TE": 14.952941176470585,
-            "K": 0.0,
-            "DEF": 9.294117647058824,
-            "Total": 142.52352941176468
-        },
-        {
-            "Team": "WhileyMisfits",
-            "QB": 17.09294117647059,
-            "RB": 57.86588235294116,
-            "WR": 39.34235294117648,
-            "TE": 12.211764705882352,
-            "K": 0.0,
-            "DEF": 9.411764705882353,
-            "Total": 135.92470588235292
-        },
-        {
-            "Team": "Muk_King",
-            "QB": 18.962352941176473,
-            "RB": 47.288235294117634,
-            "WR": 50.25176470588235,
-            "TE": 10.788235294117646,
-            "K": 0.0,
-            "DEF": 7.352941176470588,
-            "Total": 134.6435294117647
+            "DEF": 0.0,
+            "Total": 0.0
         },
         {
             "Team": "pinballfabs",
-            "QB": 20.24470588235294,
-            "RB": 41.647058823529406,
-            "WR": 47.7764705882353,
-            "TE": 16.148235294117647,
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
+            "QB": 0.0,
+            "RB": 0.0,
+            "WR": 0.0,
+            "TE": 0.0,
             "K": 0.0,
-            "DEF": 7.294117647058823,
-            "Total": 133.1105882352941
-        },
-        {
-            "Team": "PTP1020",
-            "QB": 16.963529411764707,
-            "RB": 38.041176470588226,
-            "WR": 54.311764705882354,
-            "TE": 10.25294117647059,
-            "K": 0.0,
-            "DEF": 10.529411764705882,
-            "Total": 130.09882352941176
-        },
-        {
-            "Team": "abroom23",
-            "QB": 18.495294117647056,
-            "RB": 35.38823529411765,
-            "WR": 53.62823529411764,
-            "TE": 10.894117647058822,
-            "K": 0.0,
-            "DEF": 5.588235294117647,
-            "Total": 123.99411764705881
-        },
-        {
-            "Team": "GBBOdraftpro",
-            "QB": 13.856470588235295,
-            "RB": 38.89411764705883,
-            "WR": 45.36470588235294,
-            "TE": 11.970588235294118,
-            "K": 0.0,
-            "DEF": 8.352941176470589,
-            "Total": 118.43882352941178
+            "DEF": 0.0,
+            "Total": 0.0
         },
         {
             "Team": "smurro",
-            "QB": 20.762352941176474,
-            "RB": 28.294117647058822,
-            "WR": 51.375294117647066,
-            "TE": 9.7,
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/94fbf14c7f7cbadd2498a32eaf24d902",
+            "QB": 0.0,
+            "RB": 0.0,
+            "WR": 0.0,
+            "TE": 0.0,
             "K": 0.0,
-            "DEF": 7.647058823529412,
-            "Total": 117.77882352941177
+            "DEF": 0.0,
+            "Total": 0.0
         },
         {
-            "Team": "acroz24",
-            "QB": 25.423529411764708,
-            "RB": 33.27647058823529,
-            "WR": 40.96470588235293,
-            "TE": 11.294117647058824,
+            "Team": "abroom23",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/dd5bde6e07dc6659d2b72b23ffdf192d",
+            "QB": 0.0,
+            "RB": 0.0,
+            "WR": 0.0,
+            "TE": 0.0,
             "K": 0.0,
-            "DEF": 5.588235294117647,
-            "Total": 116.54705882352941
+            "DEF": 0.0,
+            "Total": 0.0
+        },
+        {
+            "Team": "khaug22",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
+            "QB": 0.0,
+            "RB": 0.0,
+            "WR": 0.0,
+            "TE": 0.0,
+            "K": 0.0,
+            "DEF": 0.0,
+            "Total": 0.0
+        },
+        {
+            "Team": "Muk_King",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/70ab560538c2e94f0624132484fd10be",
+            "QB": 0.0,
+            "RB": 0.0,
+            "WR": 0.0,
+            "TE": 0.0,
+            "K": 0.0,
+            "DEF": 0.0,
+            "Total": 0.0
         },
         {
             "Team": "ScoobusDrewbus",
-            "QB": 15.558823529411764,
-            "RB": 24.811764705882357,
-            "WR": 52.10588235294119,
-            "TE": 14.176470588235292,
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b0d376bfe3e6350fe8e793a14be372a0",
+            "QB": 0.0,
+            "RB": 0.0,
+            "WR": 0.0,
+            "TE": 0.0,
             "K": 0.0,
-            "DEF": 8.882352941176471,
-            "Total": 115.53529411764708
+            "DEF": 0.0,
+            "Total": 0.0
+        },
+        {
+            "Team": "WhileyMisfits",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/4f4090e5e9c3941414db40a871e3e909",
+            "QB": 0.0,
+            "RB": 0.0,
+            "WR": 0.0,
+            "TE": 0.0,
+            "K": 0.0,
+            "DEF": 0.0,
+            "Total": 0.0
+        },
+        {
+            "Team": "EthanSvend8",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/e7af4deab0289b4f5505646424895246",
+            "QB": 0.0,
+            "RB": 0.0,
+            "WR": 0.0,
+            "TE": 0.0,
+            "K": 0.0,
+            "DEF": 0.0,
+            "Total": 0.0
+        },
+        {
+            "Team": "acroz24",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/f0edbf4278f53f9425db175073df6584",
+            "QB": 0.0,
+            "RB": 0.0,
+            "WR": 0.0,
+            "TE": 0.0,
+            "K": 0.0,
+            "DEF": 0.0,
+            "Total": 0.0
+        },
+        {
+            "Team": "GBBOdraftpro",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b319fdf8b7b5b0359d3c78622ba4d70c",
+            "QB": 0.0,
+            "RB": 0.0,
+            "WR": 0.0,
+            "TE": 0.0,
+            "K": 0.0,
+            "DEF": 0.0,
+            "Total": 0.0
+        },
+        {
+            "Team": "Hophoobly",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/e7af4deab0289b4f5505646424895246",
+            "QB": 0.0,
+            "RB": 0.0,
+            "WR": 0.0,
+            "TE": 0.0,
+            "K": 0.0,
+            "DEF": 0.0,
+            "Total": 0.0
         }
     ],
-    "projection_week": 1
+    "projection_week": 18
 }

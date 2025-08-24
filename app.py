@@ -39,42 +39,48 @@ def generate_data_file_for_year(year, league_id):
     """Generates a single JSON data file for a specific year."""
     print(f"--- Generating data for {year} ---")
     
-    standings_df, roster_map, current_week, roster_positions = data_fetcher.get_league_data(league_id, year)
+    # Get base league data: standings, roster map, and current week
+    standings_df, roster_map, current_week = data_fetcher.get_league_data(league_id, year)
     
     if standings_df.empty:
         print(f"No data found for {year}. Skipping file generation.")
         return
 
+    # Calculate F-DVOA ratings
     fdvoa_df = data_fetcher.calculate_fdvoa(league_id, roster_map, current_week)
     
+    # Merge avatars with F-DVOA data for display
     avatar_df = standings_df[['Team', 'Avatar']].copy()
     fdvoa_df_with_avatars = pd.merge(fdvoa_df, avatar_df, on="Team", how="left") if not fdvoa_df.empty else avatar_df.assign(**{'F-DVOA (%)': 0})
 
+    # Calculate power rankings
     power_rankings_df = data_fetcher.calculate_power_rankings(standings_df, fdvoa_df, current_week)
     
-    projection_week = 1
-    rosters_df = data_fetcher.get_rosters_and_projections(league_id, roster_map, projection_week, year, roster_positions)
-    positional_avg_df = data_fetcher.calculate_positional_averages(league_id, roster_map, current_week, year)
+    # Set the week for which to fetch projections (usually week 1 for preseason)
+    projection_week = 1 if str(datetime.now().year) == year else 18
     
-    # Convert dataframes to JSON serializable format (list of records)
+    # Get the simplified weekly projections
+    rosters_df = data_fetcher.get_rosters_and_projections(league_id, roster_map, projection_week, year)
+    
+    # Consolidate all data for the year into a dictionary
     year_data = {
         "power_rankings": power_rankings_df.to_dict(orient='records'),
         "fdvoa": fdvoa_df_with_avatars.to_dict(orient='records'),
         "rosters": rosters_df.to_dict(orient='records'),
-        "positional_chart": positional_avg_df.to_dict(orient='records'),
         "projection_week": projection_week
     }
 
-    # Save to a single JSON file
+    # Save the consolidated data to a year-specific JSON file
     with open(f"data_{year}.json", "w") as f:
         json.dump(year_data, f, indent=4)
     
     print(f"--- Finished generating data_{year}.json ---")
 
 if __name__ == "__main__":
+    # Find the league history to generate files for multiple seasons
     league_ids = find_league_history(LEAGUE_ID)
     
-    # Generate a config file for the frontend
+    # Generate a configuration file for the frontend
     config = {
         "years": sorted(list(league_ids.keys()), reverse=True),
         "logoUrl": LEAGUE_LOGO_URL,
@@ -84,6 +90,6 @@ if __name__ == "__main__":
         json.dump(config, f)
     print("config.json has been generated.")
 
-    # Generate data files for each year found
+    # Generate data files for each year found in the league history
     for year, league_id in league_ids.items():
         generate_data_file_for_year(year, league_id)
