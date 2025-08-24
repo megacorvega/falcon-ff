@@ -37,7 +37,8 @@ def get_league_data(league_id, season):
         # Determine the current week of the season
         current_week = league.get("settings", {}).get("leg", 1)
         if season != str(datetime.now().year):
-            current_week = 18 # For past seasons, assume the season is complete
+            # **FIX**: For past seasons, use week 17 (fantasy championship) for more reliable projection data.
+            current_week = 17 
         return df, roster_map, current_week
     except Exception as e:
         print(f"An error occurred while getting league data for {season}: {e}")

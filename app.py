@@ -56,8 +56,8 @@ def generate_data_file_for_year(year, league_id):
     # Calculate power rankings
     power_rankings_df = data_fetcher.calculate_power_rankings(standings_df, fdvoa_df, current_week)
     
-    # **FIX**: Always fetch week 1 projections
-    projection_week = 1
+    # **FIX**: Use the current week for projections, not a hardcoded value.
+    projection_week = current_week
     
     # Get the simplified weekly projections
     rosters_df = data_fetcher.get_rosters_and_projections(league_id, roster_map, projection_week, year)
