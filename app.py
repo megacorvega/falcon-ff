@@ -39,8 +39,8 @@ def generate_data_file_for_year(year, league_id):
     """Generates a single JSON data file for a specific year."""
     print(f"--- Generating data for {year} ---")
     
-    # Get base league data: standings, roster map, and current week
-    standings_df, roster_map, current_week = data_fetcher.get_league_data(league_id, year)
+    # Fetches standings, roster map, current week, and season type
+    standings_df, roster_map, current_week, season_type = data_fetcher.get_league_data(league_id, year)
     
     if standings_df.empty:
         print(f"No data found for {year}. Skipping file generation.")
@@ -56,18 +56,18 @@ def generate_data_file_for_year(year, league_id):
     # Calculate power rankings
     power_rankings_df = data_fetcher.calculate_power_rankings(standings_df, fdvoa_df, current_week)
     
-    # **FIX**: Use the current week for projections, not a hardcoded value.
     projection_week = current_week
     
-    # Get the simplified weekly projections
-    rosters_df = data_fetcher.get_rosters_and_projections(league_id, roster_map, projection_week, year)
+    # Get either projections (current year) or average scores (past years)
+    rosters_df = data_fetcher.get_rosters_and_projections(league_id, roster_map, projection_week, year, season_type)
     
     # Consolidate all data for the year into a dictionary
     year_data = {
         "power_rankings": power_rankings_df.to_dict(orient='records'),
         "fdvoa": fdvoa_df_with_avatars.to_dict(orient='records'),
         "rosters": rosters_df.to_dict(orient='records'),
-        "projection_week": projection_week
+        "projection_week": projection_week,
+        "is_current_season": year == str(datetime.now().year) # Add flag for frontend
     }
 
     # Save the consolidated data to a year-specific JSON file

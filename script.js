@@ -68,25 +68,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Creates the HTML table for weekly projections with a color scale.
-     * @param {Array} data - The roster projection data.
-     * @param {number} week - The current projection week.
+     * Creates the HTML table for the Analysis tab, handling both projections and average scores.
+     * @param {Array} data - The roster data.
+     * @param {number} week - The current week.
+     * @param {boolean} isCurrentSeason - Flag to determine display logic.
      * @returns {string} - The HTML string for the table.
      */
-    function createProjectionsTable(data, week) {
-        if (!data || data.length === 0) return "<p>Weekly projection data not available.</p>";
+    function createAnalysisTable(data, week, isCurrentSeason) {
+        if (!data || data.length === 0) return "<p>Analysis data not available.</p>";
+
+        const title = isCurrentSeason ? `Week ${week} Positional Projections` : 'Average Weekly Scores by Position';
+        const subtitle = isCurrentSeason 
+            ? 'Projected points by position group. The color scale highlights strengths (green) and weaknesses (red) for each position relative to the league.'
+            : 'Season-long average points per week by position group. The color scale highlights strengths (green) and weaknesses (red).';
 
         const positions = ['QB', 'RB', 'WR', 'TE', 'K', 'DEF'];
         const displayCols = ['Team', ...positions, 'Total'];
 
-        // Calculate min/max for each position to create the color scale
         const minMax = {};
         positions.forEach(pos => {
             const values = data.map(row => row[pos]);
-            minMax[pos] = {
-                min: Math.min(...values),
-                max: Math.max(...values)
-            };
+            minMax[pos] = { min: Math.min(...values), max: Math.max(...values) };
         });
 
         let tableHead = `<tr>${displayCols.map(col => `<th scope="col" class="px-6 py-3">${col}</th>`).join('')}</tr>`;
@@ -108,8 +110,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return rowHtml + '</tr>';
         }).join('');
 
-        return `<h2 class="text-2xl font-bold text-gray-800 mb-4">Week ${week} Positional Projections</h2>
-                <p class="mb-4 text-gray-600">Projected points by position group. The color scale highlights strengths (green) and weaknesses (red) for each position relative to the league.</p>
+        return `<h2 class="text-2xl font-bold text-gray-800 mb-4">${title}</h2>
+                <p class="mb-4 text-gray-600">${subtitle}</p>
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left text-gray-500">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50">${tableHead}</thead>
@@ -124,21 +126,23 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateView() {
         const selectedYear = seasonSelect.value;
         const data = allData[selectedYear];
+        
+        const powerRankingsPanel = document.getElementById('power-rankings-panel');
+        const fdvoaPanel = document.getElementById('fdvoa-panel');
+        const analysisPanel = document.getElementById('analysis-panel');
+
         if (!data) {
             console.error(`No data loaded for year ${selectedYear}`);
             const errorMsg = "<p class='text-red-500 text-center'>Data could not be loaded for this season.</p>";
-            document.getElementById('power-rankings-panel').innerHTML = errorMsg;
-            document.getElementById('fdvoa-panel').innerHTML = errorMsg;
-            // **FIX**: Standardized ID to 'analysis-panel' to match HTML
-            document.getElementById('analysis-panel').innerHTML = errorMsg;
+            if (powerRankingsPanel) powerRankingsPanel.innerHTML = errorMsg;
+            if (fdvoaPanel) fdvoaPanel.innerHTML = errorMsg;
+            if (analysisPanel) analysisPanel.innerHTML = errorMsg;
             return;
         }
 
-        // Populate each tab with the correct data
-        document.getElementById('power-rankings-panel').innerHTML = createPowerRankingsTable(data.power_rankings);
-        document.getElementById('fdvoa-panel').innerHTML = createFdvoaTable(data.fdvoa);
-        // **FIX**: Standardized ID to 'analysis-panel' to match HTML
-        document.getElementById('analysis-panel').innerHTML = createProjectionsTable(data.rosters, data.projection_week);
+        if (powerRankingsPanel) powerRankingsPanel.innerHTML = createPowerRankingsTable(data.power_rankings);
+        if (fdvoaPanel) fdvoaPanel.innerHTML = createFdvoaTable(data.fdvoa);
+        if (analysisPanel) analysisPanel.innerHTML = createAnalysisTable(data.rosters, data.projection_week, data.is_current_season);
     }
 
     /**
@@ -155,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error(`Failed to load data for ${year}:`, e);
             }
         }
-        updateView(); // Initial view update after all data is loaded
+        updateView(); 
     }
 
     // Initial fetch of the configuration file
@@ -172,7 +176,10 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => {
             console.error("Failed to load config.json:", error);
-            document.querySelector('main').innerHTML = "<p class='text-red-500 text-center'>Could not load league configuration. Please run the Python script.</p>";
+            const mainContent = document.querySelector('main');
+            if (mainContent) {
+                mainContent.innerHTML = "<p class='text-red-500 text-center'>Could not load league configuration. Please run the Python script.</p>";
+            }
         });
 
     // Event Listeners
@@ -184,7 +191,6 @@ document.addEventListener('DOMContentLoaded', () => {
             button.classList.add('active');
             const activeTab = button.dataset.tab;
             document.querySelectorAll('.tab-panel').forEach(panel => {
-                // **FIX**: Changed from 'startsWith' to an exact ID match for robustness.
                 panel.classList.toggle('hidden', panel.id !== `${activeTab}-panel`);
             });
         });
