@@ -143,14 +143,10 @@ def get_rosters_and_projections(league_id, roster_map, week, season):
     Fetches weekly rosters and projections, aggregating them by position for each team.
     """
     try:
-        # Get all players from the Sleeper API
         all_players = Players.get_all_players()
-        
-        # **FIX**: Always use 'regular' season type for projections as 'pre' is often empty.
         season_type = "regular"
         proj_url = f"https://api.sleeper.app/v1/projections/nfl/{season_type}/{season}/{week}"
         
-        # Fetch projections with robust error handling
         projections = []
         proj_response = requests.get(proj_url)
         if proj_response.status_code == 200:
@@ -165,14 +161,18 @@ def get_rosters_and_projections(league_id, roster_map, week, season):
         
         projection_map = {p['player_id']: p for p in projections}
         
-        matchups = Leagues.get_matchups(league_id, week)
+        # **FIX**: Use get_rosters() instead of get_matchups() for reliability in the offseason.
+        rosters = Leagues.get_rosters(league_id)
         teams_data = []
 
-        for roster_id, team_info in roster_map.items():
-            team_matchup = next((m for m in matchups if m['roster_id'] == roster_id), None)
-            if not team_matchup or 'starters' not in team_matchup: continue
+        for roster in rosters:
+            roster_id = roster.get('roster_id')
+            starters = roster.get('starters')
+            team_info = roster_map.get(roster_id)
+
+            if not all([roster_id, starters, team_info]):
+                continue
             
-            # Initialize a dictionary to hold the aggregated scores for each position
             team_row = {
                 "Team": team_info['display_name'],
                 "Avatar": f"https://sleepercdn.com/avatars/thumbs/{team_info['avatar']}" if team_info.get('avatar') else "https://placehold.co/50x50/EBF4FF/76A9FA?text=?",
@@ -180,12 +180,10 @@ def get_rosters_and_projections(league_id, roster_map, week, season):
             }
             total_projection = 0.0
             
-            # Iterate through each starter for the team
-            for player_id in team_matchup['starters']:
+            for player_id in starters:
                 player_info = all_players.get(player_id)
                 if not player_info: continue
                 
-                # Find the player's projection
                 proj_data = projection_map.get(player_id)
                 projection = 0.0
                 if proj_data and proj_data.get('stats'):
@@ -195,7 +193,6 @@ def get_rosters_and_projections(league_id, roster_map, week, season):
                 projection = projection if projection is not None else 0.0
                 total_projection += projection
 
-                # Add the projection to the correct position group (handles FLEX players)
                 pos = player_info.get('position')
                 if pos in team_row:
                     team_row[pos] += projection
@@ -203,7 +200,6 @@ def get_rosters_and_projections(league_id, roster_map, week, season):
             team_row["Total"] = total_projection
             teams_data.append(team_row)
         
-        # Create and return a DataFrame sorted by total projection
         df = pd.DataFrame(teams_data)
         return df.sort_values(by="Total", ascending=False) if not df.empty else df
     except Exception as e:
