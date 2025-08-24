@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sleeper Fantasy Football Stats</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- **FIX**: Updated Plotly.js to a specific, more recent version -->
     <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,7 +35,7 @@
                 <ul class="flex flex-wrap -mb-px">
                     <li class="mr-2"><button class="tab-button inline-block py-4 px-4 text-sm font-medium text-center rounded-t-lg active" data-tab="power-rankings">Power Rankings</button></li>
                     <li class="mr-2"><button class="tab-button inline-block py-4 px-4 text-sm font-medium text-center rounded-t-lg" data-tab="fdvoa">F-DVOA Ratings</button></li>
-                    <!-- **FIX**: Standardized data-tab to 'analysis' -->
+                    <!-- **FIX**: Standardized data-tab to 'analysis' to match JS -->
                     <li class="mr-2"><button class="tab-button inline-block py-4 px-4 text-sm font-medium text-center rounded-t-lg" data-tab="analysis">Analysis</button></li>
                 </ul>
             </div>
@@ -45,7 +44,7 @@
             <div class="pt-6">
                 <div id="power-rankings-panel" class="tab-panel"><div class="loader"></div></div>
                 <div id="fdvoa-panel" class="tab-panel hidden"><div class="loader"></div></div>
-                <!-- **FIX**: Standardized panel ID to 'analysis-panel' -->
+                <!-- **FIX**: Standardized panel ID to 'analysis-panel' to match JS -->
                 <div id="analysis-panel" class="tab-panel hidden"><div class="loader"></div></div>
             </div>
         </main>
