@@ -11,7 +11,7 @@ import subprocess
 import traceback
 
 # --- Configuration ---
-LEAGUE_ID = "1052601214833274880" 
+LEAGUE_ID = "1252517692607303680" 
 LEAGUE_LOGO_URL = "https://i.imgur.com/uCkJvgd.png"
 
 # --- Use absolute paths for file operations ---
