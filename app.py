@@ -98,6 +98,26 @@ if __name__ == "__main__":
     if not league_ids:
         print("Could not find league history. Please check the LEAGUE_ID.")
     else:
+        # --- NEW: Delete existing JSON files before creating new ones ---
+        print("Deleting old data files to ensure a clean refresh...")
+        for year in league_ids.keys():
+            file_path = f"data_{year}.json"
+            if os.path.exists(file_path):
+                try:
+                    os.remove(file_path)
+                    print(f"Successfully deleted {file_path}")
+                except OSError as e:
+                    print(f"Error deleting {file_path}: {e}")
+        
+        config_path = "config.json"
+        if os.path.exists(config_path):
+            try:
+                os.remove(config_path)
+                print(f"Successfully deleted {config_path}")
+            except OSError as e:
+                print(f"Error deleting {config_path}: {e}")
+        # --- End of new deletion logic ---
+
         config = {
             "years": sorted(list(league_ids.keys()), reverse=True),
             "logoUrl": LEAGUE_LOGO_URL,
