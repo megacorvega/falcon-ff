@@ -124,10 +124,10 @@ def get_live_game_status():
     try:
         state_res = requests.get("https://api.sleeper.app/v1/state/nfl")
         if state_res.status_code == 200:
-            return state_res.json().get("week", 1)
+            return state_res.json()
     except Exception as e:
         print(f"Could not fetch live game state: {e}")
-    return 1
+    return {"week": 1} # Default state
 
 def get_analysis_data(league_id, roster_map, week, season, season_type):
     """
@@ -163,14 +163,14 @@ def get_analysis_data(league_id, roster_map, week, season, season_type):
             df = pd.DataFrame(teams_data)
             return df.sort_values(by="Total", ascending=False) if not df.empty else df
         else:
-            # --- Logic for Current Season (Projections, Live Scores) ---
-            
-            # **FIX**: Corrected the API endpoint for projections.
+            # --- Logic for Current Season ---
+            nfl_state = get_live_game_status()
+            nfl_week = nfl_state.get("week", 1)
+
             proj_url = f"https://api.sleeper.app/v1/projections/nfl/{season}/{week}"
             proj_res = requests.get(proj_url)
             projections = proj_res.json() if proj_res.status_code == 200 else []
-            if not projections:
-                print(f"Warning: Projections API returned no data for week {week}. URL: {proj_url}")
+            if not projections: print(f"Warning: Projections API returned no data for week {week}. URL: {proj_url}")
             projection_map = {p['player_id']: p for p in projections}
 
             live_scores = {}
@@ -194,16 +194,16 @@ def get_analysis_data(league_id, roster_map, week, season, season_type):
                     if not player_info: continue
                     pos = player_info.get('position')
                     if pos not in positional_scores: continue
-
+                    
+                    # **FIX**: Projections are at the top level of the player object, not in a 'stats' sub-dictionary.
                     proj_data = projection_map.get(player_id, {})
-                    stats = proj_data.get('stats', {})
-                    projected_pts = stats.get('pts_ppr', 0) or 0.0
+                    projected_pts = proj_data.get('pts_ppr', 0) or 0.0
                     positional_scores[pos]['projected'] += projected_pts
 
                     live_pts = live_scores.get(player_id)
                     if live_pts is not None:
                         positional_scores[pos]['live'] += live_pts
-                        positional_scores[pos]['status'] = 'active'
+                        positional_scores[pos]['status'] = 'active' if week == nfl_week else 'final'
 
                 total_projected, total_live = 0, 0
                 for pos, data in positional_scores.items():
