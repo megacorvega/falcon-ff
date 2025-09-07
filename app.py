@@ -1,4 +1,5 @@
 import os
+import sys
 import pandas as pd
 import plotly.express as px
 from sleeperpy import Leagues, Players
@@ -8,10 +9,11 @@ import requests
 import data_fetcher
 
 # --- Configuration ---
-# This is the starting point for finding your league history.
-# Ensure this is the league ID for the most current season (e.g., 2025).
 LEAGUE_ID = "1052601214833274880" 
 LEAGUE_LOGO_URL = "https://i.imgur.com/uCkJvgd.png"
+
+# --- NEW: Use absolute paths for file operations ---
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 def find_league_history(start_league_id, num_years=3):
     """Finds the last few years of a league's history starting from the given ID."""
@@ -53,25 +55,16 @@ def generate_data_file_for_year(year, league_id):
     if not fdvoa_df.empty:
         fdvoa_df_with_avatars = pd.merge(fdvoa_df, avatar_df, on="Team", how="left")
     else:
-        # If F-DVOA is empty (e.g., before week 2), create a placeholder
         teams = [{"Team": v['display_name'], "Avatar": f"https://sleepercdn.com/avatars/thumbs/{v['avatar']}" if v.get('avatar') else "https://placehold.co/50x50/EBF4FF/76A9FA?text=?", "F-DVOA (%)": 0} for v in roster_map.values()]
         fdvoa_df_with_avatars = pd.DataFrame(teams)
-
 
     power_rankings_df = data_fetcher.calculate_power_rankings(standings_df, fdvoa_df, current_week)
     
     is_current = year == str(datetime.now().year)
-
-    if is_current:
-        nfl_state = data_fetcher.get_live_game_status()
-        analysis_week = nfl_state.get("week", 1)
-    else:
-        analysis_week = current_week
-    
+    analysis_week = data_fetcher.get_live_game_status().get("week", 1) if is_current else current_week
     rosters_df = data_fetcher.get_analysis_data(league_id, roster_map, analysis_week, year, season_type)
     
     analysis_type = "scores" if is_current else "averages"
-
     weekly_scores_data = {}
     if not is_current:
         raw_weekly_scores = data_fetcher.get_weekly_scores_for_season(league_id, roster_map)
@@ -85,48 +78,58 @@ def generate_data_file_for_year(year, league_id):
         "analysis_type": analysis_type,
         "weekly_scores": weekly_scores_data
     }
-
-    with open(f"data_{year}.json", "w") as f:
+    
+    file_path = os.path.join(SCRIPT_DIR, f"data_{year}.json")
+    with open(file_path, "w") as f:
         json.dump(year_data, f, indent=4)
     
-    print(f"--- Finished generating data_{year}.json ---")
+    print(f"--- Finished generating {file_path} ---")
 
-if __name__ == "__main__":
+def main():
+    """Main execution function."""
     print(f"Starting data fetch for league: {LEAGUE_ID}")
     league_ids = find_league_history(LEAGUE_ID)
     
     if not league_ids:
         print("Could not find league history. Please check the LEAGUE_ID.")
-    else:
-        # --- NEW: Delete existing JSON files before creating new ones ---
-        print("Deleting old data files to ensure a clean refresh...")
-        for year in league_ids.keys():
-            file_path = f"data_{year}.json"
-            if os.path.exists(file_path):
-                try:
-                    os.remove(file_path)
-                    print(f"Successfully deleted {file_path}")
-                except OSError as e:
-                    print(f"Error deleting {file_path}: {e}")
-        
-        config_path = "config.json"
-        if os.path.exists(config_path):
+        return
+
+    print("Deleting old data files to ensure a clean refresh...")
+    for year in league_ids.keys():
+        file_path = os.path.join(SCRIPT_DIR, f"data_{year}.json")
+        if os.path.exists(file_path):
             try:
-                os.remove(config_path)
-                print(f"Successfully deleted {config_path}")
+                os.remove(file_path)
+                print(f"Successfully deleted {file_path}")
             except OSError as e:
-                print(f"Error deleting {config_path}: {e}")
-        # --- End of new deletion logic ---
+                print(f"Error deleting {file_path}: {e}")
+    
+    config_path = os.path.join(SCRIPT_DIR, "config.json")
+    if os.path.exists(config_path):
+        try:
+            os.remove(config_path)
+            print(f"Successfully deleted {config_path}")
+        except OSError as e:
+            print(f"Error deleting {config_path}: {e}")
 
-        config = {
-            "years": sorted(list(league_ids.keys()), reverse=True),
-            "logoUrl": LEAGUE_LOGO_URL,
-            "lastUpdated": datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
-        }
-        with open("config.json", "w") as f:
-            json.dump(config, f)
-        print("config.json has been generated.")
+    config = {
+        "years": sorted(list(league_ids.keys()), reverse=True),
+        "logoUrl": LEAGUE_LOGO_URL,
+        "lastUpdated": datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
+    }
+    with open(config_path, "w") as f:
+        json.dump(config, f)
+    print("config.json has been generated.")
 
-        for year, league_id in league_ids.items():
-            generate_data_file_for_year(year, league_id)
+    for year, league_id in league_ids.items():
+        generate_data_file_for_year(year, league_id)
+
+if __name__ == "__main__":
+    try:
+        main()
+    except Exception as e:
+        # --- NEW: Catch all exceptions and exit with an error code ---
+        print(f"An unexpected error occurred during script execution: {e}")
+        traceback.print_exc()
+        sys.exit(1)
 
