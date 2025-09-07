@@ -57,9 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
         return `hsl(${hue}, 70%, 88%)`;
     }
 
-    function createAnalysisPanelHTML(analysisType) {
-        const varianceTab = analysisType === 'averages' ? `<li class="mr-2"><button class="nested-tab-button" data-view="variance">Variance</button></li>` : '';
-        const varianceContainer = analysisType === 'averages' ? `<div id="analysis-variance-container" class="nested-tab-panel hidden"><div id="plotly-boxplot"></div></div>` : '';
+    function createAnalysisPanelHTML() {
+        // Always create the variance tab and container
+        const varianceTab = `<li class="mr-2"><button class="nested-tab-button" data-view="variance">Variance</button></li>`;
+        const varianceContainer = `<div id="analysis-variance-container" class="nested-tab-panel hidden"><div id="plotly-boxplot"></div></div>`;
 
         return `
             <div class="border-b border-gray-200">
@@ -77,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
-    // **FIX**: Rewritten to handle both past season averages and current season scores/projections.
+    // Rewritten to handle both past season averages and current season scores/projections.
     function createAnalysisTable(data, week, year, analysisType) {
         if (!data || data.length === 0) return "<p>Analysis data not available.</p>";
         
@@ -169,8 +170,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // **FIX**: Handles both data structures for chart rendering.
-    function renderPlotlyChart(rostersData, weeklyScoresData, week, year, analysisType) {
+    // Handles both data structures for chart rendering.
+    function renderPlotlyChart(rostersData, week, year, analysisType) {
         const chartDiv = document.getElementById('plotly-chart');
         if (!chartDiv || !rostersData || rostersData.length === 0) return;
 
@@ -192,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
             traces = positions.map(pos => ({
                 x: teams,
                 // Display live score if available, otherwise fall back to projected
-                y: rostersData.map(d => (d[`${pos}_live`] > 0 ? d[`${pos}_live`] : d[`${pos}_projected`]) || 0),
+                y: rostersData.map(d => (d[`${pos}_live`] > 0.001 ? d[`${pos}_live`] : d[`${pos}_projected`]) || 0),
                 name: pos,
                 type: 'bar'
             }));
@@ -212,7 +213,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderBoxPlot(weeklyScores, year) {
         const chartDiv = document.getElementById('plotly-boxplot');
-        if (!chartDiv || !weeklyScores || Object.keys(weeklyScores).length === 0) return;
+        if (!chartDiv || !weeklyScores || Object.keys(weeklyScores).length === 0) {
+            if (chartDiv) chartDiv.innerHTML = '<p class="text-center text-gray-500">Weekly score data is not yet available.</p>';
+            return;
+        };
 
         const getMedian = arr => {
             const mid = Math.floor(arr.length / 2);
@@ -263,18 +267,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (fdvoaPanel) fdvoaPanel.innerHTML = createFdvoaTable(data.fdvoa);
         
         if (analysisPanel) {
-            analysisPanel.innerHTML = createAnalysisPanelHTML(data.analysis_type);
+            analysisPanel.innerHTML = createAnalysisPanelHTML();
             
             const tableContainer = document.getElementById('analysis-table-container');
             if (tableContainer) {
                 tableContainer.innerHTML = createAnalysisTable(data.rosters, data.projection_week, selectedYear, data.analysis_type);
             }
             
-            renderPlotlyChart(data.rosters, data.weekly_scores, data.projection_week, selectedYear, data.analysis_type);
+            renderPlotlyChart(data.rosters, data.projection_week, selectedYear, data.analysis_type);
             
-            if (data.analysis_type === 'averages') {
-                renderBoxPlot(data.weekly_scores, selectedYear);
-            }
+            // Render box plot for all seasons that have weekly score data
+            renderBoxPlot(data.weekly_scores, selectedYear);
         }
     }
 
@@ -335,3 +338,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
