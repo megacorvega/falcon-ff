@@ -195,9 +195,9 @@ def get_analysis_data(league_id, roster_map, week, season, season_type):
                     pos = player_info.get('position')
                     if pos not in positional_scores: continue
                     
-                    # **FIX**: Projections are at the top level of the player object, not in a 'stats' sub-dictionary.
                     proj_data = projection_map.get(player_id, {})
-                    projected_pts = proj_data.get('pts_ppr', 0) or 0.0
+                    # Projections are nested in a 'stats' object in the API response.
+                    projected_pts = proj_data.get('stats', {}).get('pts_half_ppr', 0) or 0.0
                     positional_scores[pos]['projected'] += projected_pts
 
                     live_pts = live_scores.get(player_id)
