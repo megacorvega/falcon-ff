@@ -8,8 +8,8 @@ import requests
 import data_fetcher
 
 # --- Configuration ---
-# **FIX**: It's better to fetch the current league ID dynamically if possible,
-# but for now, this remains the starting point.
+# This is the starting point for finding your league history.
+# Ensure this is the league ID for the most current season (e.g., 2025).
 LEAGUE_ID = "1052601214833274880" 
 LEAGUE_LOGO_URL = "https://i.imgur.com/uCkJvgd.png"
 
@@ -60,7 +60,6 @@ def generate_data_file_for_year(year, league_id):
 
     power_rankings_df = data_fetcher.calculate_power_rankings(standings_df, fdvoa_df, current_week)
     
-    # **FIX**: Determine the correct week for analysis. Use live state for current year.
     analysis_week = data_fetcher.get_live_game_status() if year == str(datetime.now().year) else current_week
     rosters_df = data_fetcher.get_analysis_data(league_id, roster_map, analysis_week, year, season_type)
     
@@ -87,37 +86,21 @@ def generate_data_file_for_year(year, league_id):
     print(f"--- Finished generating data_{year}.json ---")
 
 if __name__ == "__main__":
-    # **FIX**: Start with the user's specific league ID for the most recent season they manage.
-    # This assumes the script is being run for the 2025 season start.
-    # For a more robust solution, you could use the Sleeper API to find a user's leagues for the current year.
-    USER_ID = "992161421252763648" # Example user ID, replace if necessary
-    CURRENT_YEAR = str(datetime.now().year)
+    print(f"Starting data fetch for league: {LEAGUE_ID}")
+    league_ids = find_league_history(LEAGUE_ID)
     
-    try:
-        res = requests.get(f"https://api.sleeper.app/v1/user/{USER_ID}/leagues/nfl/{CURRENT_YEAR}")
-        if res.status_code == 200:
-            leagues = res.json()
-            if leagues:
-                # Assuming the first league is the desired one
-                start_league_id = leagues[0]['league_id']
-                print(f"Found current season league ID: {start_league_id}")
-                
-                league_ids = find_league_history(start_league_id)
-                
-                config = {
-                    "years": sorted(list(league_ids.keys()), reverse=True),
-                    "logoUrl": LEAGUE_LOGO_URL,
-                    "lastUpdated": datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
-                }
-                with open("config.json", "w") as f:
-                    json.dump(config, f)
-                print("config.json has been generated.")
+    if not league_ids:
+        print("Could not find league history. Please check the LEAGUE_ID.")
+    else:
+        config = {
+            "years": sorted(list(league_ids.keys()), reverse=True),
+            "logoUrl": LEAGUE_LOGO_URL,
+            "lastUpdated": datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
+        }
+        with open("config.json", "w") as f:
+            json.dump(config, f)
+        print("config.json has been generated.")
 
-                for year, league_id in league_ids.items():
-                    generate_data_file_for_year(year, league_id)
-            else:
-                print(f"No leagues found for user {USER_ID} in {CURRENT_YEAR}.")
-        else:
-            print(f"Could not fetch leagues for user. Status: {res.status_code}")
-    except Exception as e:
-        print(f"An error occurred during main execution: {e}")
+        for year, league_id in league_ids.items():
+            generate_data_file_for_year(year, league_id)
+
