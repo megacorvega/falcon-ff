@@ -71,6 +71,7 @@ def generate_data_file_for_year(year, league_id):
         weekly_scores_data = {roster_map[rid]['display_name']: scores for rid, scores in raw_weekly_scores.items() if rid in roster_map}
 
     year_data = {
+        "lastUpdated": datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S'),
         "power_rankings": power_rankings_df.to_dict(orient='records'),
         "fdvoa": fdvoa_df_with_avatars.to_dict(orient='records'),
         "rosters": rosters_df.to_dict(orient='records'),
@@ -132,4 +133,5 @@ if __name__ == "__main__":
         print(f"An unexpected error occurred during script execution: {e}")
         traceback.print_exc()
         sys.exit(1)
+
 
