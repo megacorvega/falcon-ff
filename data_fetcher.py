@@ -228,13 +228,14 @@ def get_analysis_data(league_id, roster_map, week, season, season_type):
         traceback.print_exc()
         return pd.DataFrame()
 
-def get_weekly_scores_for_season(league_id, roster_map):
+def get_weekly_scores_for_season(league_id, roster_map, end_week):
     """
-    Fetches the total points scored for each team for each week of a season.
+    Fetches the total points scored for each team for each week of a season up to a given week.
     """
     if not roster_map: return {}
     team_weekly_scores = {roster_id: [] for roster_id in roster_map.keys()}
-    for w in range(1, 18):
+    # Loop from week 1 up to (but not including) end_week.
+    for w in range(1, end_week):
         try:
             matchups = Leagues.get_matchups(league_id, w)
             weekly_points = {m['roster_id']: m['points'] for m in matchups if 'points' in m}
@@ -243,5 +244,4 @@ def get_weekly_scores_for_season(league_id, roster_map):
         except Exception as e:
             print(f"Could not fetch matchups for week {w} while getting weekly scores: {e}")
     return team_weekly_scores
-
 
