@@ -169,9 +169,13 @@ def get_analysis_data(league_id, roster_map, week, season, season_type):
 
             proj_url = f"https://api.sleeper.app/v1/projections/nfl/{season}/{week}"
             proj_res = requests.get(proj_url)
-            projections = proj_res.json() if proj_res.status_code == 200 else []
-            if not projections: print(f"Warning: Projections API returned no data for week {week}. URL: {proj_url}")
-            projection_map = {p['player_id']: p for p in projections}
+            # The projections endpoint now returns a dictionary keyed by player_id, not a list.
+            projections = proj_res.json() if proj_res.status_code == 200 else {}
+            
+            # We can use the projections object directly as our map.
+            projection_map = projections
+            if not projection_map: 
+                print(f"Warning: Projections API returned no data for week {week}. URL: {proj_url}")
 
             live_scores = {}
             live_url = f"https://api.sleeper.app/v1/league/{league_id}/matchups/{week}"
@@ -239,4 +243,5 @@ def get_weekly_scores_for_season(league_id, roster_map):
         except Exception as e:
             print(f"Could not fetch matchups for week {w} while getting weekly scores: {e}")
     return team_weekly_scores
+
 
