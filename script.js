@@ -49,11 +49,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>`;
     }
     
-    /**
-     * Creates the HTML for the Analysis panel, including nested tabs.
-     */
+    // Used for coloring the season averages table
+    function getColorForValue(value, min, max) {
+        if (min === max) return 'hsl(0, 0%, 100%)';
+        const percentage = (value - min) / (max - min);
+        const hue = percentage * 120; 
+        return `hsl(${hue}, 70%, 88%)`;
+    }
+
     function createAnalysisPanelHTML(analysisType) {
-        // The variance tab is only shown for past seasons ('averages')
         const varianceTab = analysisType === 'averages' ? `<li class="mr-2"><button class="nested-tab-button" data-view="variance">Variance</button></li>` : '';
         const varianceContainer = analysisType === 'averages' ? `<div id="analysis-variance-container" class="nested-tab-panel hidden"><div id="plotly-boxplot"></div></div>` : '';
 
@@ -73,113 +77,122 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
-    /**
-     * Creates the main analysis table for weekly scores/projections or season averages.
-     */
+    // **FIX**: Rewritten to handle both past season averages and current season scores/projections.
     function createAnalysisTable(data, week, year, analysisType) {
         if (!data || data.length === 0) return "<p>Analysis data not available.</p>";
         
-        const isCurrentSeason = analysisType !== 'averages';
-        let title = isCurrentSeason ? `Week ${week} Positional Scores` : `${year} Season Averages`;
-        let subtitle = isCurrentSeason ? 'Live and projected points by position group.' : 'Season-long average points per week by position group.';
+        // --- Part 1: Logic for Past Seasons (Averages) ---
+        if (analysisType === 'averages') {
+            const title = `${year} Season Averages`;
+            const subtitle = 'Season-long average points per week by position group.';
+            const positions = ['QB', 'RB', 'WR', 'TE', 'K', 'DEF'];
+            const displayCols = ['Team', ...positions, 'Total'];
 
-        const positions = ['QB', 'RB', 'WR', 'TE', 'K', 'DEF'];
-        const headers = ['Team', ...positions, 'Total'];
+            const minMax = {};
+            positions.forEach(pos => {
+                const values = data.map(row => row[pos] || 0);
+                minMax[pos] = { min: Math.min(...values), max: Math.max(...values) };
+            });
 
-        let tableHead = `<tr>${headers.map(h => `<th scope="col" class="px-6 py-3">${h}</th>`).join('')}</tr>`;
-        
-        let tableBody = data.map(row => {
-            let rowHtml = '<tr class="border-b">';
-            headers.forEach(col => {
-                if (col === 'Team') {
-                    rowHtml += `<td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"><div class="flex items-center"><img src="${row.Avatar}" alt="Logo" class="w-6 h-6 rounded-full mr-3">${row.Team}</div></td>`;
-                } else if (isCurrentSeason) {
-                    // For current season, handle live, projected, and final scores
-                    const live = row[`${col}_live`] || 0;
-                    const projected = row[`${col}_projected`] || 0;
-                    const status = row[`${col}_status`] || 'projected';
-                    
-                    let scoreClass = 'score-projected'; // default gray
-                    if (status === 'active') scoreClass = 'score-active'; // blue
-                    else if (status === 'final') scoreClass = 'score-final'; // green
-
-                    // Display live score, with projected as a fallback/secondary info
-                    const displayValue = live > 0 ? live.toFixed(2) : projected.toFixed(2);
-                    const projectedValue = projected.toFixed(2);
-
-                    if (col === 'Total') {
-                        rowHtml += `<td class="px-6 py-4 font-bold text-center ${scoreClass}">${displayValue}<br><span class="text-xs font-normal">(${projectedValue})</span></td>`;
-                    } else {
-                        rowHtml += `<td class="px-6 py-4 text-center font-medium ${scoreClass}">${displayValue}</td>`;
-                    }
-
-                } else {
-                    // For past seasons, display averages with color scaling
+            let tableHead = `<tr>${displayCols.map(col => `<th scope="col" class="px-6 py-3">${col}</th>`).join('')}</tr>`;
+            let tableBody = data.map(row => {
+                let rowHtml = '<tr class="border-b">';
+                displayCols.forEach(col => {
                     const value = row[col] || 0;
-                     if (col === 'Total') {
+                    if (col === 'Team') {
+                        rowHtml += `<td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"><div class="flex items-center"><img src="${row.Avatar}" alt="Logo" class="w-6 h-6 rounded-full mr-3">${row.Team}</div></td>`;
+                    } else if (col === 'Total') {
                         rowHtml += `<td class="px-6 py-4 font-bold text-center">${value.toFixed(2)}</td>`;
                     } else {
-                        const allValues = data.map(r => r[col] || 0);
-                        const min = Math.min(...allValues);
-                        const max = Math.max(...allValues);
+                        const { min, max } = minMax[col];
                         const bgColor = getColorForValue(value, min, max);
                         rowHtml += `<td class="px-6 py-4 text-center font-medium" style="background-color: ${bgColor};">${value.toFixed(2)}</td>`;
                     }
-                }
-            });
-            return rowHtml + '</tr>';
-        }).join('');
+                });
+                return rowHtml + '</tr>';
+            }).join('');
 
-        return `<h2 class="text-2xl font-bold text-gray-800 mb-4">${title}</h2>
-                <p class="mb-4 text-gray-600">${subtitle}</p>
-                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                    <table class="w-full text-sm text-left text-gray-500">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50">${tableHead}</thead>
-                        <tbody>${tableBody}</tbody>
-                    </table>
-                </div>`;
+            return `<h2 class="text-2xl font-bold text-gray-800 mb-4">${title}</h2>
+                    <p class="mb-4 text-gray-600">${subtitle}</p>
+                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                        <table class="w-full text-sm text-left text-gray-500"><thead class="text-xs text-gray-700 uppercase bg-gray-50">${tableHead}</thead><tbody>${tableBody}</tbody></table>
+                    </div>`;
+        } 
+        
+        // --- Part 2: Logic for Current Season (Live/Projected Scores) ---
+        else {
+            const title = `Week ${week} Positional Scores`;
+            const subtitle = 'Live and projected points by position group.';
+            const positions = ['QB', 'RB', 'WR', 'TE', 'K', 'DEF'];
+            
+            let tableHead = `<tr><th scope="col" class="px-6 py-3">Team</th>${positions.map(p => `<th scope="col" class="px-6 py-3 text-center">${p}</th>`).join('')}<th scope="col" class="px-6 py-3 text-center">Total</th></tr>`;
+            
+            let tableBody = data.map(row => {
+                let rowHtml = '<tr class="border-b">';
+                rowHtml += `<td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"><div class="flex items-center"><img src="${row.Avatar}" alt="Logo" class="w-6 h-6 rounded-full mr-3">${row.Team}</div></td>`;
+                
+                let totalLive = row.Total_live || 0;
+                let totalProjected = row.Total_projected || 0;
+
+                positions.forEach(pos => {
+                    const projected = row[`${pos}_projected`] || 0;
+                    const live = row[`${pos}_live`] || 0;
+                    const status = row[`${pos}_status`] || 'projected';
+                    
+                    const hasLiveScore = live > 0.001 || (status !== 'projected');
+                    let displayScore = hasLiveScore ? live : projected;
+
+                    let scoreClass = 'score-projected'; // default grey
+                    if (status === 'active') scoreClass = 'score-active';
+                    else if (status === 'final') scoreClass = 'score-final';
+                    
+                    rowHtml += `<td class="px-6 py-4 text-center font-medium">
+                                    <div class="${scoreClass}">${displayScore.toFixed(2)}</div>
+                                    ${hasLiveScore ? `<div class="text-xs score-projected">(${projected.toFixed(2)})</div>` : ''}
+                               </td>`;
+                });
+
+                const totalDisplay = totalLive > 0 ? totalLive : totalProjected;
+                rowHtml += `<td class="px-6 py-4 text-center font-bold">
+                                <div>${totalDisplay.toFixed(2)}</div>
+                                ${totalLive > 0 ? `<div class="text-xs score-projected">(${totalProjected.toFixed(2)})</div>` : ''}
+                            </td>`;
+
+                return rowHtml + '</tr>';
+            }).join('');
+
+            return `<h2 class="text-2xl font-bold text-gray-800 mb-4">${title}</h2>
+                    <p class="mb-4 text-gray-600">${subtitle}</p>
+                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                        <table class="w-full text-sm text-left text-gray-500"><thead class="text-xs text-gray-700 uppercase bg-gray-50">${tableHead}</thead><tbody>${tableBody}</tbody></table>
+                    </div>`;
+        }
     }
     
-    /**
-     * Generates a background color for table cells based on value.
-     */
-    function getColorForValue(value, min, max) {
-        if (min === max) return 'hsl(0, 0%, 100%)';
-        const percentage = (value - min) / (max - min);
-        const hue = percentage * 120; // Green (120) to Red (0)
-        return `hsl(${hue}, 70%, 88%)`;
-    }
-
-    /**
-     * Renders the Plotly stacked bar chart.
-     */
+    // **FIX**: Handles both data structures for chart rendering.
     function renderPlotlyChart(rostersData, weeklyScoresData, week, year, analysisType) {
         const chartDiv = document.getElementById('plotly-chart');
         if (!chartDiv || !rostersData || rostersData.length === 0) return;
 
         const teams = rostersData.map(d => d.Team);
         const positions = ['QB', 'RB', 'WR', 'TE', 'K', 'DEF'];
-        let chartTitle, traces;
-        
+        let traces;
+        let chartTitle;
+
         if (analysisType === 'averages') {
             chartTitle = `${year} Season Average Positional Scores`;
-            // Sorting teams by total average score for better visualization
-            const sortedData = [...rostersData].sort((a, b) => b.Total - a.Total);
-            const sortedTeams = sortedData.map(d => d.Team);
             traces = positions.map(pos => ({
-                x: sortedTeams,
-                y: sortedData.map(d => d[pos]),
+                x: teams,
+                y: rostersData.map(d => d[pos] || 0),
                 name: pos,
                 type: 'bar'
             }));
-        } else { // Current season: projections/live scores
+        } else { // 'scores' for current season
             chartTitle = `Week ${week} Positional Scores`;
-            // Sorting teams by total live score
-            const sortedData = [...rostersData].sort((a, b) => b.Total_live - a.Total_live);
-            const sortedTeams = sortedData.map(d => d.Team);
             traces = positions.map(pos => ({
-                x: sortedTeams,
-                y: sortedData.map(d => d[`${pos}_live`]),
+                x: teams,
+                // Display live score if available, otherwise fall back to projected
+                y: rostersData.map(d => (d[`${pos}_live`] > 0 ? d[`${pos}_live`] : d[`${pos}_projected`]) || 0),
                 name: pos,
                 type: 'bar'
             }));
@@ -190,16 +203,13 @@ document.addEventListener('DOMContentLoaded', () => {
             title: chartTitle,
             xaxis: { title: 'Team', automargin: true },
             yaxis: { title: 'Points' },
-            legend: { orientation: 'h', y: -0.3, yanchor: 'top' },
-            margin: { t: 40, b: 150, l: 50, r: 20 }
+            legend: { orientation: 'h', y: -0.3 },
+            margin: { t: 40, b: 100, l: 50, r: 20 }
         };
         
         Plotly.newPlot(chartDiv, traces, layout, {responsive: true});
     }
 
-    /**
-     * Renders the Plotly box and whisker plot for past seasons.
-     */
     function renderBoxPlot(weeklyScores, year) {
         const chartDiv = document.getElementById('plotly-boxplot');
         if (!chartDiv || !weeklyScores || Object.keys(weeklyScores).length === 0) return;
@@ -227,40 +237,47 @@ document.addEventListener('DOMContentLoaded', () => {
             title: `${year} Weekly Score Distribution`,
             yaxis: { title: 'Points Scored' },
             xaxis: { automargin: true },
-            margin: { t: 40, b: 150, l: 50, r: 20 }
+            margin: { t: 40, b: 100, l: 50, r: 20 }
         };
 
         Plotly.newPlot(chartDiv, traces, layout, {responsive: true});
     }
 
-    /**
-     * Main function to update the entire view when season changes or data loads.
-     */
     function updateView() {
         const selectedYear = seasonSelect.value;
         const data = allData[selectedYear];
         
+        const powerRankingsPanel = document.getElementById('power-rankings-panel');
+        const fdvoaPanel = document.getElementById('fdvoa-panel');
+        const analysisPanel = document.getElementById('analysis-panel');
+
         if (!data) {
-            document.querySelectorAll('.tab-panel').forEach(p => p.innerHTML = "<p class='text-red-500 text-center'>Data could not be loaded for this season.</p>");
+            const errorMsg = "<p class='text-red-500 text-center'>Data could not be loaded for this season.</p>";
+            if (powerRankingsPanel) powerRankingsPanel.innerHTML = errorMsg;
+            if (fdvoaPanel) fdvoaPanel.innerHTML = errorMsg;
+            if (analysisPanel) analysisPanel.innerHTML = errorMsg;
             return;
         }
 
-        document.getElementById('power-rankings-panel').innerHTML = createPowerRankingsTable(data.power_rankings);
-        document.getElementById('fdvoa-panel').innerHTML = createFdvoaTable(data.fdvoa);
+        if (powerRankingsPanel) powerRankingsPanel.innerHTML = createPowerRankingsTable(data.power_rankings);
+        if (fdvoaPanel) fdvoaPanel.innerHTML = createFdvoaTable(data.fdvoa);
         
-        const analysisPanel = document.getElementById('analysis-panel');
-        analysisPanel.innerHTML = createAnalysisPanelHTML(data.analysis_type);
-        document.getElementById('analysis-table-container').innerHTML = createAnalysisTable(data.rosters, data.projection_week, selectedYear, data.analysis_type);
-        
-        renderPlotlyChart(data.rosters, data.weekly_scores, data.projection_week, selectedYear, data.analysis_type);
-        if (data.analysis_type === 'averages') {
-            renderBoxPlot(data.weekly_scores, selectedYear);
+        if (analysisPanel) {
+            analysisPanel.innerHTML = createAnalysisPanelHTML(data.analysis_type);
+            
+            const tableContainer = document.getElementById('analysis-table-container');
+            if (tableContainer) {
+                tableContainer.innerHTML = createAnalysisTable(data.rosters, data.projection_week, selectedYear, data.analysis_type);
+            }
+            
+            renderPlotlyChart(data.rosters, data.weekly_scores, data.projection_week, selectedYear, data.analysis_type);
+            
+            if (data.analysis_type === 'averages') {
+                renderBoxPlot(data.weekly_scores, selectedYear);
+            }
         }
     }
 
-    /**
-     * Loads all necessary data from JSON files.
-     */
     async function loadAllData(config) {
         for (const year of config.years) {
             try {
@@ -269,23 +286,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 allData[year] = await response.json();
             } catch (e) {
                 console.error(`Failed to load data for ${year}:`, e);
+                allData[year] = null; // Ensure failed loads are handled
             }
         }
         updateView(); 
     }
 
-    // --- Initial Load and Event Listeners ---
     fetch('config.json')
         .then(res => res.json())
         .then(config => {
             document.getElementById('league-logo').src = config.logoUrl;
             document.getElementById('last-updated').textContent = `Last updated: ${config.lastUpdated} UTC`;
-            seasonSelect.innerHTML = config.years.map(y => `<option value="${y}" ${y === new Date().getFullYear().toString() ? 'selected' : ''}>${y}</option>`).join('');
+            seasonSelect.innerHTML = config.years.map(y => `<option value="${y}">${y}</option>`).join('');
             loadAllData(config);
         })
         .catch(error => {
             console.error("Failed to load config.json:", error);
-            mainContent.innerHTML = "<p class='text-red-500 text-center'>Could not load league configuration.</p>";
+            if (mainContent) mainContent.innerHTML = "<p class='text-red-500 text-center'>Could not load league configuration.</p>";
         });
 
     seasonSelect.addEventListener('change', updateView);
@@ -294,21 +311,27 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', () => {
             tabButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
+            const activeTab = button.dataset.tab;
             document.querySelectorAll('.tab-panel').forEach(panel => {
-                panel.classList.toggle('hidden', panel.id !== `${button.dataset.tab}-panel`);
+                panel.classList.toggle('hidden', panel.id !== `${activeTab}-panel`);
             });
         });
     });
 
-    mainContent.addEventListener('click', (e) => {
-        if (e.target.matches('.nested-tab-button')) {
-            const panel = e.target.closest('.tab-panel');
-            if (!panel) return;
-            panel.querySelectorAll('.nested-tab-button').forEach(btn => btn.classList.remove('active-tab'));
-            e.target.classList.add('active-tab');
-            panel.querySelectorAll('.nested-tab-panel').forEach(view => {
-                view.classList.toggle('hidden', view.id !== `analysis-${e.target.dataset.view}-container`);
-            });
-        }
-    });
+    if (mainContent) {
+        mainContent.addEventListener('click', (e) => {
+            if (e.target.matches('.nested-tab-button')) {
+                const panel = e.target.closest('.tab-panel');
+                if (!panel) return;
+
+                panel.querySelectorAll('.nested-tab-button').forEach(btn => btn.classList.remove('active-tab'));
+                e.target.classList.add('active-tab');
+
+                const targetViewId = `analysis-${e.target.dataset.view}-container`;
+                panel.querySelectorAll('.nested-tab-panel').forEach(view => {
+                    view.classList.toggle('hidden', view.id !== targetViewId);
+                });
+            }
+        });
+    }
 });
