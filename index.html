@@ -35,7 +35,6 @@
                 <ul class="flex flex-wrap -mb-px">
                     <li class="mr-2"><button class="tab-button inline-block py-4 px-4 text-sm font-medium text-center rounded-t-lg active" data-tab="power-rankings">Power Rankings</button></li>
                     <li class="mr-2"><button class="tab-button inline-block py-4 px-4 text-sm font-medium text-center rounded-t-lg" data-tab="fdvoa">F-DVOA Ratings</button></li>
-                    <!-- **FIX**: Standardized data-tab to 'analysis' to match JS -->
                     <li class="mr-2"><button class="tab-button inline-block py-4 px-4 text-sm font-medium text-center rounded-t-lg" data-tab="analysis">Analysis</button></li>
                 </ul>
             </div>
@@ -44,7 +43,6 @@
             <div class="pt-6">
                 <div id="power-rankings-panel" class="tab-panel"><div class="loader"></div></div>
                 <div id="fdvoa-panel" class="tab-panel hidden"><div class="loader"></div></div>
-                <!-- **FIX**: Standardized panel ID to 'analysis-panel' to match JS -->
                 <div id="analysis-panel" class="tab-panel hidden"><div class="loader"></div></div>
             </div>
         </main>
@@ -53,6 +51,17 @@
         <footer class="text-center mt-8 text-gray-500"><p id="last-updated">Last updated: Loading...</p></footer>
     </div>
     
+    <!-- **FIX**: Tailwind JIT Safelist. This hidden div includes all classes that are dynamically 
+         added by script.js, ensuring the JIT compiler generates the necessary CSS for them. -->
+    <div class="hidden">
+        <div class="bg-white border-b hover:bg-gray-50"></div>
+        <div class="px-6 py-4 font-bold text-gray-900 font-medium whitespace-nowrap"></div>
+        <div class="flex items-center w-6 h-6 rounded-full mr-3"></div>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg"></div>
+        <div class="w-full text-sm text-left text-gray-500 text-xs text-gray-700 uppercase bg-gray-50 py-3"></div>
+        <div class="text-center"></div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
