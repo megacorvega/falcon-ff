@@ -2,6 +2,7 @@ import pandas as pd
 from sleeperpy import Leagues, Players
 from datetime import datetime
 import requests
+import traceback
 
 def get_league_data(league_id, season):
     """
@@ -32,7 +33,6 @@ def get_league_data(league_id, season):
         current_week = league.get("settings", {}).get("leg", 1)
         season_type = league.get("season_type", "regular")
 
-        # For historical seasons, set the week to a completed week (e.g., 17)
         if season != str(datetime.now().year):
             current_week = 17
         
@@ -120,15 +120,14 @@ def calculate_power_rankings(standings_df, fdvoa_df, current_week, total_weeks=1
     return pr_df[["Rank", "Team", "Avatar", "Power Score"]]
 
 def get_live_game_status():
-    """Fetches the status of all live NFL games."""
+    """Fetches the current NFL week from Sleeper's state endpoint."""
     try:
-        # This endpoint provides details on all games for the week
         state_res = requests.get("https://api.sleeper.app/v1/state/nfl")
         if state_res.status_code == 200:
             return state_res.json().get("week", 1)
     except Exception as e:
         print(f"Could not fetch live game state: {e}")
-    return 1 # Default to week 1 if API fails
+    return 1
 
 def get_analysis_data(league_id, roster_map, week, season, season_type):
     """
@@ -139,11 +138,10 @@ def get_analysis_data(league_id, roster_map, week, season, season_type):
         all_players = Players.get_all_players()
         is_current_season = (season == str(datetime.now().year))
 
-        # --- Logic for Past Seasons ---
         if not is_current_season:
-            # This part remains unchanged
+            # Logic for past seasons remains unchanged
             team_scores = {roster_id: {pos: [] for pos in ['QB', 'RB', 'WR', 'TE', 'K', 'DEF']} for roster_id in roster_map.keys()}
-            for w in range(1, 18): # Iterate through all weeks of a completed season
+            for w in range(1, 18):
                 matchups = Leagues.get_matchups(league_id, w)
                 for matchup in matchups:
                     roster_id, starters, player_points = matchup.get('roster_id'), matchup.get('starters', []), matchup.get('players_points', {})
@@ -157,24 +155,24 @@ def get_analysis_data(league_id, roster_map, week, season, season_type):
                 team_info = roster_map.get(roster_id)
                 if not team_info: continue
                 team_row = {"Team": team_info['display_name'], "Avatar": f"https://sleepercdn.com/avatars/thumbs/{team_info['avatar']}" if team_info.get('avatar') else "https://placehold.co/50x50/EBF4FF/76A9FA?text=?"}
-                total_avg = 0
+                total_avg = sum(sum(scores) / len(scores) if scores else 0 for scores in pos_scores.values())
                 for pos, scores in pos_scores.items():
-                    avg_score = sum(scores) / len(scores) if scores else 0
-                    team_row[pos] = avg_score
-                    total_avg += avg_score
+                    team_row[pos] = sum(scores) / len(scores) if scores else 0
                 team_row["Total"] = total_avg
                 teams_data.append(team_row)
             df = pd.DataFrame(teams_data)
             return df.sort_values(by="Total", ascending=False) if not df.empty else df
-
-        # --- Logic for Current Season (Projections, Live Scores) ---
         else:
-            # 1. Fetch Projections for the current week
-            proj_url = f"https://api.sleeper.app/v1/projections/nfl/{season}/{week}?season_type={season_type}"
-            projections = requests.get(proj_url).json()
+            # --- Logic for Current Season (Projections, Live Scores) ---
+            
+            # **FIX**: Corrected the API endpoint for projections.
+            proj_url = f"https://api.sleeper.app/v1/projections/nfl/{season}/{week}"
+            proj_res = requests.get(proj_url)
+            projections = proj_res.json() if proj_res.status_code == 200 else []
+            if not projections:
+                print(f"Warning: Projections API returned no data for week {week}. URL: {proj_url}")
             projection_map = {p['player_id']: p for p in projections}
 
-            # 2. Fetch Live Scores for the current week
             live_scores = {}
             live_url = f"https://api.sleeper.app/v1/league/{league_id}/matchups/{week}"
             live_matchups = requests.get(live_url).json()
@@ -182,7 +180,6 @@ def get_analysis_data(league_id, roster_map, week, season, season_type):
                 for player_id, points in matchup.get('players_points', {}).items():
                     live_scores[player_id] = points
 
-            # 3. Process data for each team
             rosters = Leagues.get_rosters(league_id)
             teams_data = []
             for roster in rosters:
@@ -198,22 +195,17 @@ def get_analysis_data(league_id, roster_map, week, season, season_type):
                     pos = player_info.get('position')
                     if pos not in positional_scores: continue
 
-                    # Get projected points
                     proj_data = projection_map.get(player_id, {})
                     stats = proj_data.get('stats', {})
                     projected_pts = stats.get('pts_ppr', 0) or 0.0
                     positional_scores[pos]['projected'] += projected_pts
 
-                    # Get live points if available
                     live_pts = live_scores.get(player_id)
                     if live_pts is not None:
                         positional_scores[pos]['live'] += live_pts
-                        # Basic logic to determine status - can be refined
-                        positional_scores[pos]['status'] = 'active' if projected_pts > 0 and live_pts < projected_pts else 'final'
+                        positional_scores[pos]['status'] = 'active'
 
-                # Flatten the data structure for the DataFrame
-                total_projected = 0
-                total_live = 0
+                total_projected, total_live = 0, 0
                 for pos, data in positional_scores.items():
                     team_row[f"{pos}_projected"] = data['projected']
                     team_row[f"{pos}_live"] = data['live']
@@ -223,13 +215,11 @@ def get_analysis_data(league_id, roster_map, week, season, season_type):
                 
                 team_row["Total_projected"] = total_projected
                 team_row["Total_live"] = total_live
-
                 teams_data.append(team_row)
 
             return pd.DataFrame(teams_data)
 
     except Exception as e:
-        import traceback
         print(f"An error occurred in get_analysis_data: {e}")
         traceback.print_exc()
         return pd.DataFrame()
@@ -240,7 +230,7 @@ def get_weekly_scores_for_season(league_id, roster_map):
     """
     if not roster_map: return {}
     team_weekly_scores = {roster_id: [] for roster_id in roster_map.keys()}
-    for w in range(1, 18): # Standard fantasy regular season
+    for w in range(1, 18):
         try:
             matchups = Leagues.get_matchups(league_id, w)
             weekly_points = {m['roster_id']: m['points'] for m in matchups if 'points' in m}
@@ -249,3 +239,4 @@ def get_weekly_scores_for_season(league_id, roster_map):
         except Exception as e:
             print(f"Could not fetch matchups for week {w} while getting weekly scores: {e}")
     return team_weekly_scores
+
