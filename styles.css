@@ -3,9 +3,9 @@ body {
 } 
 
 .tab-button.active, .nested-tab-button.active-tab {
-    border-bottom: 2px solid #2563EB; /* blue-600 */
+    border-bottom: 2px solid #2563EB;
     color: #2563EB;
-    background-color: #F3F4F6; /* gray-100 */
+    background-color: #F3F4F6;
 }
 
 .tab-button, .nested-tab-button {
@@ -22,21 +22,20 @@ body {
     margin: 20px auto;
 }
 
-/* Color classes for scores */
-.score-projected {
-    color: #6B7280; /* gray-500 */
-}
-.score-active {
-    color: #3B82F6; /* blue-500 */
-    font-weight: bold;
-}
-.score-final {
-    color: #10B981; /* green-500 */
-    font-weight: bold;
-}
-
-
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+/* **FIX**: Added styles for score status */
+.score-projected {
+    color: #6B7280; /* Tailwind gray-500 */
+}
+.score-active {
+    color: #3B82F6; /* Tailwind blue-500 */
+    font-weight: bold;
+}
+.score-final {
+    color: #16A34A; /* Tailwind green-600 */
+    font-weight: bold;
 }
