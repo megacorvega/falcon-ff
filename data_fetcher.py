@@ -9,6 +9,7 @@ def get_league_data(league_id, season):
     Fetches and processes basic league data including standings, rosters, and users.
     """
     try:
+        Leagues.disable_cache()
         league = Leagues.get_league(league_id)
         rosters = Leagues.get_rosters(league_id)
         users = Leagues.get_users(league_id)
@@ -45,6 +46,7 @@ def calculate_fdvoa(league_id, roster_map, current_week):
     """
     Calculates a DVOA-like rating (F-DVOA) for each fantasy team.
     """
+    Leagues.disable_cache()
     if not roster_map or current_week <= 1: return pd.DataFrame()
     
     all_scores = {}
@@ -135,6 +137,8 @@ def get_analysis_data(league_id, roster_map, week, season, season_type):
     For past seasons, it calculates season-long positional averages.
     """
     try:
+        Players.disable_cache()
+        Leagues.disable_cache()
         all_players = Players.get_all_players()
         is_current_season = (season == str(datetime.now().year))
 
@@ -228,6 +232,7 @@ def get_weekly_scores_for_season(league_id, roster_map):
     """
     Fetches the total points scored for each team for each week of a season.
     """
+    Leagues.disable_cache()
     if not roster_map: return {}
     team_weekly_scores = {roster_id: [] for roster_id in roster_map.keys()}
     for w in range(1, 18):
