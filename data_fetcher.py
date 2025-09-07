@@ -32,6 +32,7 @@ def get_league_data(league_id, season):
         current_week = league.get("settings", {}).get("leg", 1)
         season_type = league.get("season_type", "regular")
 
+        # For historical seasons, set the week to a completed week (e.g., 17)
         if season != str(datetime.now().year):
             current_week = 17
         
@@ -118,18 +119,31 @@ def calculate_power_rankings(standings_df, fdvoa_df, current_week, total_weeks=1
     pr_df["Rank"] = pr_df.index + 1
     return pr_df[["Rank", "Team", "Avatar", "Power Score"]]
 
+def get_live_game_status():
+    """Fetches the status of all live NFL games."""
+    try:
+        # This endpoint provides details on all games for the week
+        state_res = requests.get("https://api.sleeper.app/v1/state/nfl")
+        if state_res.status_code == 200:
+            return state_res.json().get("week", 1)
+    except Exception as e:
+        print(f"Could not fetch live game state: {e}")
+    return 1 # Default to week 1 if API fails
+
 def get_analysis_data(league_id, roster_map, week, season, season_type):
     """
-    Fetches analysis data: actual scores for the current season (if week > 1), 
-    projections for week 1, or calculates average weekly scores for past seasons.
+    Fetches analysis data, combining projections and live scores for the current week.
+    For past seasons, it calculates season-long positional averages.
     """
     try:
         all_players = Players.get_all_players()
         is_current_season = (season == str(datetime.now().year))
 
+        # --- Logic for Past Seasons ---
         if not is_current_season:
+            # This part remains unchanged
             team_scores = {roster_id: {pos: [] for pos in ['QB', 'RB', 'WR', 'TE', 'K', 'DEF']} for roster_id in roster_map.keys()}
-            for w in range(1, 18):
+            for w in range(1, 18): # Iterate through all weeks of a completed season
                 matchups = Leagues.get_matchups(league_id, w)
                 for matchup in matchups:
                     roster_id, starters, player_points = matchup.get('roster_id'), matchup.get('starters', []), matchup.get('players_points', {})
@@ -138,69 +152,88 @@ def get_analysis_data(league_id, roster_map, week, season, season_type):
                         player_info = all_players.get(player_id)
                         if player_info and player_info.get('position') in team_scores[roster_id]:
                             team_scores[roster_id][player_info['position']].append(player_points.get(player_id, 0))
-            
             teams_data = []
             for roster_id, pos_scores in team_scores.items():
                 team_info = roster_map.get(roster_id)
                 if not team_info: continue
                 team_row = {"Team": team_info['display_name'], "Avatar": f"https://sleepercdn.com/avatars/thumbs/{team_info['avatar']}" if team_info.get('avatar') else "https://placehold.co/50x50/EBF4FF/76A9FA?text=?"}
-                total_avg = sum(sum(scores) / len(scores) if scores else 0 for scores in pos_scores.values())
+                total_avg = 0
                 for pos, scores in pos_scores.items():
-                    team_row[pos] = sum(scores) / len(scores) if scores else 0
+                    avg_score = sum(scores) / len(scores) if scores else 0
+                    team_row[pos] = avg_score
+                    total_avg += avg_score
                 team_row["Total"] = total_avg
                 teams_data.append(team_row)
             df = pd.DataFrame(teams_data)
             return df.sort_values(by="Total", ascending=False) if not df.empty else df
+
+        # --- Logic for Current Season (Projections, Live Scores) ---
         else:
-            if week <= 1:
-                proj_url = f"https://api.sleeper.app/v1/projections/nfl/{season_type}/{season}/{week}"
-                projections = requests.get(proj_url).json() if requests.get(proj_url).status_code == 200 else []
-                projection_map = {p['player_id']: p for p in projections if isinstance(p, dict)}
-                rosters = Leagues.get_rosters(league_id)
-                teams_data = []
-                for roster in rosters:
-                    roster_id, starters, team_info = roster.get('roster_id'), roster.get('starters'), roster_map.get(roster.get('roster_id'))
-                    if not all([roster_id, starters, team_info]): continue
-                    team_row = {"Team": team_info['display_name'], "Avatar": f"https://sleepercdn.com/avatars/thumbs/{team_info['avatar']}" if team_info.get('avatar') else "https://placehold.co/50x50/EBF4FF/76A9FA?text=?", 'QB': 0.0, 'RB': 0.0, 'WR': 0.0, 'TE': 0.0, 'K': 0.0, 'DEF': 0.0}
-                    total_projection = 0.0
-                    for player_id in starters:
-                        player_info = all_players.get(player_id)
-                        if not player_info: continue
-                        proj_data = projection_map.get(player_id, {})
-                        stats = proj_data.get('stats', {})
-                        projection = stats.get('pts_ppr', stats.get('pts_half_ppr', stats.get('pts_std', 0.0))) or 0.0
-                        total_projection += projection
-                        pos = player_info.get('position')
-                        if pos in team_row: team_row[pos] += projection
-                    team_row["Total"] = total_projection
-                    teams_data.append(team_row)
-                df = pd.DataFrame(teams_data)
-                return df.sort_values(by="Total", ascending=False) if not df.empty else df
-            else:
-                scores_week = week - 1
-                matchups = Leagues.get_matchups(league_id, scores_week)
-                teams_data = []
-                for roster_id, team_info in roster_map.items():
-                    team_row = {"Team": team_info['display_name'], "Avatar": f"https://sleepercdn.com/avatars/thumbs/{team_info['avatar']}" if team_info.get('avatar') else "https://placehold.co/50x50/EBF4FF/76A9FA?text=?", 'QB': 0.0, 'RB': 0.0, 'WR': 0.0, 'TE': 0.0, 'K': 0.0, 'DEF': 0.0}
-                    total_score = 0.0
-                    roster_matchup = next((m for m in matchups if m.get('roster_id') == roster_id), None)
-                    if not roster_matchup: continue
-                    starters, player_points = roster_matchup.get('starters', []), roster_matchup.get('players_points', {})
-                    for player_id in starters:
-                        player_info = all_players.get(player_id)
-                        if not player_info: continue
-                        pos, points = player_info.get('position'), player_points.get(player_id, 0.0)
-                        if pos in team_row: team_row[pos] += points
-                        total_score += points
-                    team_row["Total"] = total_score
-                    teams_data.append(team_row)
-                df = pd.DataFrame(teams_data)
-                return df.sort_values(by="Total", ascending=False) if not df.empty else df
+            # 1. Fetch Projections for the current week
+            proj_url = f"https://api.sleeper.app/v1/projections/nfl/{season}/{week}?season_type={season_type}"
+            projections = requests.get(proj_url).json()
+            projection_map = {p['player_id']: p for p in projections}
+
+            # 2. Fetch Live Scores for the current week
+            live_scores = {}
+            live_url = f"https://api.sleeper.app/v1/league/{league_id}/matchups/{week}"
+            live_matchups = requests.get(live_url).json()
+            for matchup in live_matchups:
+                for player_id, points in matchup.get('players_points', {}).items():
+                    live_scores[player_id] = points
+
+            # 3. Process data for each team
+            rosters = Leagues.get_rosters(league_id)
+            teams_data = []
+            for roster in rosters:
+                roster_id, starters, team_info = roster.get('roster_id'), roster.get('starters', []), roster_map.get(roster.get('roster_id'))
+                if not all([roster_id, starters, team_info]): continue
+                
+                team_row = {"Team": team_info['display_name'], "Avatar": f"https://sleepercdn.com/avatars/thumbs/{team_info['avatar']}" if team_info.get('avatar') else "https://placehold.co/50x50/EBF4FF/76A9FA?text=?"}
+                positional_scores = {pos: {'projected': 0.0, 'live': 0.0, 'status': 'projected'} for pos in ['QB', 'RB', 'WR', 'TE', 'K', 'DEF']}
+                
+                for player_id in starters:
+                    player_info = all_players.get(player_id)
+                    if not player_info: continue
+                    pos = player_info.get('position')
+                    if pos not in positional_scores: continue
+
+                    # Get projected points
+                    proj_data = projection_map.get(player_id, {})
+                    stats = proj_data.get('stats', {})
+                    projected_pts = stats.get('pts_ppr', 0) or 0.0
+                    positional_scores[pos]['projected'] += projected_pts
+
+                    # Get live points if available
+                    live_pts = live_scores.get(player_id)
+                    if live_pts is not None:
+                        positional_scores[pos]['live'] += live_pts
+                        # Basic logic to determine status - can be refined
+                        positional_scores[pos]['status'] = 'active' if projected_pts > 0 and live_pts < projected_pts else 'final'
+
+                # Flatten the data structure for the DataFrame
+                total_projected = 0
+                total_live = 0
+                for pos, data in positional_scores.items():
+                    team_row[f"{pos}_projected"] = data['projected']
+                    team_row[f"{pos}_live"] = data['live']
+                    team_row[f"{pos}_status"] = data['status']
+                    total_projected += data['projected']
+                    total_live += data['live']
+                
+                team_row["Total_projected"] = total_projected
+                team_row["Total_live"] = total_live
+
+                teams_data.append(team_row)
+
+            return pd.DataFrame(teams_data)
+
     except Exception as e:
-        print(f"An error occurred while getting analysis data: {e}")
+        import traceback
+        print(f"An error occurred in get_analysis_data: {e}")
+        traceback.print_exc()
         return pd.DataFrame()
 
-# **FIX**: New function to get all weekly scores for a completed season.
 def get_weekly_scores_for_season(league_id, roster_map):
     """
     Fetches the total points scored for each team for each week of a season.
