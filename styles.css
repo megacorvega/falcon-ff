@@ -3,9 +3,9 @@ body {
 } 
 
 .tab-button.active, .nested-tab-button.active-tab {
-    border-bottom: 2px solid #2563EB;
+    border-bottom: 2px solid #2563EB; /* blue-600 */
     color: #2563EB;
-    background-color: #F3F4F6;
+    background-color: #F3F4F6; /* gray-100 */
 }
 
 .tab-button, .nested-tab-button {
@@ -21,6 +21,20 @@ body {
     animation: spin 2s linear infinite;
     margin: 20px auto;
 }
+
+/* Color classes for scores */
+.score-projected {
+    color: #6B7280; /* gray-500 */
+}
+.score-active {
+    color: #3B82F6; /* blue-500 */
+    font-weight: bold;
+}
+.score-final {
+    color: #10B981; /* green-500 */
+    font-weight: bold;
+}
+
 
 @keyframes spin {
     0% { transform: rotate(0deg); }
