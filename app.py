@@ -46,7 +46,8 @@ def generate_data_file_for_year(year, league_id):
     try:
         print(f"--- Generating data for {year} ---")
         
-        standings_df, roster_map, current_week, season_type = data_fetcher.get_league_data(league_id, year)
+        # **FIX**: Get active_positions from the league data
+        standings_df, roster_map, current_week, season_type, active_positions = data_fetcher.get_league_data(league_id, year)
         
         if standings_df.empty or not roster_map:
             print(f"No standings or roster data found for {year}. Skipping file generation.")
@@ -65,7 +66,8 @@ def generate_data_file_for_year(year, league_id):
         
         analysis_week_data = data_fetcher.get_live_game_status() if year == str(datetime.now().year) else {"week": current_week}
         analysis_week = analysis_week_data.get("week", 1)
-        rosters_df = data_fetcher.get_analysis_data(league_id, roster_map, analysis_week, year, season_type)
+        # **FIX**: Pass active_positions to get_analysis_data
+        rosters_df = data_fetcher.get_analysis_data(league_id, roster_map, analysis_week, year, season_type, active_positions)
         
         is_current = year == str(datetime.now().year)
         analysis_type = "scores" if is_current else "averages"
@@ -83,6 +85,7 @@ def generate_data_file_for_year(year, league_id):
             "projection_week": analysis_week,
             "analysis_type": analysis_type,
             "weekly_scores": weekly_scores_data,
+            "active_positions": active_positions, # **FIX**: Add active positions to the data file
             "lastUpdated": datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S')
         }
 
