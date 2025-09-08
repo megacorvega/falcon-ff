@@ -125,9 +125,25 @@ document.addEventListener('DOMContentLoaded', () => {
             const title = `Week ${week} Positional Scores`;
             const subtitle = 'Live and projected points by position group.';
             const positions = ['QB', 'RB', 'WR', 'TE', 'K', 'DEF'];
+
+            // **FIX**: Calculate min/max values for each position to be used in color scaling.
+            // This mirrors the logic used for past season averages.
+            const minMax = {};
+            positions.forEach(pos => {
+                const values = data.map(row => {
+                    const live = row[`${pos}_live`] || 0;
+                    const projected = row[`${pos}_projected`] || 0;
+                    const status = row[`${pos}_status`] || 'projected';
+                    // Determine the score to display (live if available, otherwise projected)
+                    const hasLiveScore = live > 0.001 || (status !== 'projected');
+                    return hasLiveScore ? live : projected;
+                });
+                minMax[pos] = { min: Math.min(...values), max: Math.max(...values) };
+            });
             
             let tableHead = `<tr><th scope="col" class="px-6 py-3">Team</th>${positions.map(p => `<th scope="col" class="px-6 py-3 text-center">${p}</th>`).join('')}<th scope="col" class="px-6 py-3 text-center">Total</th></tr>`;
             
+            // **NOTE**: The data is now pre-sorted by the Python script, so no client-side sorting is needed.
             let tableBody = data.map(row => {
                 let rowHtml = '<tr class="border-b">';
                 rowHtml += `<td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"><div class="flex items-center"><img src="${row.Avatar}" alt="Logo" class="w-6 h-6 rounded-full mr-3">${row.Team}</div></td>`;
@@ -147,13 +163,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (status === 'active') scoreClass = 'score-active';
                     else if (status === 'final') scoreClass = 'score-final';
                     
-                    rowHtml += `<td class="px-6 py-4 text-center font-medium">
+                    // **FIX**: Get the color for the cell based on its value relative to the min/max for that position.
+                    const { min, max } = minMax[pos];
+                    const bgColor = getColorForValue(displayScore, min, max);
+                    
+                    rowHtml += `<td class="px-6 py-4 text-center font-medium" style="background-color: ${bgColor};">
                                     <div class="${scoreClass}">${displayScore.toFixed(2)}</div>
                                     ${hasLiveScore ? `<div class="text-xs score-projected">(${projected.toFixed(2)})</div>` : ''}
                                </td>`;
                 });
 
                 const totalDisplay = totalLive > 0 ? totalLive : totalProjected;
+
+                // **NOTE**: The python script fix ensures 'totalProjected' now has the correct value to display here.
                 rowHtml += `<td class="px-6 py-4 text-center font-bold">
                                 <div>${totalDisplay.toFixed(2)}</div>
                                 ${totalLive > 0 ? `<div class="text-xs score-projected">(${totalProjected.toFixed(2)})</div>` : ''}
@@ -338,4 +360,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-
