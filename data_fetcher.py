@@ -36,10 +36,14 @@ def get_league_data(league_id, season):
         if season != str(datetime.now().year):
             current_week = 17
         
-        return df, roster_map, current_week, season_type
+        # **FIX**: Determine active roster positions for the season to dynamically show/hide them.
+        roster_positions = league.get("roster_positions", [])
+        active_positions = sorted(list(set([p for p in roster_positions if p in ['QB', 'RB', 'WR', 'TE', 'K', 'DEF']])))
+        
+        return df, roster_map, current_week, season_type, active_positions
     except Exception as e:
         print(f"An error occurred while getting league data for {season}: {e}")
-        return pd.DataFrame(), {}, 1, "regular"
+        return pd.DataFrame(), {}, 1, "regular", [] # Return empty list for positions on error
 
 def calculate_fdvoa(league_id, roster_map, current_week):
     """
@@ -129,7 +133,7 @@ def get_live_game_status():
         print(f"Could not fetch live game state: {e}")
     return {"week": 1} # Default state
 
-def get_analysis_data(league_id, roster_map, week, season, season_type):
+def get_analysis_data(league_id, roster_map, week, season, season_type, active_positions):
     """
     Fetches analysis data, combining projections and live scores for the current week.
     For past seasons, it calculates season-long positional averages.
@@ -139,8 +143,8 @@ def get_analysis_data(league_id, roster_map, week, season, season_type):
         is_current_season = (season == str(datetime.now().year))
 
         if not is_current_season:
-            # Logic for past seasons remains unchanged
-            team_scores = {roster_id: {pos: [] for pos in ['QB', 'RB', 'WR', 'TE', 'K', 'DEF']} for roster_id in roster_map.keys()}
+            # **FIX**: Use active_positions to build the scores dictionary
+            team_scores = {roster_id: {pos: [] for pos in active_positions} for roster_id in roster_map.keys()}
             for w in range(1, 18):
                 matchups = Leagues.get_matchups(league_id, w)
                 for matchup in matchups:
@@ -170,11 +174,10 @@ def get_analysis_data(league_id, roster_map, week, season, season_type):
             proj_url = f"https://api.sleeper.app/v1/projections/nfl/{season}/{week}"
             proj_res = requests.get(proj_url)
 
-            # **FIX**: The projections API returns a LIST of player objects. This converts the list
-            # into a dictionary keyed by player_id for efficient lookups, solving the issue of
-            # projections showing as 0.
-            projections_list = proj_res.json() if proj_res.status_code == 200 else []
-            projection_map = {p['player_id']: p for p in projections_list if 'player_id' in p}
+            # **FIX**: Reverted the projection fetching logic. The API returns a dictionary of players
+            # keyed by player_id, not a list. This was the primary cause of projections failing.
+            projections = proj_res.json() if proj_res.status_code == 200 else {}
+            projection_map = projections
             
             if not projection_map: 
                 print(f"Warning: Projections API returned no data for week {week}. URL: {proj_url}")
@@ -193,7 +196,8 @@ def get_analysis_data(league_id, roster_map, week, season, season_type):
                 if not all([roster_id, starters, team_info]): continue
                 
                 team_row = {"Team": team_info['display_name'], "Avatar": f"https://sleepercdn.com/avatars/thumbs/{team_info['avatar']}" if team_info.get('avatar') else "https://placehold.co/50x50/EBF4FF/76A9FA?text=?"}
-                positional_scores = {pos: {'projected': 0.0, 'live': 0.0, 'status': 'projected'} for pos in ['QB', 'RB', 'WR', 'TE', 'K', 'DEF']}
+                # **FIX**: Use active_positions to initialize scores
+                positional_scores = {pos: {'projected': 0.0, 'live': 0.0, 'status': 'projected'} for pos in active_positions}
                 
                 for player_id in starters:
                     player_info = all_players.get(player_id)
@@ -254,3 +258,4 @@ def get_weekly_scores_for_season(league_id, roster_map, end_week):
         except Exception as e:
             print(f"Could not fetch matchups for week {w} while getting weekly scores: {e}")
     return team_weekly_scores
+
