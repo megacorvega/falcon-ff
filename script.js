@@ -80,23 +80,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Rewritten to handle both past season averages and current season scores/projections.
     function createAnalysisTable(data, week, year, analysisType) {
-        if (!data || data.length === 0) return "<p>Analysis data not available.</p>";
+        if (!data || data.rosters.length === 0) return "<p>Analysis data not available.</p>";
         
+        // **FIX**: Get the active positions for the season from the data file.
+        // Fallback to a default list if not provided, ensuring backward compatibility.
+        const positions = data.active_positions && data.active_positions.length > 0 
+            ? data.active_positions 
+            : ['QB', 'RB', 'WR', 'TE', 'K', 'DEF'];
+
         // --- Part 1: Logic for Past Seasons (Averages) ---
         if (analysisType === 'averages') {
             const title = `${year} Season Averages`;
             const subtitle = 'Season-long average points per week by position group.';
-            const positions = ['QB', 'RB', 'WR', 'TE', 'K', 'DEF'];
+            // Use the dynamic positions list
             const displayCols = ['Team', ...positions, 'Total'];
 
             const minMax = {};
             positions.forEach(pos => {
-                const values = data.map(row => row[pos] || 0);
+                const values = data.rosters.map(row => row[pos] || 0);
                 minMax[pos] = { min: Math.min(...values), max: Math.max(...values) };
             });
 
             let tableHead = `<tr>${displayCols.map(col => `<th scope="col" class="px-6 py-3">${col}</th>`).join('')}</tr>`;
-            let tableBody = data.map(row => {
+            let tableBody = data.rosters.map(row => {
                 let rowHtml = '<tr class="border-b">';
                 displayCols.forEach(col => {
                     const value = row[col] || 0;
@@ -124,17 +130,16 @@ document.addEventListener('DOMContentLoaded', () => {
         else {
             const title = `Week ${week} Positional Scores`;
             const subtitle = 'Live and projected points by position group.';
-            const positions = ['QB', 'RB', 'WR', 'TE', 'K', 'DEF'];
+            // const positions = ['QB', 'RB', 'WR', 'TE', 'K', 'DEF']; // This is now defined at the top of the function
 
             // **FIX**: Calculate min/max values for each position to be used in color scaling.
             // This mirrors the logic used for past season averages.
             const minMax = {};
             positions.forEach(pos => {
-                const values = data.map(row => {
+                const values = data.rosters.map(row => {
                     const live = row[`${pos}_live`] || 0;
                     const projected = row[`${pos}_projected`] || 0;
                     const status = row[`${pos}_status`] || 'projected';
-                    // Determine the score to display (live if available, otherwise projected)
                     const hasLiveScore = live > 0.001 || (status !== 'projected');
                     return hasLiveScore ? live : projected;
                 });
@@ -143,8 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             let tableHead = `<tr><th scope="col" class="px-6 py-3">Team</th>${positions.map(p => `<th scope="col" class="px-6 py-3 text-center">${p}</th>`).join('')}<th scope="col" class="px-6 py-3 text-center">Total</th></tr>`;
             
-            // **NOTE**: The data is now pre-sorted by the Python script, so no client-side sorting is needed.
-            let tableBody = data.map(row => {
+            let tableBody = data.rosters.map(row => {
                 let rowHtml = '<tr class="border-b">';
                 rowHtml += `<td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"><div class="flex items-center"><img src="${row.Avatar}" alt="Logo" class="w-6 h-6 rounded-full mr-3">${row.Team}</div></td>`;
                 
@@ -163,19 +167,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (status === 'active') scoreClass = 'score-active';
                     else if (status === 'final') scoreClass = 'score-final';
                     
-                    // **FIX**: Get the color for the cell based on its value relative to the min/max for that position.
                     const { min, max } = minMax[pos];
                     const bgColor = getColorForValue(displayScore, min, max);
                     
                     rowHtml += `<td class="px-6 py-4 text-center font-medium" style="background-color: ${bgColor};">
                                     <div class="${scoreClass}">${displayScore.toFixed(2)}</div>
-                                    ${hasLiveScore ? `<div class="text-xs score-projected">(${projected.toFixed(2)})</div>` : ''}
+                                    ${hasLiveScore ? `<div class="text-xs score-projected">(${totalProjected.toFixed(2)})</div>` : ''}
                                </td>`;
                 });
 
                 const totalDisplay = totalLive > 0 ? totalLive : totalProjected;
-
-                // **NOTE**: The python script fix ensures 'totalProjected' now has the correct value to display here.
                 rowHtml += `<td class="px-6 py-4 text-center font-bold">
                                 <div>${totalDisplay.toFixed(2)}</div>
                                 ${totalLive > 0 ? `<div class="text-xs score-projected">(${totalProjected.toFixed(2)})</div>` : ''}
@@ -197,8 +198,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const chartDiv = document.getElementById('plotly-chart');
         if (!chartDiv || !rostersData || rostersData.length === 0) return;
 
+        // **FIX**: Get active positions dynamically from the full dataset for the selected year.
+        const selectedYear = document.getElementById('season-select').value;
+        const yearData = allData[selectedYear];
+        const positions = yearData.active_positions && yearData.active_positions.length > 0 
+            ? yearData.active_positions 
+            : ['QB', 'RB', 'WR', 'TE', 'K', 'DEF'];
+
         const teams = rostersData.map(d => d.Team);
-        const positions = ['QB', 'RB', 'WR', 'TE', 'K', 'DEF'];
+        // const positions = ['QB', 'RB', 'WR', 'TE', 'K', 'DEF']; // Replaced by dynamic list above
         let traces;
         let chartTitle;
 
@@ -293,7 +301,8 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const tableContainer = document.getElementById('analysis-table-container');
             if (tableContainer) {
-                tableContainer.innerHTML = createAnalysisTable(data.rosters, data.projection_week, selectedYear, data.analysis_type);
+                // Pass the whole data object to the function now
+                tableContainer.innerHTML = createAnalysisTable(data, data.projection_week, selectedYear, data.analysis_type);
             }
             
             renderPlotlyChart(data.rosters, data.projection_week, selectedYear, data.analysis_type);
@@ -360,3 +369,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
