@@ -169,11 +169,13 @@ def get_analysis_data(league_id, roster_map, week, season, season_type):
 
             proj_url = f"https://api.sleeper.app/v1/projections/nfl/{season}/{week}"
             proj_res = requests.get(proj_url)
-            # The projections endpoint now returns a dictionary keyed by player_id, not a list.
-            projections = proj_res.json() if proj_res.status_code == 200 else {}
+
+            # **FIX**: The projections API returns a LIST of player objects. This converts the list
+            # into a dictionary keyed by player_id for efficient lookups, solving the issue of
+            # projections showing as 0.
+            projections_list = proj_res.json() if proj_res.status_code == 200 else []
+            projection_map = {p['player_id']: p for p in projections_list if 'player_id' in p}
             
-            # We can use the projections object directly as our map.
-            projection_map = projections
             if not projection_map: 
                 print(f"Warning: Projections API returned no data for week {week}. URL: {proj_url}")
 
@@ -221,7 +223,15 @@ def get_analysis_data(league_id, roster_map, week, season, season_type):
                 team_row["Total_live"] = total_live
                 teams_data.append(team_row)
 
-            return pd.DataFrame(teams_data)
+            df = pd.DataFrame(teams_data)
+            
+            # **FIX**: Sorts the current week's results by total score, displaying the highest-scoring teams first.
+            # It uses the live score for sorting if available, otherwise it uses the projected score.
+            if not df.empty:
+                df['sort_key'] = df.apply(lambda row: row['Total_live'] if row['Total_live'] > 0 else row['Total_projected'], axis=1)
+                df = df.sort_values(by='sort_key', ascending=False).drop(columns=['sort_key'])
+
+            return df
 
     except Exception as e:
         print(f"An error occurred in get_analysis_data: {e}")
@@ -244,4 +254,3 @@ def get_weekly_scores_for_season(league_id, roster_map, end_week):
         except Exception as e:
             print(f"Could not fetch matchups for week {w} while getting weekly scores: {e}")
     return team_weekly_scores
-
