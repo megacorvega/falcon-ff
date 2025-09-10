@@ -234,7 +234,7 @@
             "RB_status": "active",
             "TE_projected": 0.0,
             "TE_live": 0.0,
-            "TE_status": "projected",
+            "TE_status": "active",
             "WR_projected": 0.0,
             "WR_live": 0.0,
             "WR_status": "active",
@@ -436,5 +436,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-09-10 07:17:30"
+    "lastUpdated": "2025-09-10 08:24:20"
 }
