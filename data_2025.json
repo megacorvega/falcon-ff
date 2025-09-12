@@ -143,10 +143,10 @@
             "DEF_live": 0.0,
             "DEF_status": "active",
             "QB_projected": 0.0,
-            "QB_live": 13.36,
+            "QB_live": 21.08,
             "QB_status": "active",
             "RB_projected": 0.0,
-            "RB_live": 9.4,
+            "RB_live": 13.0,
             "RB_status": "active",
             "TE_projected": 0.0,
             "TE_live": 0.0,
@@ -155,7 +155,28 @@
             "WR_live": 0.0,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 22.759999999999998
+            "Total_live": 34.08
+        },
+        {
+            "Team": "khaug22",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
+            "DEF_projected": 0.0,
+            "DEF_live": 0.0,
+            "DEF_status": "active",
+            "QB_projected": 0.0,
+            "QB_live": 10.26,
+            "QB_status": "active",
+            "RB_projected": 0.0,
+            "RB_live": 0.0,
+            "RB_status": "active",
+            "TE_projected": 0.0,
+            "TE_live": 0.0,
+            "TE_status": "active",
+            "WR_projected": 0.0,
+            "WR_live": 11.4,
+            "WR_status": "active",
+            "Total_projected": 0.0,
+            "Total_live": 21.66
         },
         {
             "Team": "WhileyMisfits",
@@ -170,34 +191,13 @@
             "RB_live": 0.0,
             "RB_status": "active",
             "TE_projected": 0.0,
-            "TE_live": 10.4,
+            "TE_live": 21.4,
             "TE_status": "active",
             "WR_projected": 0.0,
             "WR_live": 0.0,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 10.4
-        },
-        {
-            "Team": "khaug22",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
-            "DEF_projected": 0.0,
-            "DEF_live": 0.0,
-            "DEF_status": "active",
-            "QB_projected": 0.0,
-            "QB_live": 0.9,
-            "QB_status": "active",
-            "RB_projected": 0.0,
-            "RB_live": 0.0,
-            "RB_status": "active",
-            "TE_projected": 0.0,
-            "TE_live": 0.0,
-            "TE_status": "active",
-            "WR_projected": 0.0,
-            "WR_live": 1.7,
-            "WR_status": "active",
-            "Total_projected": 0.0,
-            "Total_live": 2.6
+            "Total_live": 21.4
         },
         {
             "Team": "ScoobusDrewbus",
@@ -209,16 +209,16 @@
             "QB_live": 0.0,
             "QB_status": "active",
             "RB_projected": 0.0,
-            "RB_live": 0.0,
+            "RB_live": 1.7,
             "RB_status": "active",
             "TE_projected": 0.0,
             "TE_live": 0.0,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 0.9,
+            "WR_live": 4.4,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 0.9
+            "Total_live": 6.1000000000000005
         },
         {
             "Team": "smurro",
@@ -436,5 +436,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-09-12 01:18:19"
+    "lastUpdated": "2025-09-12 02:54:09"
 }
