@@ -287,7 +287,7 @@
             "Team": "GBBOdraftpro",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/b319fdf8b7b5b0359d3c78622ba4d70c",
             "DEF_projected": 0.0,
-            "DEF_live": 5.5,
+            "DEF_live": 6.5,
             "DEF_status": "active",
             "QB_projected": 0.0,
             "QB_live": 11.82,
@@ -302,7 +302,7 @@
             "WR_live": 42.300000000000004,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 93.52000000000001
+            "Total_live": 94.52000000000001
         },
         {
             "Team": "acroz24",
@@ -436,5 +436,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-09-15 16:22:38"
+    "lastUpdated": "2025-09-15 17:15:47"
 }
