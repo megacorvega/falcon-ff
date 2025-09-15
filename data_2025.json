@@ -236,10 +236,10 @@
             "TE_live": 6.0,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 56.0,
+            "WR_live": 58.7,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 120.34
+            "Total_live": 123.04
         },
         {
             "Team": "WhileyMisfits",
@@ -317,13 +317,13 @@
             "RB_live": 41.900000000000006,
             "RB_status": "active",
             "TE_projected": 0.0,
-            "TE_live": 0.0,
+            "TE_live": 1.7,
             "TE_status": "active",
             "WR_projected": 0.0,
             "WR_live": 37.5,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 89.4
+            "Total_live": 91.10000000000001
         },
         {
             "Team": "Hophoobly",
@@ -436,5 +436,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-09-15 03:06:50"
+    "lastUpdated": "2025-09-15 04:22:12"
 }
