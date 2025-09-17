@@ -10,129 +10,129 @@
             "Rank": 2,
             "Team": "WhileyMisfits",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/4f4090e5e9c3941414db40a871e3e909",
-            "Power Score": 0.7737695073872145
+            "Power Score": 0.7933028145413054
         },
         {
             "Rank": 3,
             "Team": "smurro",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/94fbf14c7f7cbadd2498a32eaf24d902",
-            "Power Score": 0.626291376225041
+            "Power Score": 0.6306978373073098
         },
         {
             "Rank": 4,
             "Team": "abroom23",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/dd5bde6e07dc6659d2b72b23ffdf192d",
-            "Power Score": 0.4994766118217638
+            "Power Score": 0.5093215412337833
         },
         {
             "Rank": 5,
             "Team": "Muk_King",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/70ab560538c2e94f0624132484fd10be",
-            "Power Score": 0.4539600362147893
+            "Power Score": 0.47853324234235906
         },
         {
             "Rank": 6,
             "Team": "acroz24",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/f0edbf4278f53f9425db175073df6584",
-            "Power Score": 0.3523840193494479
+            "Power Score": 0.361047068064044
         },
         {
             "Rank": 7,
             "Team": "EthanSvend8",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/e7af4deab0289b4f5505646424895246",
-            "Power Score": 0.3455110774016302
+            "Power Score": 0.3494906601325355
         },
         {
             "Rank": 8,
             "Team": "pinballfabs",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
-            "Power Score": 0.25193134983259685
+            "Power Score": 0.2485672754559452
         },
         {
             "Rank": 9,
-            "Team": "Hophoobly",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/e7af4deab0289b4f5505646424895246",
-            "Power Score": 0.23595025516844384
+            "Team": "PTP1020",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
+            "Power Score": 0.21882812721467151
         },
         {
             "Rank": 10,
-            "Team": "PTP1020",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
-            "Power Score": 0.20706134401218498
+            "Team": "Hophoobly",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/e7af4deab0289b4f5505646424895246",
+            "Power Score": 0.21772341857904276
         },
         {
             "Rank": 11,
             "Team": "GBBOdraftpro",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/b319fdf8b7b5b0359d3c78622ba4d70c",
-            "Power Score": 0.2042135811875816
+            "Power Score": 0.18587681678753504
         },
         {
             "Rank": 12,
             "Team": "ScoobusDrewbus",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/e6bbee6cf39ec20b4cab84051e16aa3c",
-            "Power Score": 0.017874148414035604
+            "Power Score": 0.0
         }
     ],
     "fdvoa": [
         {
             "Team": "khaug22",
-            "F-DVOA (%)": 26.717891551875166,
+            "F-DVOA (%)": 20.858499820690934,
             "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6"
         },
         {
-            "Team": "GBBOdraftpro",
-            "F-DVOA (%)": 15.796639859861475,
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/b319fdf8b7b5b0359d3c78622ba4d70c"
-        },
-        {
-            "Team": "smurro",
-            "F-DVOA (%)": 8.88844653236725,
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/94fbf14c7f7cbadd2498a32eaf24d902"
-        },
-        {
             "Team": "WhileyMisfits",
-            "F-DVOA (%)": 7.904291742973189,
+            "F-DVOA (%)": 15.485189694266541,
             "Avatar": "https://sleepercdn.com/avatars/thumbs/4f4090e5e9c3941414db40a871e3e909"
         },
         {
-            "Team": "acroz24",
-            "F-DVOA (%)": 0.8241101998567011,
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/f0edbf4278f53f9425db175073df6584"
+            "Team": "smurro",
+            "F-DVOA (%)": 8.224406681797284,
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/94fbf14c7f7cbadd2498a32eaf24d902"
         },
         {
             "Team": "abroom23",
-            "F-DVOA (%)": -0.7811131459510862,
+            "F-DVOA (%)": 3.8141255843809994,
             "Avatar": "https://sleepercdn.com/avatars/thumbs/dd5bde6e07dc6659d2b72b23ffdf192d"
         },
         {
+            "Team": "acroz24",
+            "F-DVOA (%)": 1.1649107505941314,
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/f0edbf4278f53f9425db175073df6584"
+        },
+        {
+            "Team": "Muk_King",
+            "F-DVOA (%)": 0.5789116768942719,
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/70ab560538c2e94f0624132484fd10be"
+        },
+        {
+            "Team": "EthanSvend8",
+            "F-DVOA (%)": -3.8961090358492436,
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/e7af4deab0289b4f5505646424895246"
+        },
+        {
+            "Team": "GBBOdraftpro",
+            "F-DVOA (%)": -4.578608995951617,
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b319fdf8b7b5b0359d3c78622ba4d70c"
+        },
+        {
+            "Team": "pinballfabs",
+            "F-DVOA (%)": -7.0516408072237216,
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6"
+        },
+        {
+            "Team": "PTP1020",
+            "F-DVOA (%)": -8.099499223474634,
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6"
+        },
+        {
             "Team": "Hophoobly",
-            "F-DVOA (%)": -1.6792738275340198,
+            "F-DVOA (%)": -10.484124874649346,
             "Avatar": "https://sleepercdn.com/avatars/thumbs/e7af4deab0289b4f5505646424895246"
         },
         {
             "Team": "ScoobusDrewbus",
-            "F-DVOA (%)": -5.329245959073155,
+            "F-DVOA (%)": -16.01606127147552,
             "Avatar": "https://sleepercdn.com/avatars/thumbs/e6bbee6cf39ec20b4cab84051e16aa3c"
-        },
-        {
-            "Team": "pinballfabs",
-            "F-DVOA (%)": -5.778326299864619,
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6"
-        },
-        {
-            "Team": "EthanSvend8",
-            "F-DVOA (%)": -8.38681423680227,
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/e7af4deab0289b4f5505646424895246"
-        },
-        {
-            "Team": "PTP1020",
-            "F-DVOA (%)": -18.85898558802451,
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6"
-        },
-        {
-            "Team": "Muk_King",
-            "F-DVOA (%)": -19.317620829683875,
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/70ab560538c2e94f0624132484fd10be"
         }
     ],
     "rosters": [
@@ -141,7 +141,7 @@
             "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
             "DEF_projected": 0.0,
             "DEF_live": 0.0,
-            "DEF_status": "active",
+            "DEF_status": "projected",
             "QB_projected": 0.0,
             "QB_live": 0.0,
             "QB_status": "active",
@@ -267,7 +267,7 @@
             "Avatar": "https://sleepercdn.com/avatars/thumbs/e6bbee6cf39ec20b4cab84051e16aa3c",
             "DEF_projected": 0.0,
             "DEF_live": 0.0,
-            "DEF_status": "active",
+            "DEF_status": "projected",
             "QB_projected": 0.0,
             "QB_live": 0.0,
             "QB_status": "active",
@@ -393,40 +393,52 @@
     "analysis_type": "scores",
     "weekly_scores": {
         "PTP1020": [
-            91.82
+            91.82,
+            114.38
         ],
         "pinballfabs": [
-            91.08
+            91.08,
+            117.88
         ],
         "smurro": [
-            120.78
+            120.78,
+            123.04
         ],
         "abroom23": [
-            109.42
+            109.42,
+            123.18
         ],
         "khaug22": [
-            130.92
+            130.92,
+            147.3
         ],
         "Muk_King": [
-            90.86
+            90.86,
+            139.6
         ],
         "ScoobusDrewbus": [
-            91.02
+            91.02,
+            94.94
         ],
         "WhileyMisfits": [
-            119.72
+            119.72,
+            138.68
         ],
         "EthanSvend8": [
-            93.5
+            93.5,
+            124.96
         ],
         "acroz24": [
-            106.98
+            106.98,
+            111.0
         ],
         "GBBOdraftpro": [
-            108.06
+            108.06,
+            93.52
         ],
         "Hophoobly": [
-            101.74
+            101.74,
+            105.14
         ]
     },
     "active_positions": [
@@ -436,5 +448,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-09-17 06:28:12"
+    "lastUpdated": "2025-09-17 07:17:50"
 }
