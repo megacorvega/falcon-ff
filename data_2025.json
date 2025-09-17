@@ -46,7 +46,7 @@
             "Rank": 8,
             "Team": "pinballfabs",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
-            "Power Score": 0.2509112149197547
+            "Power Score": 0.25193134983259685
         },
         {
             "Rank": 9,
@@ -56,15 +56,15 @@
         },
         {
             "Rank": 10,
-            "Team": "GBBOdraftpro",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/b319fdf8b7b5b0359d3c78622ba4d70c",
-            "Power Score": 0.21441493031600378
-        },
-        {
-            "Rank": 11,
             "Team": "PTP1020",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
             "Power Score": 0.20706134401218498
+        },
+        {
+            "Rank": 11,
+            "Team": "GBBOdraftpro",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b319fdf8b7b5b0359d3c78622ba4d70c",
+            "Power Score": 0.2042135811875816
         },
         {
             "Rank": 12,
@@ -270,7 +270,7 @@
             "DEF_status": "active",
             "QB_projected": 0.0,
             "QB_live": 0.0,
-            "QB_status": "projected",
+            "QB_status": "active",
             "RB_projected": 0.0,
             "RB_live": 0.0,
             "RB_status": "active",
@@ -436,5 +436,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-09-17 04:21:02"
+    "lastUpdated": "2025-09-17 05:17:43"
 }
