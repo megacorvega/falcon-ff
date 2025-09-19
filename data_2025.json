@@ -137,6 +137,27 @@
     ],
     "rosters": [
         {
+            "Team": "GBBOdraftpro",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b319fdf8b7b5b0359d3c78622ba4d70c",
+            "DEF_projected": 0.0,
+            "DEF_live": 0.0,
+            "DEF_status": "active",
+            "QB_projected": 0.0,
+            "QB_live": 21.62,
+            "QB_status": "active",
+            "RB_projected": 0.0,
+            "RB_live": 0.0,
+            "RB_status": "active",
+            "TE_projected": 0.0,
+            "TE_live": 0.0,
+            "TE_status": "active",
+            "WR_projected": 0.0,
+            "WR_live": 12.5,
+            "WR_status": "active",
+            "Total_projected": 0.0,
+            "Total_live": 34.120000000000005
+        },
+        {
             "Team": "abroom23",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/dd5bde6e07dc6659d2b72b23ffdf192d",
             "DEF_projected": 0.0,
@@ -149,34 +170,13 @@
             "RB_live": 0.0,
             "RB_status": "active",
             "TE_projected": 0.0,
-            "TE_live": 11.6,
+            "TE_live": 15.1,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 3.4,
+            "WR_live": 13.4,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 15.0
-        },
-        {
-            "Team": "GBBOdraftpro",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/b319fdf8b7b5b0359d3c78622ba4d70c",
-            "DEF_projected": 0.0,
-            "DEF_live": 0.0,
-            "DEF_status": "active",
-            "QB_projected": 0.0,
-            "QB_live": 11.88,
-            "QB_status": "active",
-            "RB_projected": 0.0,
-            "RB_live": 0.0,
-            "RB_status": "active",
-            "TE_projected": 0.0,
-            "TE_live": 0.0,
-            "TE_status": "active",
-            "WR_projected": 0.0,
-            "WR_live": 2.5,
-            "WR_status": "active",
-            "Total_projected": 0.0,
-            "Total_live": 14.38
+            "Total_live": 28.5
         },
         {
             "Team": "EthanSvend8",
@@ -188,7 +188,7 @@
             "QB_live": 0.0,
             "QB_status": "active",
             "RB_projected": 0.0,
-            "RB_live": 9.0,
+            "RB_live": 19.0,
             "RB_status": "active",
             "TE_projected": 0.0,
             "TE_live": 0.0,
@@ -197,7 +197,7 @@
             "WR_live": 0.0,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 9.0
+            "Total_live": 19.0
         },
         {
             "Team": "ScoobusDrewbus",
@@ -209,7 +209,7 @@
             "QB_live": 0.0,
             "QB_status": "active",
             "RB_projected": 0.0,
-            "RB_live": 6.0,
+            "RB_live": 12.6,
             "RB_status": "active",
             "TE_projected": 0.0,
             "TE_live": 0.0,
@@ -218,13 +218,13 @@
             "WR_live": 0.0,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 6.0
+            "Total_live": 12.6
         },
         {
-            "Team": "acroz24",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/f0edbf4278f53f9425db175073df6584",
+            "Team": "WhileyMisfits",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/4f4090e5e9c3941414db40a871e3e909",
             "DEF_projected": 0.0,
-            "DEF_live": 4.0,
+            "DEF_live": 0.0,
             "DEF_status": "active",
             "QB_projected": 0.0,
             "QB_live": 0.0,
@@ -236,10 +236,10 @@
             "TE_live": 0.0,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 0.0,
+            "WR_live": 12.4,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 4.0
+            "Total_live": 12.4
         },
         {
             "Team": "Muk_King",
@@ -257,16 +257,16 @@
             "TE_live": 0.0,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 2.2,
+            "WR_live": 3.5,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 2.2
+            "Total_live": 3.5
         },
         {
-            "Team": "PTP1020",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
+            "Team": "acroz24",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/f0edbf4278f53f9425db175073df6584",
             "DEF_projected": 0.0,
-            "DEF_live": 0.0,
+            "DEF_live": 2.0,
             "DEF_status": "active",
             "QB_projected": 0.0,
             "QB_live": 0.0,
@@ -281,10 +281,10 @@
             "WR_live": 0.0,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 0.0
+            "Total_live": 2.0
         },
         {
-            "Team": "pinballfabs",
+            "Team": "PTP1020",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
             "DEF_projected": 0.0,
             "DEF_live": 0.0,
@@ -326,7 +326,7 @@
             "Total_live": 0.0
         },
         {
-            "Team": "khaug22",
+            "Team": "pinballfabs",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
             "DEF_projected": 0.0,
             "DEF_live": 0.0,
@@ -347,8 +347,8 @@
             "Total_live": 0.0
         },
         {
-            "Team": "WhileyMisfits",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/4f4090e5e9c3941414db40a871e3e909",
+            "Team": "khaug22",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
             "DEF_projected": 0.0,
             "DEF_live": 0.0,
             "DEF_status": "active",
@@ -448,5 +448,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-09-19 01:21:44"
+    "lastUpdated": "2025-09-19 02:59:57"
 }
