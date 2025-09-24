@@ -14,8 +14,8 @@
         },
         {
             "Rank": 3,
-            "Team": "smurro",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/94fbf14c7f7cbadd2498a32eaf24d902",
+            "Team": "dolani",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/1445030bf97c3022b7d8273c1b9f31e9",
             "Power Score": 0.7040772661921457
         },
         {
@@ -85,9 +85,9 @@
             "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6"
         },
         {
-            "Team": "smurro",
+            "Team": "dolani",
             "F-DVOA (%)": 9.284853971956393,
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/94fbf14c7f7cbadd2498a32eaf24d902"
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/1445030bf97c3022b7d8273c1b9f31e9"
         },
         {
             "Team": "WhileyMisfits",
@@ -179,8 +179,8 @@
             "Total_live": 0.0
         },
         {
-            "Team": "smurro",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/94fbf14c7f7cbadd2498a32eaf24d902",
+            "Team": "dolani",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/1445030bf97c3022b7d8273c1b9f31e9",
             "DEF_projected": 0.0,
             "DEF_live": 0.0,
             "DEF_status": "active",
@@ -402,7 +402,7 @@
             117.88,
             161.4
         ],
-        "smurro": [
+        "dolani": [
             120.78,
             123.04,
             123.14
@@ -460,5 +460,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-09-24 22:16:44"
+    "lastUpdated": "2025-09-24 23:16:24"
 }
