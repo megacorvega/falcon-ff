@@ -152,22 +152,22 @@
             "TE_live": 0.0,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 29.400000000000002,
+            "WR_live": 30.8,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 29.400000000000002
+            "Total_live": 30.8
         },
         {
             "Team": "pinballfabs",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
             "DEF_projected": 0.0,
-            "DEF_live": 0.0,
+            "DEF_live": 1.0,
             "DEF_status": "active",
             "QB_projected": 0.0,
             "QB_live": 0.0,
             "QB_status": "active",
             "RB_projected": 0.0,
-            "RB_live": 25.2,
+            "RB_live": 27.1,
             "RB_status": "active",
             "TE_projected": 0.0,
             "TE_live": 0.0,
@@ -176,7 +176,7 @@
             "WR_live": 0.0,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 25.2
+            "Total_live": 28.1
         },
         {
             "Team": "acroz24",
@@ -188,7 +188,7 @@
             "QB_live": 0.0,
             "QB_status": "active",
             "RB_projected": 0.0,
-            "RB_live": 22.7,
+            "RB_live": 23.9,
             "RB_status": "active",
             "TE_projected": 0.0,
             "TE_live": 0.0,
@@ -197,13 +197,13 @@
             "WR_live": 0.0,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 22.7
+            "Total_live": 23.9
         },
         {
             "Team": "abroom23",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/dd5bde6e07dc6659d2b72b23ffdf192d",
             "DEF_projected": 0.0,
-            "DEF_live": 7.0,
+            "DEF_live": 7.5,
             "DEF_status": "active",
             "QB_projected": 0.0,
             "QB_live": 0.0,
@@ -218,7 +218,7 @@
             "WR_live": 0.0,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 7.0
+            "Total_live": 7.5
         },
         {
             "Team": "dolani",
@@ -472,5 +472,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-10-03 03:28:50"
+    "lastUpdated": "2025-10-03 04:20:57"
 }
