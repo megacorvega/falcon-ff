@@ -266,7 +266,7 @@
             "Team": "PTP1020",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
             "DEF_projected": 0.0,
-            "DEF_live": 7.5,
+            "DEF_live": 6.5,
             "DEF_status": "active",
             "QB_projected": 0.0,
             "QB_live": 25.92,
@@ -281,7 +281,7 @@
             "WR_live": 39.7,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 111.82000000000001
+            "Total_live": 110.82000000000001
         },
         {
             "Team": "Muk_King",
@@ -472,5 +472,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-10-06 22:16:17"
+    "lastUpdated": "2025-10-06 23:16:16"
 }
