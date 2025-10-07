@@ -179,6 +179,27 @@
             "Total_live": 137.12
         },
         {
+            "Team": "EthanSvend8",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/e7af4deab0289b4f5505646424895246",
+            "DEF_projected": 0.0,
+            "DEF_live": 10.0,
+            "DEF_status": "active",
+            "QB_projected": 0.0,
+            "QB_live": 20.12,
+            "QB_status": "active",
+            "RB_projected": 0.0,
+            "RB_live": 35.900000000000006,
+            "RB_status": "active",
+            "TE_projected": 0.0,
+            "TE_live": 9.2,
+            "TE_status": "active",
+            "WR_projected": 0.0,
+            "WR_live": 59.5,
+            "WR_status": "active",
+            "Total_projected": 0.0,
+            "Total_live": 134.72000000000003
+        },
+        {
             "Team": "dolani",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/1445030bf97c3022b7d8273c1b9f31e9",
             "DEF_projected": 0.0,
@@ -198,27 +219,6 @@
             "WR_status": "active",
             "Total_projected": 0.0,
             "Total_live": 132.5
-        },
-        {
-            "Team": "EthanSvend8",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/e7af4deab0289b4f5505646424895246",
-            "DEF_projected": 0.0,
-            "DEF_live": 10.0,
-            "DEF_status": "active",
-            "QB_projected": 0.0,
-            "QB_live": 20.12,
-            "QB_status": "active",
-            "RB_projected": 0.0,
-            "RB_live": 35.900000000000006,
-            "RB_status": "active",
-            "TE_projected": 0.0,
-            "TE_live": 0.0,
-            "TE_status": "active",
-            "WR_projected": 0.0,
-            "WR_live": 59.5,
-            "WR_status": "active",
-            "Total_projected": 0.0,
-            "Total_live": 125.52000000000001
         },
         {
             "Team": "acroz24",
@@ -257,10 +257,10 @@
             "TE_live": 12.4,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 22.3,
+            "WR_live": 24.2,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 116.26
+            "Total_live": 118.16000000000001
         },
         {
             "Team": "PTP1020",
@@ -272,7 +272,7 @@
             "QB_live": 25.92,
             "QB_status": "active",
             "RB_projected": 0.0,
-            "RB_live": 18.299999999999997,
+            "RB_live": 20.799999999999997,
             "RB_status": "active",
             "TE_projected": 0.0,
             "TE_live": 20.4,
@@ -281,7 +281,7 @@
             "WR_live": 39.7,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 110.82000000000001
+            "Total_live": 113.32000000000001
         },
         {
             "Team": "Muk_King",
@@ -305,6 +305,48 @@
             "Total_live": 107.04
         },
         {
+            "Team": "WhileyMisfits",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/4f4090e5e9c3941414db40a871e3e909",
+            "DEF_projected": 0.0,
+            "DEF_live": 7.0,
+            "DEF_status": "active",
+            "QB_projected": 0.0,
+            "QB_live": 17.38,
+            "QB_status": "active",
+            "RB_projected": 0.0,
+            "RB_live": 18.0,
+            "RB_status": "active",
+            "TE_projected": 0.0,
+            "TE_live": 17.7,
+            "TE_status": "active",
+            "WR_projected": 0.0,
+            "WR_live": 38.7,
+            "WR_status": "active",
+            "Total_projected": 0.0,
+            "Total_live": 98.78
+        },
+        {
+            "Team": "abroom23",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/dd5bde6e07dc6659d2b72b23ffdf192d",
+            "DEF_projected": 0.0,
+            "DEF_live": 7.5,
+            "DEF_status": "active",
+            "QB_projected": 0.0,
+            "QB_live": 15.3,
+            "QB_status": "active",
+            "RB_projected": 0.0,
+            "RB_live": 24.0,
+            "RB_status": "active",
+            "TE_projected": 0.0,
+            "TE_live": 22.3,
+            "TE_status": "active",
+            "WR_projected": 0.0,
+            "WR_live": 14.1,
+            "WR_status": "active",
+            "Total_projected": 0.0,
+            "Total_live": 83.19999999999999
+        },
+        {
             "Team": "ScoobusDrewbus",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/e6bbee6cf39ec20b4cab84051e16aa3c",
             "DEF_projected": 0.0,
@@ -326,52 +368,10 @@
             "Total_live": 83.18
         },
         {
-            "Team": "abroom23",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/dd5bde6e07dc6659d2b72b23ffdf192d",
-            "DEF_projected": 0.0,
-            "DEF_live": 7.5,
-            "DEF_status": "active",
-            "QB_projected": 0.0,
-            "QB_live": 15.3,
-            "QB_status": "active",
-            "RB_projected": 0.0,
-            "RB_live": 21.3,
-            "RB_status": "active",
-            "TE_projected": 0.0,
-            "TE_live": 22.3,
-            "TE_status": "active",
-            "WR_projected": 0.0,
-            "WR_live": 14.1,
-            "WR_status": "active",
-            "Total_projected": 0.0,
-            "Total_live": 80.5
-        },
-        {
-            "Team": "WhileyMisfits",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/4f4090e5e9c3941414db40a871e3e909",
-            "DEF_projected": 0.0,
-            "DEF_live": 7.0,
-            "DEF_status": "active",
-            "QB_projected": 0.0,
-            "QB_live": 0.0,
-            "QB_status": "active",
-            "RB_projected": 0.0,
-            "RB_live": 17.0,
-            "RB_status": "active",
-            "TE_projected": 0.0,
-            "TE_live": 17.7,
-            "TE_status": "active",
-            "WR_projected": 0.0,
-            "WR_live": 38.7,
-            "WR_status": "active",
-            "Total_projected": 0.0,
-            "Total_live": 80.4
-        },
-        {
             "Team": "Hophoobly",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/e7af4deab0289b4f5505646424895246",
             "DEF_projected": 0.0,
-            "DEF_live": 0.0,
+            "DEF_live": 1.0,
             "DEF_status": "active",
             "QB_projected": 0.0,
             "QB_live": 17.88,
@@ -383,10 +383,10 @@
             "TE_live": 6.6,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 46.599999999999994,
+            "WR_live": 51.0,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 76.88
+            "Total_live": 82.28
         }
     ],
     "projection_week": 5,
@@ -472,5 +472,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-10-06 23:16:16"
+    "lastUpdated": "2025-10-07 01:20:18"
 }
