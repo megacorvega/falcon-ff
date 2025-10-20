@@ -209,7 +209,7 @@
             "QB_live": 0.0,
             "QB_status": "active",
             "RB_projected": 0.0,
-            "RB_live": 55.3,
+            "RB_live": 56.8,
             "RB_status": "active",
             "TE_projected": 0.0,
             "TE_live": 5.3,
@@ -218,7 +218,7 @@
             "WR_live": 21.8,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 108.39999999999999
+            "Total_live": 109.89999999999999
         },
         {
             "Team": "pinballfabs",
@@ -350,7 +350,7 @@
             "Team": "abroom23",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/dd5bde6e07dc6659d2b72b23ffdf192d",
             "DEF_projected": 0.0,
-            "DEF_live": 8.5,
+            "DEF_live": 9.0,
             "DEF_status": "active",
             "QB_projected": 0.0,
             "QB_live": 13.36,
@@ -365,7 +365,7 @@
             "WR_live": 19.0,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 91.56
+            "Total_live": 92.06
         },
         {
             "Team": "ScoobusDrewbus",
@@ -496,5 +496,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-10-20 03:14:52"
+    "lastUpdated": "2025-10-20 04:24:41"
 }
