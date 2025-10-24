@@ -152,10 +152,10 @@
             "TE_live": 16.2,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 10.2,
+            "WR_live": 10.9,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 26.4
+            "Total_live": 27.1
         },
         {
             "Team": "acroz24",
@@ -508,5 +508,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-10-24 02:59:42"
+    "lastUpdated": "2025-10-24 03:37:04"
 }
