@@ -224,7 +224,7 @@
             "Team": "GBBOdraftpro",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/b319fdf8b7b5b0359d3c78622ba4d70c",
             "DEF_projected": 0.0,
-            "DEF_live": -1.0,
+            "DEF_live": -4.0,
             "DEF_status": "active",
             "QB_projected": 0.0,
             "QB_live": 23.22,
@@ -239,7 +239,7 @@
             "WR_live": 32.300000000000004,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 112.32
+            "Total_live": 109.32
         },
         {
             "Team": "khaug22",
@@ -299,10 +299,10 @@
             "TE_live": 19.0,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 42.4,
+            "WR_live": 44.3,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 97.68
+            "Total_live": 99.58
         },
         {
             "Team": "acroz24",
@@ -332,7 +332,7 @@
             "DEF_live": 2.0,
             "DEF_status": "active",
             "QB_projected": 0.0,
-            "QB_live": 28.4,
+            "QB_live": 28.3,
             "QB_status": "active",
             "RB_projected": 0.0,
             "RB_live": 19.2,
@@ -344,7 +344,7 @@
             "WR_live": 24.299999999999997,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 80.1
+            "Total_live": 80.0
         },
         {
             "Team": "ScoobusDrewbus",
@@ -508,5 +508,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-10-27 03:19:07"
+    "lastUpdated": "2025-10-27 04:28:48"
 }
