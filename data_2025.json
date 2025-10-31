@@ -143,7 +143,7 @@
             "DEF_live": 0.0,
             "DEF_status": "active",
             "QB_projected": 0.0,
-            "QB_live": 25.76,
+            "QB_live": 25.56,
             "QB_status": "active",
             "RB_projected": 0.0,
             "RB_live": 0.0,
@@ -155,7 +155,7 @@
             "WR_live": 9.4,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 35.160000000000004
+            "Total_live": 34.96
         },
         {
             "Team": "GBBOdraftpro",
@@ -520,5 +520,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-10-31 03:10:10"
+    "lastUpdated": "2025-10-31 04:23:04"
 }
