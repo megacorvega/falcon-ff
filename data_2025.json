@@ -167,7 +167,7 @@
             "QB_live": 27.24,
             "QB_status": "active",
             "RB_projected": 0.0,
-            "RB_live": 13.6,
+            "RB_live": 16.2,
             "RB_status": "active",
             "TE_projected": 0.0,
             "TE_live": 4.9,
@@ -176,7 +176,7 @@
             "WR_live": 84.0,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 136.74
+            "Total_live": 139.34
         },
         {
             "Team": "GBBOdraftpro",
@@ -206,19 +206,19 @@
             "DEF_live": 5.5,
             "DEF_status": "active",
             "QB_projected": 0.0,
-            "QB_live": 0.0,
+            "QB_live": 1.44,
             "QB_status": "active",
             "RB_projected": 0.0,
             "RB_live": 22.0,
             "RB_status": "active",
             "TE_projected": 0.0,
-            "TE_live": 0.0,
+            "TE_live": 1.0,
             "TE_status": "active",
             "WR_projected": 0.0,
             "WR_live": 91.9,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 119.4
+            "Total_live": 121.84
         },
         {
             "Team": "abroom23",
@@ -320,10 +320,10 @@
             "TE_live": 0.0,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 64.1,
+            "WR_live": 66.1,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 102.25999999999999
+            "Total_live": 104.25999999999999
         },
         {
             "Team": "dolani",
@@ -362,10 +362,10 @@
             "TE_live": 7.1,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 6.6,
+            "WR_live": 8.7,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 72.52
+            "Total_live": 74.62
         },
         {
             "Team": "Hophoobly",
@@ -520,5 +520,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-11-03 23:17:18"
+    "lastUpdated": "2025-11-04 01:26:25"
 }
