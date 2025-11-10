@@ -209,7 +209,7 @@
             "QB_live": 22.92,
             "QB_status": "active",
             "RB_projected": 0.0,
-            "RB_live": 53.2,
+            "RB_live": 53.6,
             "RB_status": "active",
             "TE_projected": 0.0,
             "TE_live": 18.9,
@@ -218,7 +218,7 @@
             "WR_live": 21.3,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 135.82000000000002
+            "Total_live": 136.22000000000003
         },
         {
             "Team": "dolani",
@@ -299,10 +299,10 @@
             "TE_live": 21.4,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 21.0,
+            "WR_live": 22.2,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 98.5
+            "Total_live": 99.7
         },
         {
             "Team": "GBBOdraftpro",
@@ -532,5 +532,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-11-10 04:26:32"
+    "lastUpdated": "2025-11-10 05:19:33"
 }
