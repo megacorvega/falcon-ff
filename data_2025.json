@@ -374,10 +374,10 @@
             "DEF_live": 5.0,
             "DEF_status": "active",
             "QB_projected": 0.0,
-            "QB_live": 0.0,
+            "QB_live": 0.44,
             "QB_status": "active",
             "RB_projected": 0.0,
-            "RB_live": 38.6,
+            "RB_live": 41.2,
             "RB_status": "active",
             "TE_projected": 0.0,
             "TE_live": 4.7,
@@ -386,7 +386,7 @@
             "WR_live": 30.2,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 78.5
+            "Total_live": 81.54
         }
     ],
     "projection_week": 10,
@@ -532,5 +532,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-11-10 23:18:21"
+    "lastUpdated": "2025-11-11 01:27:23"
 }
