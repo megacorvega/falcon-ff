@@ -263,6 +263,27 @@
             "Total_live": 103.34
         },
         {
+            "Team": "khaug22",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
+            "DEF_projected": 0.0,
+            "DEF_live": 2.5,
+            "DEF_status": "active",
+            "QB_projected": 0.0,
+            "QB_live": 21.88,
+            "QB_status": "active",
+            "RB_projected": 0.0,
+            "RB_live": 28.900000000000002,
+            "RB_status": "active",
+            "TE_projected": 0.0,
+            "TE_live": 2.8,
+            "TE_status": "active",
+            "WR_projected": 0.0,
+            "WR_live": 37.6,
+            "WR_status": "active",
+            "Total_projected": 0.0,
+            "Total_live": 93.68
+        },
+        {
             "Team": "Muk_King",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/70ab560538c2e94f0624132484fd10be",
             "DEF_projected": 0.0,
@@ -282,27 +303,6 @@
             "WR_status": "active",
             "Total_projected": 0.0,
             "Total_live": 92.12
-        },
-        {
-            "Team": "khaug22",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
-            "DEF_projected": 0.0,
-            "DEF_live": 2.5,
-            "DEF_status": "active",
-            "QB_projected": 0.0,
-            "QB_live": 21.88,
-            "QB_status": "active",
-            "RB_projected": 0.0,
-            "RB_live": 28.3,
-            "RB_status": "active",
-            "TE_projected": 0.0,
-            "TE_live": 2.8,
-            "TE_status": "active",
-            "WR_projected": 0.0,
-            "WR_live": 35.7,
-            "WR_status": "active",
-            "Total_projected": 0.0,
-            "Total_live": 91.18
         },
         {
             "Team": "pinballfabs",
@@ -335,16 +335,16 @@
             "QB_live": 13.2,
             "QB_status": "active",
             "RB_projected": 0.0,
-            "RB_live": 30.0,
+            "RB_live": 29.9,
             "RB_status": "active",
             "TE_projected": 0.0,
-            "TE_live": 0.0,
+            "TE_live": 2.3,
             "TE_status": "active",
             "WR_projected": 0.0,
             "WR_live": 35.9,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 81.6
+            "Total_live": 83.79999999999998
         },
         {
             "Team": "PTP1020",
@@ -383,10 +383,10 @@
             "TE_live": 7.5,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 23.5,
+            "WR_live": 25.1,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 60.8
+            "Total_live": 62.4
         }
     ],
     "projection_week": 11,
@@ -544,5 +544,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-11-17 23:17:43"
+    "lastUpdated": "2025-11-18 01:26:40"
 }
