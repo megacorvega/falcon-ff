@@ -8,69 +8,69 @@
         },
         {
             "Rank": 2,
-            "Team": "dolani",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/1445030bf97c3022b7d8273c1b9f31e9",
-            "Power Score": 0.8102068640942715
+            "Team": "GBBOdraftpro",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b319fdf8b7b5b0359d3c78622ba4d70c",
+            "Power Score": 0.7773660759591587
         },
         {
             "Rank": 3,
-            "Team": "GBBOdraftpro",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/b319fdf8b7b5b0359d3c78622ba4d70c",
-            "Power Score": 0.7951160686514296
+            "Team": "dolani",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/1445030bf97c3022b7d8273c1b9f31e9",
+            "Power Score": 0.718959093917777
         },
         {
             "Rank": 4,
-            "Team": "pinballfabs",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
-            "Power Score": 0.6963539937339285
+            "Team": "EthanSvend8",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/e7af4deab0289b4f5505646424895246",
+            "Power Score": 0.6301042255123677
         },
         {
             "Rank": 5,
-            "Team": "EthanSvend8",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/e7af4deab0289b4f5505646424895246",
-            "Power Score": 0.6377235507949587
+            "Team": "pinballfabs",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
+            "Power Score": 0.6291299151361625
         },
         {
             "Rank": 6,
             "Team": "WhileyMisfits",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/4f4090e5e9c3941414db40a871e3e909",
-            "Power Score": 0.5701471181411845
+            "Power Score": 0.5409580348841149
         },
         {
             "Rank": 7,
-            "Team": "Hophoobly",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/e7af4deab0289b4f5505646424895246",
-            "Power Score": 0.4076380311622878
+            "Team": "acroz24",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/f0edbf4278f53f9425db175073df6584",
+            "Power Score": 0.469879805839168
         },
         {
             "Rank": 8,
-            "Team": "acroz24",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/f0edbf4278f53f9425db175073df6584",
-            "Power Score": 0.4074203312032491
+            "Team": "Hophoobly",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/e7af4deab0289b4f5505646424895246",
+            "Power Score": 0.4409342512719219
         },
         {
             "Rank": 9,
             "Team": "PTP1020",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
-            "Power Score": 0.18615566381083282
+            "Power Score": 0.1356331293763392
         },
         {
             "Rank": 10,
             "Team": "abroom23",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/dd5bde6e07dc6659d2b72b23ffdf192d",
-            "Power Score": 0.02987221810497346
+            "Power Score": 0.05404078935290116
         },
         {
             "Rank": 11,
             "Team": "ScoobusDrewbus",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/e6bbee6cf39ec20b4cab84051e16aa3c",
-            "Power Score": 0.021421685216094603
+            "Power Score": 0.01661954905706449
         },
         {
             "Rank": 12,
             "Team": "Muk_King",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/70ab560538c2e94f0624132484fd10be",
-            "Power Score": 0.0
+            "Power Score": 0.009356851907045752
         }
     ],
     "fdvoa": [
@@ -144,7 +144,7 @@
             "DEF_status": "active",
             "QB_projected": 0.0,
             "QB_live": 0.0,
-            "QB_status": "active",
+            "QB_status": "projected",
             "RB_projected": 0.0,
             "RB_live": 0.0,
             "RB_status": "active",
@@ -544,5 +544,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-11-18 05:19:18"
+    "lastUpdated": "2025-11-18 06:28:56"
 }
