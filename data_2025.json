@@ -140,7 +140,7 @@
             "Team": "EthanSvend8",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/e7af4deab0289b4f5505646424895246",
             "DEF_projected": 0.0,
-            "DEF_live": 13.5,
+            "DEF_live": 16.0,
             "DEF_status": "active",
             "QB_projected": 0.0,
             "QB_live": 0.0,
@@ -155,7 +155,7 @@
             "WR_live": 0.0,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 33.9
+            "Total_live": 36.4
         },
         {
             "Team": "GBBOdraftpro",
@@ -164,7 +164,7 @@
             "DEF_live": 0.0,
             "DEF_status": "active",
             "QB_projected": 0.0,
-            "QB_live": 8.84,
+            "QB_live": 8.12,
             "QB_status": "active",
             "RB_projected": 0.0,
             "RB_live": 0.0,
@@ -173,10 +173,10 @@
             "TE_live": 0.0,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 11.2,
+            "WR_live": 14.5,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 20.04
+            "Total_live": 22.619999999999997
         },
         {
             "Team": "acroz24",
@@ -556,5 +556,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-11-21 04:23:04"
+    "lastUpdated": "2025-11-21 05:19:40"
 }
