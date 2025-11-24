@@ -164,7 +164,7 @@
             "DEF_live": 10.5,
             "DEF_status": "active",
             "QB_projected": 0.0,
-            "QB_live": 7.22,
+            "QB_live": 7.12,
             "QB_status": "active",
             "RB_projected": 0.0,
             "RB_live": 66.9,
@@ -176,7 +176,7 @@
             "WR_live": 52.2,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 138.22000000000003
+            "Total_live": 138.12
         },
         {
             "Team": "abroom23",
@@ -377,7 +377,7 @@
             "QB_live": 8.12,
             "QB_status": "active",
             "RB_projected": 0.0,
-            "RB_live": 23.2,
+            "RB_live": 23.099999999999998,
             "RB_status": "active",
             "TE_projected": 0.0,
             "TE_live": 3.0,
@@ -386,7 +386,7 @@
             "WR_live": 26.4,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 68.72
+            "Total_live": 68.62
         }
     ],
     "projection_week": 12,
@@ -556,5 +556,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-11-24 19:13:38"
+    "lastUpdated": "2025-11-24 20:22:21"
 }
