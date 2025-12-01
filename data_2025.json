@@ -152,10 +152,10 @@
             "TE_live": 20.3,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 58.199999999999996,
+            "WR_live": 62.699999999999996,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 149.12
+            "Total_live": 153.62
         },
         {
             "Team": "khaug22",
@@ -173,10 +173,31 @@
             "TE_live": 4.7,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 63.6,
+            "WR_live": 66.30000000000001,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 136.24
+            "Total_live": 138.94
+        },
+        {
+            "Team": "WhileyMisfits",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/4f4090e5e9c3941414db40a871e3e909",
+            "DEF_projected": 0.0,
+            "DEF_live": 8.0,
+            "DEF_status": "active",
+            "QB_projected": 0.0,
+            "QB_live": 29.44,
+            "QB_status": "active",
+            "RB_projected": 0.0,
+            "RB_live": 28.6,
+            "RB_status": "active",
+            "TE_projected": 0.0,
+            "TE_live": 15.6,
+            "TE_status": "active",
+            "WR_projected": 0.0,
+            "WR_live": 47.9,
+            "WR_status": "active",
+            "Total_projected": 0.0,
+            "Total_live": 129.54
         },
         {
             "Team": "GBBOdraftpro",
@@ -198,27 +219,6 @@
             "WR_status": "active",
             "Total_projected": 0.0,
             "Total_live": 125.62
-        },
-        {
-            "Team": "WhileyMisfits",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/4f4090e5e9c3941414db40a871e3e909",
-            "DEF_projected": 0.0,
-            "DEF_live": 8.0,
-            "DEF_status": "active",
-            "QB_projected": 0.0,
-            "QB_live": 29.44,
-            "QB_status": "active",
-            "RB_projected": 0.0,
-            "RB_live": 28.6,
-            "RB_status": "active",
-            "TE_projected": 0.0,
-            "TE_live": 11.0,
-            "TE_status": "active",
-            "WR_projected": 0.0,
-            "WR_live": 47.9,
-            "WR_status": "active",
-            "Total_projected": 0.0,
-            "Total_live": 124.94
         },
         {
             "Team": "Hophoobly",
@@ -278,10 +278,10 @@
             "TE_live": 13.0,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 29.9,
+            "WR_live": 31.0,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 107.03999999999999
+            "Total_live": 108.14
         },
         {
             "Team": "PTP1020",
@@ -568,5 +568,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-12-01 03:50:48"
+    "lastUpdated": "2025-12-01 04:49:39"
 }
