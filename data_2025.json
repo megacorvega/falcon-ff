@@ -152,10 +152,10 @@
             "TE_live": 20.3,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 62.699999999999996,
+            "WR_live": 72.00000000000001,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 153.62
+            "Total_live": 162.92000000000002
         },
         {
             "Team": "khaug22",
@@ -173,10 +173,10 @@
             "TE_live": 4.7,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 66.30000000000001,
+            "WR_live": 70.6,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 138.94
+            "Total_live": 143.24
         },
         {
             "Team": "WhileyMisfits",
@@ -568,5 +568,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-12-01 04:49:39"
+    "lastUpdated": "2025-12-01 05:27:18"
 }
