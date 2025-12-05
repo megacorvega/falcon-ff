@@ -173,10 +173,10 @@
             "TE_live": 0.0,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 25.2,
+            "WR_live": 27.8,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 38.9
+            "Total_live": 41.5
         },
         {
             "Team": "PTP1020",
@@ -185,19 +185,19 @@
             "DEF_live": 0.0,
             "DEF_status": "active",
             "QB_projected": 0.0,
-            "QB_live": 18.6,
+            "QB_live": 18.44,
             "QB_status": "active",
             "RB_projected": 0.0,
             "RB_live": 0.0,
             "RB_status": "active",
             "TE_projected": 0.0,
-            "TE_live": 6.3,
+            "TE_live": 8.3,
             "TE_status": "active",
             "WR_projected": 0.0,
             "WR_live": 9.0,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 33.900000000000006
+            "Total_live": 35.74
         },
         {
             "Team": "pinballfabs",
@@ -227,7 +227,7 @@
             "DEF_live": 0.0,
             "DEF_status": "active",
             "QB_projected": 0.0,
-            "QB_live": 16.36,
+            "QB_live": 16.16,
             "QB_status": "active",
             "RB_projected": 0.0,
             "RB_live": 0.0,
@@ -239,7 +239,7 @@
             "WR_live": 0.0,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 16.36
+            "Total_live": 16.16
         },
         {
             "Team": "GBBOdraftpro",
@@ -580,5 +580,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-12-05 04:28:59"
+    "lastUpdated": "2025-12-05 05:20:13"
 }
