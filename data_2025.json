@@ -146,16 +146,16 @@
             "QB_live": 0.0,
             "QB_status": "active",
             "RB_projected": 0.0,
-            "RB_live": 4.8,
+            "RB_live": 16.6,
             "RB_status": "active",
             "TE_projected": 0.0,
             "TE_live": 0.0,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 0.0,
+            "WR_live": 15.3,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 4.8
+            "Total_live": 31.900000000000002
         },
         {
             "Team": "khaug22",
@@ -167,16 +167,16 @@
             "QB_live": 0.0,
             "QB_status": "active",
             "RB_projected": 0.0,
-            "RB_live": 0.4,
+            "RB_live": 11.5,
             "RB_status": "active",
             "TE_projected": 0.0,
             "TE_live": 0.0,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 4.300000000000001,
+            "WR_live": 14.8,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 4.700000000000001
+            "Total_live": 26.3
         },
         {
             "Team": "PTP1020",
@@ -185,40 +185,19 @@
             "DEF_live": 0.0,
             "DEF_status": "active",
             "QB_projected": 0.0,
-            "QB_live": 1.0,
+            "QB_live": 6.1,
             "QB_status": "active",
             "RB_projected": 0.0,
             "RB_live": 0.0,
             "RB_status": "active",
             "TE_projected": 0.0,
-            "TE_live": 2.4,
+            "TE_live": 2.8,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 0.0,
+            "WR_live": 9.0,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 3.4
-        },
-        {
-            "Team": "EthanSvend8",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/e7af4deab0289b4f5505646424895246",
-            "DEF_projected": 0.0,
-            "DEF_live": 0.0,
-            "DEF_status": "active",
-            "QB_projected": 0.0,
-            "QB_live": 1.48,
-            "QB_status": "active",
-            "RB_projected": 0.0,
-            "RB_live": 0.0,
-            "RB_status": "active",
-            "TE_projected": 0.0,
-            "TE_live": 0.0,
-            "TE_status": "active",
-            "WR_projected": 0.0,
-            "WR_live": 0.0,
-            "WR_status": "active",
-            "Total_projected": 0.0,
-            "Total_live": 1.48
+            "Total_live": 17.9
         },
         {
             "Team": "pinballfabs",
@@ -230,20 +209,41 @@
             "QB_live": 0.0,
             "QB_status": "active",
             "RB_projected": 0.0,
-            "RB_live": 0.2,
+            "RB_live": 9.7,
             "RB_status": "active",
             "TE_projected": 0.0,
             "TE_live": 0.0,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 1.2,
+            "WR_live": 6.6,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 1.4
+            "Total_live": 16.299999999999997
         },
         {
-            "Team": "dolani",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/1445030bf97c3022b7d8273c1b9f31e9",
+            "Team": "EthanSvend8",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/e7af4deab0289b4f5505646424895246",
+            "DEF_projected": 0.0,
+            "DEF_live": 0.0,
+            "DEF_status": "active",
+            "QB_projected": 0.0,
+            "QB_live": 10.68,
+            "QB_status": "active",
+            "RB_projected": 0.0,
+            "RB_live": 0.0,
+            "RB_status": "active",
+            "TE_projected": 0.0,
+            "TE_live": 0.0,
+            "TE_status": "active",
+            "WR_projected": 0.0,
+            "WR_live": 0.0,
+            "WR_status": "active",
+            "Total_projected": 0.0,
+            "Total_live": 10.68
+        },
+        {
+            "Team": "GBBOdraftpro",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b319fdf8b7b5b0359d3c78622ba4d70c",
             "DEF_projected": 0.0,
             "DEF_live": 0.0,
             "DEF_status": "active",
@@ -257,10 +257,10 @@
             "TE_live": 0.0,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 0.0,
+            "WR_live": 4.4,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 0.0
+            "Total_live": 4.4
         },
         {
             "Team": "abroom23",
@@ -284,8 +284,8 @@
             "Total_live": 0.0
         },
         {
-            "Team": "ScoobusDrewbus",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/e6bbee6cf39ec20b4cab84051e16aa3c",
+            "Team": "dolani",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/1445030bf97c3022b7d8273c1b9f31e9",
             "DEF_projected": 0.0,
             "DEF_live": 0.0,
             "DEF_status": "active",
@@ -326,8 +326,8 @@
             "Total_live": 0.0
         },
         {
-            "Team": "acroz24",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/f0edbf4278f53f9425db175073df6584",
+            "Team": "ScoobusDrewbus",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/e6bbee6cf39ec20b4cab84051e16aa3c",
             "DEF_projected": 0.0,
             "DEF_live": 0.0,
             "DEF_status": "active",
@@ -347,8 +347,8 @@
             "Total_live": 0.0
         },
         {
-            "Team": "GBBOdraftpro",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/b319fdf8b7b5b0359d3c78622ba4d70c",
+            "Team": "acroz24",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/f0edbf4278f53f9425db175073df6584",
             "DEF_projected": 0.0,
             "DEF_live": 0.0,
             "DEF_status": "active",
@@ -580,5 +580,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-12-05 01:38:45"
+    "lastUpdated": "2025-12-05 03:18:19"
 }
