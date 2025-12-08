@@ -332,7 +332,7 @@
             "DEF_live": 5.5,
             "DEF_status": "active",
             "QB_projected": 0.0,
-            "QB_live": 4.64,
+            "QB_live": 5.8,
             "QB_status": "active",
             "RB_projected": 0.0,
             "RB_live": 20.2,
@@ -341,10 +341,10 @@
             "TE_live": 1.6,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 50.7,
+            "WR_live": 52.7,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 82.64
+            "Total_live": 85.80000000000001
         },
         {
             "Team": "Hophoobly",
@@ -580,5 +580,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-12-08 04:33:22"
+    "lastUpdated": "2025-12-08 05:21:59"
 }
