@@ -161,7 +161,7 @@
             "Team": "khaug22",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
             "DEF_projected": 0.0,
-            "DEF_live": 0.0,
+            "DEF_live": 4.0,
             "DEF_status": "active",
             "QB_projected": 0.0,
             "QB_live": 2.72,
@@ -176,7 +176,7 @@
             "WR_live": 80.6,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 126.82
+            "Total_live": 130.82
         },
         {
             "Team": "GBBOdraftpro",
@@ -219,6 +219,27 @@
             "WR_status": "active",
             "Total_projected": 0.0,
             "Total_live": 114.63999999999999
+        },
+        {
+            "Team": "pinballfabs",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
+            "DEF_projected": 0.0,
+            "DEF_live": 12.0,
+            "DEF_status": "active",
+            "QB_projected": 0.0,
+            "QB_live": 6.56,
+            "QB_status": "active",
+            "RB_projected": 0.0,
+            "RB_live": 53.599999999999994,
+            "RB_status": "active",
+            "TE_projected": 0.0,
+            "TE_live": 6.9,
+            "TE_status": "active",
+            "WR_projected": 0.0,
+            "WR_live": 30.5,
+            "WR_status": "active",
+            "Total_projected": 0.0,
+            "Total_live": 109.56
         },
         {
             "Team": "EthanSvend8",
@@ -284,27 +305,6 @@
             "Total_live": 97.86
         },
         {
-            "Team": "pinballfabs",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
-            "DEF_projected": 0.0,
-            "DEF_live": 12.0,
-            "DEF_status": "active",
-            "QB_projected": 0.0,
-            "QB_live": 0.0,
-            "QB_status": "active",
-            "RB_projected": 0.0,
-            "RB_live": 45.4,
-            "RB_status": "active",
-            "TE_projected": 0.0,
-            "TE_live": 6.9,
-            "TE_status": "active",
-            "WR_projected": 0.0,
-            "WR_live": 30.5,
-            "WR_status": "active",
-            "Total_projected": 0.0,
-            "Total_live": 94.8
-        },
-        {
             "Team": "acroz24",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/f0edbf4278f53f9425db175073df6584",
             "DEF_projected": 0.0,
@@ -314,7 +314,7 @@
             "QB_live": 11.08,
             "QB_status": "active",
             "RB_projected": 0.0,
-            "RB_live": 19.8,
+            "RB_live": 26.6,
             "RB_status": "active",
             "TE_projected": 0.0,
             "TE_live": 8.2,
@@ -323,7 +323,7 @@
             "WR_live": 33.8,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 89.38
+            "Total_live": 96.17999999999999
         },
         {
             "Team": "WhileyMisfits",
@@ -335,7 +335,7 @@
             "QB_live": 5.8,
             "QB_status": "active",
             "RB_projected": 0.0,
-            "RB_live": 20.2,
+            "RB_live": 24.299999999999997,
             "RB_status": "active",
             "TE_projected": 0.0,
             "TE_live": 1.6,
@@ -344,7 +344,7 @@
             "WR_live": 52.7,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 85.80000000000001
+            "Total_live": 89.9
         },
         {
             "Team": "Hophoobly",
@@ -374,7 +374,7 @@
             "DEF_live": 0.0,
             "DEF_status": "active",
             "QB_projected": 0.0,
-            "QB_live": 0.0,
+            "QB_live": 1.0,
             "QB_status": "active",
             "RB_projected": 0.0,
             "RB_live": 15.7,
@@ -386,7 +386,7 @@
             "WR_live": 31.200000000000003,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 54.900000000000006
+            "Total_live": 55.900000000000006
         }
     ],
     "projection_week": 14,
@@ -580,5 +580,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-12-08 23:19:15"
+    "lastUpdated": "2025-12-09 01:37:58"
 }
