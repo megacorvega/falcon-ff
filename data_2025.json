@@ -246,7 +246,7 @@
             "Avatar": "https://sleepercdn.com/avatars/thumbs/70ab560538c2e94f0624132484fd10be",
             "DEF_projected": 0.0,
             "DEF_live": 0.0,
-            "DEF_status": "active",
+            "DEF_status": "projected",
             "QB_projected": 0.0,
             "QB_live": 0.0,
             "QB_status": "active",
@@ -580,5 +580,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-12-09 23:19:47"
+    "lastUpdated": "2025-12-10 01:40:41"
 }
