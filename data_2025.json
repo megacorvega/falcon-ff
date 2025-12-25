@@ -152,10 +152,10 @@
             "TE_live": 0.0,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 24.7,
+            "WR_live": 29.099999999999998,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 36.1
+            "Total_live": 40.5
         },
         {
             "Team": "PTP1020",
@@ -164,7 +164,7 @@
             "DEF_live": 0.0,
             "DEF_status": "active",
             "QB_projected": 0.0,
-            "QB_live": 13.96,
+            "QB_live": 18.76,
             "QB_status": "active",
             "RB_projected": 0.0,
             "RB_live": 0.0,
@@ -176,7 +176,7 @@
             "WR_live": 0.0,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 21.060000000000002
+            "Total_live": 25.86
         },
         {
             "Team": "Muk_King",
@@ -194,10 +194,10 @@
             "TE_live": 0.0,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 3.0,
+            "WR_live": 7.1,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 3.0
+            "Total_live": 7.1
         },
         {
             "Team": "ScoobusDrewbus",
@@ -215,10 +215,10 @@
             "TE_live": 0.0,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 2.1,
+            "WR_live": 7.1,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 2.1
+            "Total_live": 7.1
         },
         {
             "Team": "abroom23",
@@ -616,5 +616,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-12-25 19:15:48"
+    "lastUpdated": "2025-12-25 20:22:54"
 }
