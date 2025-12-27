@@ -230,7 +230,7 @@
             "QB_live": 0.0,
             "QB_status": "active",
             "RB_projected": 0.0,
-            "RB_live": 2.8,
+            "RB_live": 5.4,
             "RB_status": "active",
             "TE_projected": 0.0,
             "TE_live": 0.0,
@@ -239,7 +239,7 @@
             "WR_live": 10.8,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 19.1
+            "Total_live": 21.700000000000003
         },
         {
             "Team": "abroom23",
@@ -326,6 +326,27 @@
             "Total_live": 5.0
         },
         {
+            "Team": "acroz24",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/f0edbf4278f53f9425db175073df6584",
+            "DEF_projected": 0.0,
+            "DEF_live": 0.0,
+            "DEF_status": "active",
+            "QB_projected": 0.0,
+            "QB_live": 0.0,
+            "QB_status": "active",
+            "RB_projected": 0.0,
+            "RB_live": 4.8,
+            "RB_status": "active",
+            "TE_projected": 0.0,
+            "TE_live": 0.0,
+            "TE_status": "active",
+            "WR_projected": 0.0,
+            "WR_live": 0.0,
+            "WR_status": "active",
+            "Total_projected": 0.0,
+            "Total_live": 4.8
+        },
+        {
             "Team": "GBBOdraftpro",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/b319fdf8b7b5b0359d3c78622ba4d70c",
             "DEF_projected": 0.0,
@@ -345,27 +366,6 @@
             "WR_status": "active",
             "Total_projected": 0.0,
             "Total_live": 4.7
-        },
-        {
-            "Team": "acroz24",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/f0edbf4278f53f9425db175073df6584",
-            "DEF_projected": 0.0,
-            "DEF_live": 0.0,
-            "DEF_status": "active",
-            "QB_projected": 0.0,
-            "QB_live": 0.0,
-            "QB_status": "active",
-            "RB_projected": 0.0,
-            "RB_live": 1.7,
-            "RB_status": "active",
-            "TE_projected": 0.0,
-            "TE_live": 0.0,
-            "TE_status": "active",
-            "WR_projected": 0.0,
-            "WR_live": 0.0,
-            "WR_status": "active",
-            "Total_projected": 0.0,
-            "Total_live": 1.7
         },
         {
             "Team": "WhileyMisfits",
@@ -616,5 +616,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-12-27 22:18:47"
+    "lastUpdated": "2025-12-27 23:19:04"
 }
