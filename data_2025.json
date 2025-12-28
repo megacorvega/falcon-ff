@@ -146,7 +146,7 @@
             "QB_live": 2.08,
             "QB_status": "active",
             "RB_projected": 0.0,
-            "RB_live": 57.400000000000006,
+            "RB_live": 58.7,
             "RB_status": "active",
             "TE_projected": 0.0,
             "TE_live": 6.1,
@@ -155,7 +155,7 @@
             "WR_live": 52.7,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 126.28
+            "Total_live": 127.58
         },
         {
             "Team": "dolani",
@@ -164,7 +164,7 @@
             "DEF_live": 12.5,
             "DEF_status": "active",
             "QB_projected": 0.0,
-            "QB_live": 6.4,
+            "QB_live": 8.8,
             "QB_status": "active",
             "RB_projected": 0.0,
             "RB_live": 35.8,
@@ -176,7 +176,7 @@
             "WR_live": 58.2,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 124.39999999999999
+            "Total_live": 126.8
         },
         {
             "Team": "khaug22",
@@ -185,7 +185,7 @@
             "DEF_live": 10.5,
             "DEF_status": "active",
             "QB_projected": 0.0,
-            "QB_live": 13.22,
+            "QB_live": 17.12,
             "QB_status": "active",
             "RB_projected": 0.0,
             "RB_live": 11.4,
@@ -197,7 +197,7 @@
             "WR_live": 70.9,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 116.02000000000001
+            "Total_live": 119.92000000000002
         },
         {
             "Team": "pinballfabs",
@@ -227,19 +227,19 @@
             "DEF_live": 4.0,
             "DEF_status": "active",
             "QB_projected": 0.0,
-            "QB_live": 3.1,
+            "QB_live": 3.48,
             "QB_status": "active",
             "RB_projected": 0.0,
             "RB_live": 60.1,
             "RB_status": "active",
             "TE_projected": 0.0,
-            "TE_live": 6.6,
+            "TE_live": 8.3,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 8.9,
+            "WR_live": 10.799999999999999,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 82.7
+            "Total_live": 86.67999999999999
         },
         {
             "Team": "Hophoobly",
@@ -257,10 +257,31 @@
             "TE_live": 18.6,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 23.199999999999996,
+            "WR_live": 26.9,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 72.47999999999999
+            "Total_live": 76.18
+        },
+        {
+            "Team": "acroz24",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/f0edbf4278f53f9425db175073df6584",
+            "DEF_projected": 0.0,
+            "DEF_live": 14.0,
+            "DEF_status": "active",
+            "QB_projected": 0.0,
+            "QB_live": 17.44,
+            "QB_status": "active",
+            "RB_projected": 0.0,
+            "RB_live": 13.8,
+            "RB_status": "active",
+            "TE_projected": 0.0,
+            "TE_live": 0.0,
+            "TE_status": "active",
+            "WR_projected": 0.0,
+            "WR_live": 20.8,
+            "WR_status": "active",
+            "Total_projected": 0.0,
+            "Total_live": 66.04
         },
         {
             "Team": "ScoobusDrewbus",
@@ -272,7 +293,7 @@
             "QB_live": 0.0,
             "QB_status": "active",
             "RB_projected": 0.0,
-            "RB_live": 16.599999999999998,
+            "RB_live": 18.1,
             "RB_status": "active",
             "TE_projected": 0.0,
             "TE_live": 0.0,
@@ -281,7 +302,7 @@
             "WR_live": 33.0,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 61.099999999999994
+            "Total_live": 62.6
         },
         {
             "Team": "PTP1020",
@@ -305,27 +326,6 @@
             "Total_live": 60.38
         },
         {
-            "Team": "acroz24",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/f0edbf4278f53f9425db175073df6584",
-            "DEF_projected": 0.0,
-            "DEF_live": 10.0,
-            "DEF_status": "active",
-            "QB_projected": 0.0,
-            "QB_live": 17.44,
-            "QB_status": "active",
-            "RB_projected": 0.0,
-            "RB_live": 11.3,
-            "RB_status": "active",
-            "TE_projected": 0.0,
-            "TE_live": 0.0,
-            "TE_status": "active",
-            "WR_projected": 0.0,
-            "WR_live": 20.8,
-            "WR_status": "active",
-            "Total_projected": 0.0,
-            "Total_live": 59.540000000000006
-        },
-        {
             "Team": "Muk_King",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/70ab560538c2e94f0624132484fd10be",
             "DEF_projected": 0.0,
@@ -341,10 +341,10 @@
             "TE_live": 0.0,
             "TE_status": "active",
             "WR_projected": 0.0,
-            "WR_live": 35.50000000000001,
+            "WR_live": 38.50000000000001,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 48.50000000000001
+            "Total_live": 51.50000000000001
         },
         {
             "Team": "WhileyMisfits",
@@ -356,7 +356,7 @@
             "QB_live": 0.0,
             "QB_status": "active",
             "RB_projected": 0.0,
-            "RB_live": 16.8,
+            "RB_live": 20.9,
             "RB_status": "active",
             "TE_projected": 0.0,
             "TE_live": 4.2,
@@ -365,7 +365,7 @@
             "WR_live": 18.099999999999998,
             "WR_status": "active",
             "Total_projected": 0.0,
-            "Total_live": 42.099999999999994
+            "Total_live": 46.199999999999996
         },
         {
             "Team": "abroom23",
@@ -616,5 +616,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-12-28 22:19:19"
+    "lastUpdated": "2025-12-28 23:19:12"
 }
