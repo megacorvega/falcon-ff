@@ -158,6 +158,27 @@
             "Total_live": 129.88
         },
         {
+            "Team": "GBBOdraftpro",
+            "Avatar": "https://sleepercdn.com/avatars/thumbs/b319fdf8b7b5b0359d3c78622ba4d70c",
+            "DEF_projected": 0.0,
+            "DEF_live": 5.0,
+            "DEF_status": "active",
+            "QB_projected": 0.0,
+            "QB_live": 23.18,
+            "QB_status": "active",
+            "RB_projected": 0.0,
+            "RB_live": 81.0,
+            "RB_status": "active",
+            "TE_projected": 0.0,
+            "TE_live": 8.3,
+            "TE_status": "active",
+            "WR_projected": 0.0,
+            "WR_live": 10.799999999999999,
+            "WR_status": "active",
+            "Total_projected": 0.0,
+            "Total_live": 128.28
+        },
+        {
             "Team": "khaug22",
             "Avatar": "https://sleepercdn.com/avatars/thumbs/b3338675f635c2c1f42b469621d38ec6",
             "DEF_projected": 0.0,
@@ -177,27 +198,6 @@
             "WR_status": "active",
             "Total_projected": 0.0,
             "Total_live": 127.88
-        },
-        {
-            "Team": "GBBOdraftpro",
-            "Avatar": "https://sleepercdn.com/avatars/thumbs/b319fdf8b7b5b0359d3c78622ba4d70c",
-            "DEF_projected": 0.0,
-            "DEF_live": 5.0,
-            "DEF_status": "active",
-            "QB_projected": 0.0,
-            "QB_live": 23.18,
-            "QB_status": "active",
-            "RB_projected": 0.0,
-            "RB_live": 80.1,
-            "RB_status": "active",
-            "TE_projected": 0.0,
-            "TE_live": 8.3,
-            "TE_status": "active",
-            "WR_projected": 0.0,
-            "WR_live": 10.799999999999999,
-            "WR_status": "active",
-            "Total_projected": 0.0,
-            "Total_live": 127.38
         },
         {
             "Team": "dolani",
@@ -616,5 +616,5 @@
         "TE",
         "WR"
     ],
-    "lastUpdated": "2025-12-29 04:49:35"
+    "lastUpdated": "2025-12-29 05:27:55"
 }
